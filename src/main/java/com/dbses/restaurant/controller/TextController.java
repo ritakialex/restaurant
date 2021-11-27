@@ -12,7 +12,7 @@ import java.util.Random;
  * @author stef
  */
 public class TextController {
-    private ArrayList<String> texts;
+    private final ArrayList<String> texts;
     
     public TextController (){
         texts = new ArrayList<String>();

@@ -5,9 +5,8 @@ CREATE TABLE Bookings
     date          DATE    NOT NULL,
     customer_name VARCHAR NOT NULL,
     PRIMARY KEY(id),
-    CONSTRAINT fk_table
-      FOREIGN KEY(table_id)
-        REFERENCES Tables(id)
+    FOREIGN KEY(table_id)
+      REFERENCES Tables(id)
 );
 
 CREATE TABLE Orders 
@@ -15,9 +14,8 @@ CREATE TABLE Orders
     id            INT GENERATED ALWAYS AS IDENTITY,
     table_id      INT NOT NULL, 
     PRIMARY KEY(id),
-    CONSTRAINT fk_table
-      FOREIGN KEY(table_id)
-        REFERENCES Tables(id)
+    FOREIGN KEY(table_id)
+      REFERENCES Tables(id)
 );
 
 CREATE TABLE Menu_items 
@@ -42,5 +40,10 @@ CREATE TABLE Order_menu_item
 (
   order_id     INT NOT NULL,
   menu_item_id INT NOT NULL,
-  PRIMARY KEY (order_id, menu_item_id)
+  PRIMARY KEY (order_id, menu_item_id),
+  FOREIGN KEY(order_id)
+      REFERENCES Tables(id),
+  FOREIGN KEY(menu_item_id)
+      REFERENCES Menu_items(id)
+
 )

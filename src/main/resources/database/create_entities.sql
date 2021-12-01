@@ -1,3 +1,11 @@
+CREATE TABLE Tables
+(
+    id           INT     GENERATED ALWAYS AS IDENTITY,
+    capacity     INT     NOT NULL,
+    is_available BOOLEAN NOT NULL,
+    PRIMARY KEY(id)
+);
+
 CREATE TABLE Bookings
 (
     id             INT     GENERATED ALWAYS AS IDENTITY,
@@ -29,13 +37,6 @@ CREATE TABLE Menu_items
     PRIMARY KEY(id)
 );
 
-CREATE TABLE Tables
-(
-    id           INT     GENERATED ALWAYS AS IDENTITY,
-    capacity     INT     NOT NULL,
-    is_available BOOLEAN NOT NULL,
-    PRIMARY KEY(id)
-);
 
 CREATE TABLE Order_menu_item
 (

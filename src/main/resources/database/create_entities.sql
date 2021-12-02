@@ -40,9 +40,10 @@ CREATE TABLE Menu_items
 
 CREATE TABLE Order_menu_item
 (
+  id           INT GENERATED ALWAYS AS IDENTITY,
   order_id     INT NOT NULL,
   menu_item_id INT NOT NULL,
-  PRIMARY KEY (order_id, menu_item_id),
+  PRIMARY KEY (id),
   FOREIGN KEY(order_id)
       REFERENCES Tables(id),
   FOREIGN KEY(menu_item_id)

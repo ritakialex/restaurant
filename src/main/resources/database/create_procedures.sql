@@ -13,6 +13,33 @@ PLANNING:
             create(name, description, price, stock_num): id
                 creates menu item
 */
+CREATE OR REPLACE PROCEDURE create_order(t_table_id INT, t_menu_item_ids INT[])
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    t_is_available BOOLEAN;
+    t_stock INT;
+    new_order_id INT;
+    m_id INT;
+BEGIN
+    IF t_is_available THEN
+        RAISE EXCEPTION 'Table is not occupied';
+    ELSE
+        INSERT INTO Orders(table_id) VALUES (t_table_id) RETURNING id INTO new_order_id;
+
+        FOREACH m_id IN ARRAY t_menu_item_ids LOOP
+            SELECT stock_number FROM Menu_items WHERE id = m_id INTO t_stock;
+
+            IF NOT t_stock > 0 THEN
+                RAISE EXCEPTION 'Item is not in stock: %', m_id;
+            ELSE
+                INSERT INTO Order_menu_item(order_id, menu_item_id) VALUES(new_order_id, m_id);
+            END IF;
+        END LOOP;
+    END IF;
+END $$;
+
+
 
 
 CREATE OR REPLACE PROCEDURE create_booking(t_table_id INT,

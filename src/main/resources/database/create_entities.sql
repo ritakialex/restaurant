@@ -48,24 +48,3 @@ CREATE TABLE Order_menu_item
   FOREIGN KEY(menu_item_id)
       REFERENCES Menu_items(id)
 )
-
-/*
-PLANNING:
-    PROCEDURES:
-        BOOKING:
-            create(table_id, date, customer_name, customer_count): id
-                if table is !available error else if customer_count < table_capacity insert else error
-        ORDERS:
-            create(table_id, menu_item_ids[]): id
-                if table is available error else if menu_items are available insert else error
-            get_price(menu_item_ids[]): price
-                sum price of all menu items
-        MENU_ITEM:
-            create(name, description, price, stock_num): id
-                creates menu item
-    TRIGGERS:
-        BOOKING:
-            ON CREATE SET REFERENCED TABLE UNAVAILABLE
-        ORDER:
-            ON CREATE DECREASE ALL STOCK NUMS OF REFERENCED MENU ITEMS
-*/

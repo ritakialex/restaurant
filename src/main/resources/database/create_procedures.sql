@@ -12,6 +12,20 @@
             create(name, description, price, stock_num): id
                 creates menu item
 */
+CREATE OR REPLACE PROCEDURE create_menu_item(m_name VARCHAR,
+                                             m_description VARCHAR,
+                                             m_price REAL,
+                                             m_stock_number INT)
+    LANGUAGE plpgsql
+AS
+$$
+BEGIN
+    INSERT INTO menu_items(name, description, price, stock_number)
+    VALUES (m_name, m_description, m_price, m_stock_number);
+END
+$$;
+
+
 CREATE OR REPLACE FUNCTION total_price(t_menu_item_ids INT[]) RETURNS REAL
     LANGUAGE plpgsql
 AS
@@ -85,6 +99,5 @@ BEGIN
         INSERT INTO Bookings(table_id, date, customer_name, customer_count)
         VALUES (t_table_id, t_date, t_customer_name, t_customer_count);
     END IF;
-
 END
 $$;

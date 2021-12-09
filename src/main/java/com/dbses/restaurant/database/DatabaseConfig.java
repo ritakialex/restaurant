@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConfig {
-    private static final String driverClassName = "org.postgresql.Driver";
+    private static final String driverClassName = "driver";
     private static final String url = "url";
-    private static final String username = "user";
+    private static final String username = "username";
     private static final String password = "password";
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {

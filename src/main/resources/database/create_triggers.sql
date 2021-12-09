@@ -17,12 +17,6 @@ CREATE TRIGGER set_unavailable_orders_trigger
     FOR EACH ROW
 EXECUTE PROCEDURE set_unavailable();
 
-CREATE TRIGGER set_unavailable_bookings_trigger
-    AFTER INSERT
-    ON Bookings
-    FOR EACH ROW
-EXECUTE PROCEDURE set_unavailable();
-
 CREATE OR REPLACE FUNCTION decrement_stock() RETURNS TRIGGER
 AS
 $$

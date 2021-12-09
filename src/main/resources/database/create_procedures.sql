@@ -1,3 +1,5 @@
+
+
 CREATE OR REPLACE PROCEDURE toggle_availability(table_id INT)
     LANGUAGE plpgsql
 AS
@@ -43,9 +45,7 @@ $$;
 
 
 CREATE OR REPLACE PROCEDURE create_order(t_table_id INT,
-                                         t_menu_item_ids INT[],
-                                         t_date DATE,
-                                         t_hour INT)
+                                         t_menu_item_ids INT[])
     LANGUAGE plpgsql
 AS
 $$
@@ -54,15 +54,17 @@ DECLARE
     t_stock        INT;
     new_order_id   INT;
     m_id           INT;
+    t_current_time TIMESTAMP;
 BEGIN
-
+    SET TIMEZONE='Europe/Athens';
+    SELECT NOW() INTO t_current_time;
 
     SELECT is_available FROM Tables WHERE id = t_table_id INTO t_is_available;
     IF NOT t_is_available THEN
         RAISE EXCEPTION 'Table is not available';
     ELSE
-        INSERT INTO Orders(table_id, date, hour)
-        VALUES (t_table_id, t_date, t_hour)
+        INSERT INTO Orders(table_id, time)
+        VALUES (t_table_id, t_current_time)
         RETURNING id INTO new_order_id;
     END IF;
 
@@ -94,15 +96,24 @@ DECLARE
     booking_table_id INT;
     t_hour           INT;
     t_date           DATE;
+    t_current_time   TIMESTAMP;
 BEGIN
-    SELECT table_id, hour, date FROM Bookings WHERE id = t_booking_id
+    SET TIMEZONE='Europe/Athens';
+    SELECT NOW() INTO t_current_time;
+
+    SELECT table_id, hour, date
+    FROM Bookings
+    WHERE id = t_booking_id
     INTO booking_table_id, t_hour, t_date;
-    IF t_table_id = booking_table_id THEN
-        INSERT INTO Orders(table_id, booking_id, date, hour)
-        VALUES (t_table_id, t_booking_id, t_date, t_hour)
-        RETURNING id INTO new_order_id;
+
+    IF NOT DATE(t_current_time) = t_date OR NOT extract(hour from t_current_time) = t_hour THEN
+        RAISE EXCEPTION 'Customers havent arrived yet';
+    ELSIF NOT t_table_id = booking_table_id THEN
+        RAISE EXCEPTION 'Order table id and booking table id dont match';
     ELSE
-        RAISE EXCEPTION 'Order table id/hour and booking table id/hour dont match';
+        INSERT INTO Orders(table_id, booking_id, time)
+        VALUES (t_table_id, t_booking_id, t_current_time)
+        RETURNING id INTO new_order_id;
     END IF;
 
 

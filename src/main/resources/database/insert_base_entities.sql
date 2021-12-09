@@ -75,8 +75,8 @@ VALUES (6, True);
 
 
 call create_booking(2,
-                    '2021-12-10',
-                    21,
+                    '2021-12-9',
+                    16,
                     'John F. Kennedy',
                     5);
 
@@ -93,12 +93,16 @@ call create_booking(3,
                     5);
 
 call create_booking(1,
-                    '2021-12-12',
-                    12,
+                    '2021-12-9',
+                    16,
                     'William McKinley',
                     3);
 
-call create_order(1, array[1,1,2,4,5],4);
-call create_order(3, array[2,4,5,4,7],3);
-call create_order(2, array[1,1],1);
+call create_booking(1,
+                    '2021-12-10',
+                    16,
+                    'William McKinley',
+                    3);
 
+call create_order(2, array[1,2,2,2,3], 1);
+call create_order(1, array[1,2,2,2,3], 4);

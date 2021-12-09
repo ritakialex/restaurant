@@ -26,9 +26,7 @@ CREATE TABLE Orders
     id            INT  GENERATED ALWAYS AS IDENTITY,
     table_id      INT  NOT NULL,
     booking_id    INT,
-    date          DATE NOT NULL,
-    hour          INT  NOT NULL
-        CHECK (hour >= 8 AND hour <= 22),
+    time          TIMESTAMP,
     PRIMARY KEY(id),
     FOREIGN KEY(table_id)
       REFERENCES Tables(id),

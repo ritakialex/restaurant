@@ -4,15 +4,18 @@
  */
 package com.dbses.restaurant.view;
 
-import com.dbses.restaurant.controller.TextController;
+import com.dbses.restaurant.service.TextService;
+import com.dbses.restaurant.service.PersonService;
+import java.sql.SQLException;
 
 /**
  *
  * @author stef
  */
 public class Default extends javax.swing.JFrame {
+    
+    private final TextService randomText;
 
-    private final TextController randomText;
     /**
      * Creates new form Default
      */
@@ -21,27 +24,41 @@ public class Default extends javax.swing.JFrame {
         pressMeBtn.addActionListener(__ -> pressMePressed());
         clearBtn.addActionListener(__ -> clearPressed());
         addOptionBtn.addActionListener(__ -> addPressed());
-        randomText = new TextController();
+        randomText = new TextService();
     }
-    
+
     private void pressMePressed(){
         final String text = randomText.randomText();
         textField.setText(text);
     }
 
-    private void clearPressed(){
-        textField.setText("");
+    private void personExample() {
+        
+        try {
+            final int id = Integer.parseInt(optionTextField.getText());
+            final String name = PersonService.getName(id);
+            textField.setText(name);
+        } catch (Exception e) {
+            System.out.print("Try again later!!");
+        }
+        
     }
     
-    private void addPressed(){
+    private void clearPressed() {
+        textField.setText("");
+    }
+
+
+    private void addPressed() {
         final String option = optionTextField.getText();
-        if(option.isEmpty()){
+        if (option.isEmpty()) {
             optionTextField.setText("Cant be empty!");
             return;
         }
         randomText.addOption(option);
         optionTextField.setText("");
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,7 +153,6 @@ public class Default extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addOptionBtnActionPerformed
 
-    
     /**
      * @param args the command line arguments
      */

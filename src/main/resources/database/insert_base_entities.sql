@@ -104,5 +104,3 @@ call create_booking(1,
                     'William McKinley',
                     3);
 
-call create_order(2, array[1,2,2,2,3], 1);
-call create_order(1, array[1,2,2,2,3], 4);

@@ -25,25 +25,6 @@ BEGIN
 END
 $$;
 
-
-CREATE OR REPLACE FUNCTION total_price(t_menu_item_ids INT[]) RETURNS REAL
-    LANGUAGE plpgsql
-AS
-$$
-DECLARE
-    p_sum REAL := 0;
-    m_id  INT;
-BEGIN
-    FOREACH m_id IN ARRAY t_menu_item_ids
-        LOOP
-            SELECT m.price + p_sum FROM Menu_items m WHERE id = m_id INTO p_sum;
-        END LOOP;
-    RETURN p_sum;
-END
-$$;
-
-
-
 CREATE OR REPLACE PROCEDURE create_order(t_table_id INT,
                                          t_menu_item_ids INT[])
     LANGUAGE plpgsql

@@ -6,7 +6,6 @@ CREATE TABLE Tables
     PRIMARY KEY(id)
 );
 
-
 CREATE TABLE Bookings -- Insert/Delete
 (
     id             INT     GENERATED ALWAYS AS IDENTITY,
@@ -18,7 +17,8 @@ CREATE TABLE Bookings -- Insert/Delete
         CHECK (hour >= 8 AND hour <= 22),
     PRIMARY KEY(id),
     FOREIGN KEY(table_id)
-      REFERENCES Tables(id),
+      REFERENCES Tables(id)
+        ON DELETE CASCADE,
     UNIQUE (date, hour, table_id)
 );
 

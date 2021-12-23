@@ -139,3 +139,35 @@ BEGIN
     END IF;
 END
 $$;
+
+CREATE OR REPLACE PROCEDURE delete_booking(t_booking_id INT)
+    LANGUAGE plpgsql
+AS
+$$
+BEGIN
+    DELETE FROM BOOKINGS
+    WHERE id = t_booking_id;
+END
+$$;
+
+CREATE OR REPLACE PROCEDURE update_menu_item_price(m_id INT, diff REAL)
+    LANGUAGE plpgsql
+AS
+$$
+BEGIN
+    UPDATE MENU_ITEMS
+    SET price = ROUND((price + diff)::numeric, 2)
+    WHERE id = m_id;
+END
+$$;
+
+CREATE OR REPLACE PROCEDURE update_menu_item_stock(m_id INT,diff INT)
+    LANGUAGE plpgsql
+AS
+$$
+BEGIN
+    UPDATE MENU_ITEMS
+    SET stock_number = stock_number + diff
+    WHERE id = m_id;
+END
+$$;

@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConfig {
-    private static final String driverClassName = "driver";
-    private static final String url = "url";
-    private static final String username = "username";
-    private static final String password = "password";
+    private static final String driverClassName = "org.postgresql.Driver";
+    private static final String url = "jdbc:postgresql://localhost:5432/postgres";
+    private static final String username = "postgres";
+    private static final String password = "postgres";
 
     public static Connection getConnection() throws DatabaseConnectionException {
         try {
@@ -24,6 +24,15 @@ public class DatabaseConfig {
             throw new DatabaseConnectionException(message);
         }
 
+    }
+
+    public static void main(String[] args) {
+        try {
+            Connection conn = getConnection();
+            System.out.println(conn.createStatement().executeQuery("SELECT * FROM TABLES").first());
+        }catch (Exception e) {
+
+        }
     }
 
 }

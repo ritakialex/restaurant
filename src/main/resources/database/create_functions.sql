@@ -91,7 +91,7 @@ END
 $$;
 
 CREATE OR REPLACE FUNCTION get_menu_items(t_food_category FOOD_CATEGORY,
-                                          t_stock_number INT)
+                                          t_min_stock_number INT)
     RETURNS SETOF MENU_ITEMS
     LANGUAGE plpgsql
 AS
@@ -107,8 +107,8 @@ BEGIN
         and_q := 'AND';
         where_q := '';
     END IF;
-    IF t_stock_number IS NOT NULL THEN
-        stock_condition := format('%s %s stock_number >= %s', where_q, and_q, t_stock_number);
+    IF t_min_stock_number IS NOT NULL THEN
+        stock_condition := format('%s %s stock_number >= %s', where_q, and_q, t_min_stock_number);
         and_q := 'AND';
         where_q := '';
     END IF;

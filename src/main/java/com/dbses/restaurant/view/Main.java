@@ -1,10 +1,16 @@
 package com.dbses.restaurant.view;
 
 
+<<<<<<< HEAD
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+=======
+
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+>>>>>>> 5ebbb6b02e71c5772a64b296c8f985f2444bebf7
 
 /**
  *
@@ -24,6 +30,7 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         All = new javax.swing.JTabbedPane();
         Main = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -100,6 +107,24 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("ΟΝΟΜΑ ΜΑΓΑΖΙΟΥ ");
         Main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+=======
+        jLabel3 = new javax.swing.JLabel();
+        exitButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        menouButton = new javax.swing.JButton();
+        ParaggeliesManagementButton = new javax.swing.JButton();
+        KratiseisManagementButton = new javax.swing.JButton();
+        mainButton = new javax.swing.JButton();
+        EisodosButt = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(680, 520));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("ΟΝΟΜΑ ΜΑΓΑΖΙΟΥ ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 12, -1, -1));
+>>>>>>> 5ebbb6b02e71c5772a64b296c8f985f2444bebf7
 
         exitButton.setText("Exit");
         exitButton.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +132,7 @@ public class Main extends javax.swing.JFrame {
                 exitButtonActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
         Main.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 30));
 
         All.addTab("Αρχική", Main);
@@ -670,12 +696,84 @@ public class Main extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
+=======
+        getContentPane().add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(592, 11, -1, 30));
+
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setForeground(new java.awt.Color(102, 102, 102));
+
+        menouButton.setText("ΜΕΝΟΥ");
+        menouButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menouButtonActionPerformed(evt);
+            }
+        });
+
+        ParaggeliesManagementButton.setText("ΠΑΡΑΓΓΕΛΙΕΣ");
+        ParaggeliesManagementButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ParaggeliesManagementButtonActionPerformed(evt);
+            }
+        });
+
+        KratiseisManagementButton.setText("ΚΡΑΤΗΣΕΙΣ");
+        KratiseisManagementButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KratiseisManagementButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ParaggeliesManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                    .addComponent(KratiseisManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(menouButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(KratiseisManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ParaggeliesManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menouButton, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 37, -1, -1));
+
+        mainButton.setText("ΑΡΧΙΚΗ");
+        mainButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(mainButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 8, 104, -1));
+
+        EisodosButt.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        EisodosButt.setText("ΕΙΣΟΔΟΣ");
+        EisodosButt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EisodosButtActionPerformed(evt);
+            }
+        });
+        getContentPane().add(EisodosButt, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 140, 40));
+
+        pack();
+>>>>>>> 5ebbb6b02e71c5772a64b296c8f985f2444bebf7
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
 
+<<<<<<< HEAD
     private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButton1ActionPerformed
@@ -827,6 +925,53 @@ public class Main extends javax.swing.JFrame {
     private void exitButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton4ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButton4ActionPerformed
+=======
+    private void menouButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menouButtonActionPerformed
+        // close();
+
+        Menouu om = new Menouu();
+        om.setVisible(true);
+        
+        dispose();
+    }//GEN-LAST:event_menouButtonActionPerformed
+
+    private void ParaggeliesManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ParaggeliesManagementButtonActionPerformed
+        //  close();
+
+        Paraggelies am = new Paraggelies();
+        am.setVisible(true);
+        
+        dispose();
+    }//GEN-LAST:event_ParaggeliesManagementButtonActionPerformed
+
+    private void KratiseisManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KratiseisManagementButtonActionPerformed
+        //  close();
+
+        Kratiseis im = new Kratiseis();
+        im.setVisible(true);
+        
+        dispose();
+    }//GEN-LAST:event_KratiseisManagementButtonActionPerformed
+
+    private void mainButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainButtonActionPerformed
+        // TODO add your handling code here:
+        //close();
+        
+        Main ma = new Main();
+        ma.setVisible(true);
+        
+        dispose();
+    }//GEN-LAST:event_mainButtonActionPerformed
+
+    private void EisodosButtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EisodosButtActionPerformed
+        // TODO add your handling code here:
+        
+        log lo = new log();
+        lo.setVisible(true);
+        
+        
+    }//GEN-LAST:event_EisodosButtActionPerformed
+>>>>>>> 5ebbb6b02e71c5772a64b296c8f985f2444bebf7
 
     /**
      * @param args the command line arguments
@@ -864,6 +1009,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+<<<<<<< HEAD
     private javax.swing.JPanel AddKratish;
     private javax.swing.JTabbedPane All;
     private javax.swing.JPanel KratiseisManagement;
@@ -929,6 +1075,16 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtSalates;
     private javax.swing.JTextField txtTime;
     private javax.swing.JTextField txtTrapezi;
+=======
+    private javax.swing.JButton EisodosButt;
+    private javax.swing.JButton KratiseisManagementButton;
+    private javax.swing.JButton ParaggeliesManagementButton;
+    private javax.swing.JButton exitButton;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton mainButton;
+    private javax.swing.JButton menouButton;
+>>>>>>> 5ebbb6b02e71c5772a64b296c8f985f2444bebf7
     // End of variables declaration//GEN-END:variables
          private void close() {
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);

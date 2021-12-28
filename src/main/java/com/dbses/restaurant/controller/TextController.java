@@ -17,7 +17,7 @@ public class TextController {
     public TextController (){
         texts = new ArrayList<String>();
         texts.add("I love being pressed!");
-        texts.add("Press me again!");
+        texts.add("Press me again1234!");
         texts.add("I ran out of text ideas...");
     }
     

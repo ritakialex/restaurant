@@ -1,14 +1,13 @@
 package com.dbses.restaurant.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+
 
 public class DatabaseConfig {
-    private static final String driverClassName = "driver";
-    private static final String url = "url";
-    private static final String username = "username";
-    private static final String password = "password";
+    private static final String driverClassName = "org.postgresql.Driver";
+    private static final String url = "jdbc:postgresql://localhost:5432/restaurantdb";
+    private static final String username = "postgres";
+    private static final String password = "zxcvasdf!";
 
     public static Connection getConnection() throws DatabaseConnectionException {
         try {
@@ -24,6 +23,7 @@ public class DatabaseConfig {
             throw new DatabaseConnectionException(message);
         }
 
+       
     }
 
 }

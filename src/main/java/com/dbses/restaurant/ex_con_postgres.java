@@ -3,8 +3,11 @@ import com.dbses.restaurant.database.DatabaseConfig;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import com.dbses.restaurant.database.DatabaseConfig;
+import com.dbses.restaurant.model.Booking;
+import com.dbses.restaurant.model.MenuItem;
 
 public class ex_con_postgres {
     static String     driverClassName = "org.postgresql.Driver" ;
@@ -283,10 +286,13 @@ public class ex_con_postgres {
         }*/
 
 
-        //κάλεσμα αποθηκευμένη select get bookings - sql function
+
+
+
+        //κάλεσμα αποθηκευμένη select get bookings - sql function ---- getBookingsToString()
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
-            String getBookings = "select get_bookings(null, null, null, null)";
+            String getBookings = "select * from get_bookings(null, null, null, null)";
             ResultSet rs = stmt.executeQuery(getBookings);
             ResultSetMetaData rsmd = rs.getMetaData();
             int numberOfColumns = rsmd.getColumnCount();
@@ -301,8 +307,68 @@ public class ex_con_postgres {
             System.out.println(e);
         }*/
 
-        //Get menu items
+
+
+        //κάλεσμα αποθηκευμένη select get bookings - sql function ---- getBookings()
+        /*ArrayList<Booking> bookings = new ArrayList<>();
         try (Connection conn = DatabaseConfig.getConnection()) {
+            Statement stmt = conn.createStatement();
+            String getBookings = "select * from get_bookings(null, null, null, null)";
+            ResultSet rs = stmt.executeQuery(getBookings);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            System.out.println("αριθμός στηλών:" + numberOfColumns);
+            while (rs.next()) {
+                bookings.add(new Booking(rs.getInt("id"),
+                                         rs.getInt("table_id"),
+                                         rs.getDate("date"),
+                                         rs.getString("customer_name"),
+                                         rs.getInt("customer_count"),
+                                         rs.getInt("hour"))
+                    );
+                */
+                /*int id = rs.getInt("id");
+                int tableId = rs.getInt("table_id");
+                Date date = rs.getDate("date");
+                String custName = rs.getString("customer_name");
+                int custCount = rs.getInt("customer_count");
+                int hour = rs.getInt("hour");
+                System.out.println(id + " --- " + tableId + " - " + date + " - " + custName + " - " + custCount + " - " + hour);
+                Booking book = new Booking(id, tableId, date, custName,custCount, hour);
+                book.toString();*//*
+                //System.out.println(bookings.toString());
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }*/
+
+        /*public ArrayList<Booking> get_bookings() throws Exception {
+            try (Connection conn = DatabaseConfig.getConnection()) {
+                Statement stmt = conn.createStatement();
+                String selectString = "select * from get_bookings(null, null, null, null)";
+                ResultSet rs = stmt.executeQuery(selectString);
+
+                final ArrayList<Booking> bookings = new ArrayList();
+                while (rs.next()) {
+                    bookings.add(new Booking(
+                            rs.getInt("id"), rs.getInt("table_id"),
+                            rs.getDate("date"), rs.getString("customer_name"),
+                            rs.getInt("customer_count"), rs.getInt("hour")));
+                }
+                return bookings;
+            } catch (Exception e) {
+                System.out.println(e);
+                throw new Exception();
+            }
+        }*/
+
+
+
+
+
+
+        //Get menu items  ---- getMenuItemsToString()
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
             String getBookings = "select get_menu_items(null, null)";
             ResultSet rs = stmt.executeQuery(getBookings);
@@ -317,12 +383,49 @@ public class ex_con_postgres {
             }
         }catch (Exception e){
             System.out.println(e);
+        }*/
+
+        // Get menu items ArrayList  ---- getMenuItems()
+        ArrayList<MenuItem> menuItems = new ArrayList<>();
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            Statement stmt = conn.createStatement();
+            String getBookings = "select get_menu_items(null, null)";
+            ResultSet rs = stmt.executeQuery(getBookings);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int numberOfColumns = rsmd.getColumnCount();
+            System.out.println("αριθμός στηλών:" + numberOfColumns);
+            while (rs.next()) {
+                menuItems.add(new MenuItem(rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("description"),
+                        rs.getString("category"),
+                        rs.getFloat("price"),
+                        rs.getInt("stock_number"))
+                );
+                menuItems.toString();
+                /*int id = rs.getInt("id");
+                int tableId = rs.getInt("table_id");
+                Date date = rs.getDate("date");
+                String custName = rs.getString("customer_name");
+                int custCount = rs.getInt("customer_count");
+                int hour = rs.getInt("hour");
+                System.out.println(id + " --- " + tableId + " - " + date + " - " + custName + " - " + custCount + " - " + hour);
+                Booking book = new Booking(id, tableId, date, custName,custCount, hour);
+                book.toString();*/
+                //System.out.println(bookings.toString());
+            }
+        }catch (Exception e){
+            System.out.println(e);
         }
+
+
+
+
 
         //get order with items
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
-            String getBookings = "select get_order_with_items(null)";
+            String getBookings = "select * from get_order_with_items(null)";
             ResultSet rs = stmt.executeQuery(getBookings);
             ResultSetMetaData rsmd = rs.getMetaData();
             int numberOfColumns = rsmd.getColumnCount();
@@ -340,8 +443,8 @@ public class ex_con_postgres {
 
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
-            String[] items;
-            String getBookings = "select total_price(items[])";
+            Integer items;
+            String getBookings = "select total_price(item[1])";
             ResultSet rs = stmt.executeQuery(getBookings);
             ResultSetMetaData rsmd = rs.getMetaData();
             int numberOfColumns = rsmd.getColumnCount();

@@ -84,18 +84,19 @@ public class Booking {
                 '}';
     }
 
+    //Δημιουργεί αντικείμενα τύπου Booking
     public ArrayList<Booking> getBookings() throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
             String selectString = "select * from get_bookings(null, null, null, null)";
             ResultSet rs = stmt.executeQuery(selectString);
-
             final ArrayList<Booking> bookings = new ArrayList();
             while (rs.next()) {
                 bookings.add(new Booking(
                         rs.getInt("id"), rs.getInt("table_id"),
                         rs.getDate("date"), rs.getString("customer_name"),
-                        rs.getInt("customer_count"), rs.getInt("hour")));
+                        rs.getInt("customer_count"), rs.getInt("hour"))
+                );
             }
             return bookings;
         } catch (Exception e) {
@@ -104,6 +105,8 @@ public class Booking {
         }
     }
 
+
+    //βγάζει τα αποτελέσματα ανά γραμμή
     public static void getBookingsToString() throws Exception{
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();

@@ -326,17 +326,6 @@ public class ex_con_postgres {
                                          rs.getInt("customer_count"),
                                          rs.getInt("hour"))
                     );
-                */
-                /*int id = rs.getInt("id");
-                int tableId = rs.getInt("table_id");
-                Date date = rs.getDate("date");
-                String custName = rs.getString("customer_name");
-                int custCount = rs.getInt("customer_count");
-                int hour = rs.getInt("hour");
-                System.out.println(id + " --- " + tableId + " - " + date + " - " + custName + " - " + custCount + " - " + hour);
-                Booking book = new Booking(id, tableId, date, custName,custCount, hour);
-                book.toString();*//*
-                //System.out.println(bookings.toString());
             }
         }catch (Exception e){
             System.out.println(e);
@@ -385,11 +374,13 @@ public class ex_con_postgres {
             System.out.println(e);
         }*/
 
+
         // Get menu items ArrayList  ---- getMenuItems()
+        //ERROR - org.postgresql.util.PSQLException: The column name id was not found in this ResultSet.
         ArrayList<MenuItem> menuItems = new ArrayList<>();
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
-            String getBookings = "select get_menu_items(null, null)";
+            String getBookings = "select * from get_menu_items(null, null)";
             ResultSet rs = stmt.executeQuery(getBookings);
             ResultSetMetaData rsmd = rs.getMetaData();
             int numberOfColumns = rsmd.getColumnCount();
@@ -402,17 +393,7 @@ public class ex_con_postgres {
                         rs.getFloat("price"),
                         rs.getInt("stock_number"))
                 );
-                menuItems.toString();
-                /*int id = rs.getInt("id");
-                int tableId = rs.getInt("table_id");
-                Date date = rs.getDate("date");
-                String custName = rs.getString("customer_name");
-                int custCount = rs.getInt("customer_count");
-                int hour = rs.getInt("hour");
-                System.out.println(id + " --- " + tableId + " - " + date + " - " + custName + " - " + custCount + " - " + hour);
-                Booking book = new Booking(id, tableId, date, custName,custCount, hour);
-                book.toString();*/
-                //System.out.println(bookings.toString());
+                //menuItems.toString();
             }
         }catch (Exception e){
             System.out.println(e);

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class MenuItem {
 
@@ -83,6 +84,7 @@ public class MenuItem {
                 '}';
     }
 
+    //βγάζει τα αποτελέσματα ανά γραμμή
     public static void getMenuItemsToString() throws Exception{
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
@@ -101,7 +103,31 @@ public class MenuItem {
             System.out.println(e);
         }
     }
+    //Δημιουργεί αντικείμενα τύπου MenuItem
+    public ArrayList<MenuItem> getMenuItems() throws Exception {
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            Statement stmt = conn.createStatement();
+            String getBookings = "select * from get_menu_items(null, null)";
+            ResultSet rs = stmt.executeQuery(getBookings);
+            final ArrayList<MenuItem> menuItems = new ArrayList();
+            while (rs.next()) {
+                menuItems.add(new MenuItem(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("description"),
+                        rs.getString("category"),
+                        rs.getFloat("price"),
+                        rs.getInt("stock_number"))
+                );
+            }
+            return menuItems;
+        }catch (Exception e){
+            System.out.println(e);
+            throw new Exception();
+        }
+    }
 
 
 
-}
+
+}//end class

@@ -377,7 +377,7 @@ public class ex_con_postgres {
 
         // Get menu items ArrayList  ---- getMenuItems()
         //ERROR - org.postgresql.util.PSQLException: The column name id was not found in this ResultSet.
-        ArrayList<MenuItem> menuItems = new ArrayList<>();
+        /*ArrayList<MenuItem> menuItems = new ArrayList<>();
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
             String getBookings = "select * from get_menu_items(null, null)";
@@ -397,16 +397,16 @@ public class ex_con_postgres {
             }
         }catch (Exception e){
             System.out.println(e);
-        }
+        }*/
 
 
 
 
 
         //get order with items
-        /*try (Connection conn = DatabaseConfig.getConnection()) {
+        try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
-            String getBookings = "select * from get_order_with_items(null)";
+            String getBookings = "select get_order_with_items(null)";
             ResultSet rs = stmt.executeQuery(getBookings);
             ResultSetMetaData rsmd = rs.getMetaData();
             int numberOfColumns = rsmd.getColumnCount();
@@ -419,7 +419,7 @@ public class ex_con_postgres {
             }
         }catch (Exception e){
             System.out.println(e);
-        }*/
+        }
 
 
         /*try (Connection conn = DatabaseConfig.getConnection()) {

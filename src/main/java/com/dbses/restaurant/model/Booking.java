@@ -85,17 +85,17 @@ public class Booking {
     }
 
     //Δημιουργεί αντικείμενα τύπου Booking
-    public ArrayList<Booking> getBookings() throws Exception {
+    public static ArrayList<Booking> getBookings() throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
-            String selectString = "select * from get_bookings(null, null, null, null)";
-            ResultSet rs = stmt.executeQuery(selectString);
+            String getBookings = "select * from get_bookings(null, null, null, null)";
+            ResultSet rs = stmt.executeQuery(getBookings);
             final ArrayList<Booking> bookings = new ArrayList();
             while (rs.next()) {
                 bookings.add(new Booking(
-                        rs.getInt("id"), rs.getInt("table_id"),
-                        rs.getDate("date"), rs.getString("customer_name"),
-                        rs.getInt("customer_count"), rs.getInt("hour"))
+                        rs.getInt(1), rs.getInt(2),
+                        rs.getDate(3), rs.getString(4),
+                        rs.getInt(5), rs.getInt(6))
                 );
             }
             return bookings;
@@ -106,7 +106,7 @@ public class Booking {
     }
 
 
-    //βγάζει τα αποτελέσματα ανά γραμμή
+    //βγάζει τα αποτελέσματα ανά γραμμή - δε θα το χρησιμοποιήσουμε
     public static void getBookingsToString() throws Exception{
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();

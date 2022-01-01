@@ -4,10 +4,12 @@ import com.dbses.restaurant.database.DatabaseConfig;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.dbses.restaurant.database.DatabaseConfig;
 import com.dbses.restaurant.model.Booking;
 import com.dbses.restaurant.model.MenuItem;
+import com.dbses.restaurant.model.Table;
 
 public class ex_con_postgres {
     static String     driverClassName = "org.postgresql.Driver" ;
@@ -81,7 +83,8 @@ public class ex_con_postgres {
                     String custName = rs.getString("customer_name");
                     int custCount = rs.getInt("customer_count");
                     int hour = rs.getInt("hour");
-                    System.out.println(id + " - " + tableId + " - " + date + " - " + custName + " - " + custCount + " - " + hour);
+                    System.out.println(id + " - " + tableId + " - " + date + " - " +
+                                        custName + " - " + custCount + " - " + hour);
                 }
             }catch(SQLException ex) {
                 System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
@@ -167,6 +170,45 @@ public class ex_con_postgres {
         }catch (Exception e){
             System.out.println(e);
         }*/
+
+
+
+        //στο menu_item με id = ? βάλε τιμή ?
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
+            PreparedStatement pstmt = null;
+            String selectTableId = "call update_menu_item_price(?, ?)";
+            pstmt = conn.prepareStatement(selectTableId);
+            try {
+                pstmt.setInt(1, 9);
+                pstmt.setFloat(2, -2f);
+                int changes = pstmt.executeUpdate();
+                System.out.println(changes + " records updated");
+            }catch(SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }*/
+
+
+        //menu item with id = ? - update stock number +/- ?
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
+            PreparedStatement pstmt = null;
+            String updateStock = "call update_menu_item_stock(?, ?)";
+            pstmt = conn.prepareStatement(updateStock);
+            try {
+                pstmt.setInt(1, 5);
+                pstmt.setInt(2, -10);
+                int changes = pstmt.executeUpdate();
+                System.out.println(changes + " records updated");
+            }catch(SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }*/
+
+
 
 
 
@@ -292,13 +334,13 @@ public class ex_con_postgres {
         //κάλεσμα αποθηκευμένη select get bookings - sql function ---- getBookingsToString()
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
-            String getBookings = "select * from get_bookings(null, null, null, null)";
+            String getBookings = "select get_bookings(null, null, null, null)";
             ResultSet rs = stmt.executeQuery(getBookings);
             ResultSetMetaData rsmd = rs.getMetaData();
             int numberOfColumns = rsmd.getColumnCount();
             System.out.println("αριθμός στηλών:" + numberOfColumns);
             while (rs.next()) {
-                for(int i=1; i <=numberOfColumns; i++) {
+                for(int i=0; i <numberOfColumns; i++) {
                     String data = rs.getString(i);
                     System.out.println(data);
                 }
@@ -357,7 +399,7 @@ public class ex_con_postgres {
 
 
         //Get menu items  ---- getMenuItemsToString()
-        /*try (Connection conn = DatabaseConfig.getConnection()) {
+       /* try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
             String getBookings = "select get_menu_items(null, null)";
             ResultSet rs = stmt.executeQuery(getBookings);
@@ -404,7 +446,7 @@ public class ex_con_postgres {
 
 
         //get order with items
-        try (Connection conn = DatabaseConfig.getConnection()) {
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
             String getBookings = "select get_order_with_items(null)";
             ResultSet rs = stmt.executeQuery(getBookings);
@@ -419,26 +461,68 @@ public class ex_con_postgres {
             }
         }catch (Exception e){
             System.out.println(e);
-        }
+        }*/
 
 
+
+
+        //get_tables πάνω από χ αριθμό
         /*try (Connection conn = DatabaseConfig.getConnection()) {
-            Statement stmt = conn.createStatement();
-            Integer items;
-            String getBookings = "select total_price(item[1])";
-            ResultSet rs = stmt.executeQuery(getBookings);
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int numberOfColumns = rsmd.getColumnCount();
-            System.out.println("αριθμός στηλών:" + numberOfColumns);
-            while (rs.next()) {
-                for(int i=1; i <=numberOfColumns; i++) {
-                    String data = rs.getString(i);
-                    System.out.println(data);
+            //Statement stmt = conn.createStatement();
+            PreparedStatement pstmt = null;
+            ResultSet rs = null;
+
+            String getTables = "select * from get_tables(?, ?)";
+            //ResultSet rs = stmt.executeQuery(getTables);
+            pstmt = conn.prepareStatement(getTables);
+            try{
+                pstmt.setInt(1, 6);
+                pstmt.setBoolean(2, true);
+                rs = pstmt.executeQuery();
+                final ArrayList<Table> tables = new ArrayList();
+                while (rs.next()) {
+                    tables.add(new Table(
+                            rs.getInt(1),
+                            rs.getInt(2),
+                            rs.getBoolean(3)));
                 }
+                //testing output
+                *//*try {
+                    Iterator iter = tables.iterator();
+                    while (iter.hasNext()) {
+                        System.out.println(iter.next());
+                    }
+                } catch (Exception e){
+                    System.out.println(e);
+                }*//*
+            }catch(Exception e){
+                System.out.println(e);
+
             }
         }catch (Exception e){
             System.out.println(e);
         }*/
+
+
+
+
+        //total_price περιμένει array με αριθμούς κρατήσεων
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
+            Statement stmt = conn.createStatement();
+            int[] items = {1,2,3};
+            //String getBookings = "select total_price(array[1,2,3])";
+            String getBookings = "select total_price()";
+            ResultSet rs = stmt.executeQuery(getBookings);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            rs.next();
+            float price = rs.getFloat(1);
+            System.out.println(price);
+
+        }catch (Exception e){
+            System.out.println(e);
+        }*/
+
+
 
 
     }//end main

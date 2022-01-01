@@ -6,7 +6,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-class Main {
+//Για δοκιμή κώδικα
+/*class Main {
     public static void main(String[] args) {
 
         try {
@@ -20,7 +21,7 @@ class Main {
         }
 
     }
-}
+}*/
 
 public class Order {
 
@@ -90,11 +91,12 @@ public class Order {
                     '}';
         }
 
+        //Δημιουργεί αντικείμενα τύπου Order με ArrayList items
         public static ArrayList<Order> getOrderWithItems () throws Exception {
             try (Connection conn = DatabaseConfig.getConnection()) {
                 Statement stmt = conn.createStatement();
-                String getBookings = "select * from get_order_with_items(null)";
-                ResultSet rs = stmt.executeQuery(getBookings);
+                String getOrders = "select * from get_order_with_items(null)";
+                ResultSet rs = stmt.executeQuery(getOrders);
                 final ArrayList<Order> orders = new ArrayList();
                 while (rs.next()) {
                     ResultSet intrs = rs.getArray(5).getResultSet();

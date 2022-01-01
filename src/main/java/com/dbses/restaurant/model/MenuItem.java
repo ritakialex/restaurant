@@ -84,12 +84,12 @@ public class MenuItem {
                 '}';
     }
 
-    //βγάζει τα αποτελέσματα ανά γραμμή
+    //βγάζει τα αποτελέσματα ανά γραμμή -- δε θα το χρησιμοποιήσουμε
     public static void getMenuItemsToString() throws Exception{
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
-            String getBookings = "select get_menu_items(null, null)";
-            ResultSet rs = stmt.executeQuery(getBookings);
+            String getMenuItems = "select get_menu_items(null, null)";
+            ResultSet rs = stmt.executeQuery(getMenuItems);
             ResultSetMetaData rsmd = rs.getMetaData();
             int numberOfColumns = rsmd.getColumnCount();
             //System.out.println("αριθμός στηλών:" + numberOfColumns);
@@ -104,20 +104,20 @@ public class MenuItem {
         }
     }
     //Δημιουργεί αντικείμενα τύπου MenuItem
-    public ArrayList<MenuItem> getMenuItems() throws Exception {
+    public static ArrayList<MenuItem> getMenuItems() throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
-            String getBookings = "select * from get_menu_items(null, null)";
-            ResultSet rs = stmt.executeQuery(getBookings);
+            String getMenuItems = "select * from get_menu_items(null, null)";
+            ResultSet rs = stmt.executeQuery(getMenuItems);
             final ArrayList<MenuItem> menuItems = new ArrayList();
             while (rs.next()) {
                 menuItems.add(new MenuItem(
-                        rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("description"),
-                        rs.getString("category"),
-                        rs.getFloat("price"),
-                        rs.getInt("stock_number"))
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getFloat(5),
+                        rs.getInt(6))
                 );
             }
             return menuItems;
@@ -126,6 +126,68 @@ public class MenuItem {
             throw new Exception();
         }
     }
+
+    //
+    public static float totalPrice() throws Exception {
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            Statement stmt = conn.createStatement();
+            int[] items;
+            //το array[1,2,3] είναι σαν παράδειγμα, θα πρέπει να το παίρνει από τον χρήστη
+            //δηλαδή για items θέλει σύνολο τιμής
+            String totalPrice = "select total_price(array[1,2,3])";
+            ResultSet rs = stmt.executeQuery(totalPrice);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            rs.next();
+            float price = rs.getFloat(1);
+            return price;
+        } catch (Exception e) {
+            System.out.println(e);
+            throw new Exception();
+        }
+    }
+
+    //menu item with id = ? -- update price +/- ?
+    public static void updatePrice() throws Exception {
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            PreparedStatement pstmt = null;
+            String updatePrice = "call update_menu_item_price(?, ?)";
+            pstmt = conn.prepareStatement(updatePrice);
+            try {
+                //στο πρώτο θα παίρνει από το χρήστη ποιο id από menu item
+                //θέλει να αλλάξει τιμή, και στο 2ο θα παίρνει την αλλαγή τιμής
+                //κατά πόσο θα αυξηθει ή θα μειωθεί
+                pstmt.setInt(1, 6);
+                pstmt.setFloat(2, -1f);
+                int changes = pstmt.executeUpdate();
+                //System.out.println(changes + " records updated");
+            }catch(SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }
+    }
+
+
+    //menu item with id = ? - update stock number +/- ?
+    public static void updateStock() throws Exception {
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            PreparedStatement pstmt = null;
+            String updateStock = "call update_menu_item_stock(?, ?)";
+            pstmt = conn.prepareStatement(updateStock);
+            try {
+                pstmt.setInt(1, 5);
+                pstmt.setInt(2, -10);
+                int changes = pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+
 
 
 

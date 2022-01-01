@@ -115,3 +115,32 @@ BEGIN
                                 stock_condition);
 END
 $$;
+
+CREATE OR REPLACE FUNCTION get_tables(t_capacity INT,
+                                      t_is_available BOOLEAN)
+    RETURNS SETOF TABLES
+    LANGUAGE plpgsql
+AS
+$$
+DECLARE
+    where_q            VARCHAR := 'WHERE';
+    and_q              VARCHAR := '';
+    capacity_condition VARCHAR := '';
+    available_condition    VARCHAR := '';
+BEGIN
+    IF t_capacity IS NOT NULL THEN
+        capacity_condition := format('%s %s capacity > %s', where_q, and_q, t_capacity);
+        and_q := 'AND';
+        where_q := '';
+    END IF;
+    IF t_is_available IS NOT NULL THEN
+        available_condition := format('%s %s is_available = ''%s''', where_q, and_q, t_is_available);
+        and_q := 'AND';
+        where_q := '';
+    END IF;
+
+    RETURN QUERY EXECUTE format('SELECT * FROM TABLES %s %s',
+                                capacity_condition,
+                                available_condition);
+END
+$$;

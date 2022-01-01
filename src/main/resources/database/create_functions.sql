@@ -23,22 +23,19 @@ CREATE TABLE ORDER_WITH_ITEMS
     items      INT[]
 );
 
-CREATE OR REPLACE FUNCTION get_order_with_items(t_order_id INT) RETURNS ORDER_WITH_ITEMS
+CREATE OR REPLACE FUNCTION get_order_with_items(t_order_id INT) RETURNS SETOF ORDER_WITH_ITEMS
     LANGUAGE plpgsql
 AS
 $$
 DECLARE
     item_ids INT[];
-    r_order  ORDER_WITH_ITEMS;
 BEGIN
     SELECT array_agg(id)
     FROM Order_menu_item o
     WHERE o.order_id = t_order_id
     INTO item_ids;
 
-    SELECT *, item_ids FROM Orders o WHERE o.id = t_order_id INTO r_order;
-
-    RETURN r_order;
+    RETURN QUERY SELECT *, item_ids FROM Orders o WHERE o.id = t_order_id;
 END
 $$;
 

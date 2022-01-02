@@ -259,13 +259,33 @@ public class ex_con_postgres {
             System.out.println(e);
         }*/
 
-
+        //call stored procedure create_booking --  READY
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
+            //create object
+            MenuItem newItem = new MenuItem("Brand new", "you have to try that", "Alcoholic Drinks", 9.50f, 66);
+            PreparedStatement pstmt = null;
+            String insertMenuItem = "call create_menu_item(?, ?, ?::FOOD_CATEGORY, ?, ?)";
+            pstmt = conn.prepareStatement(insertMenuItem);
+            try {
+                pstmt.setString(1, newItem.getMenuItemName());
+                pstmt.setString(2, newItem.getMenuItemDescription());
+                pstmt.setString(3, newItem.getCategory());
+                pstmt.setFloat(4, newItem.getPrice());
+                pstmt.setInt(5, newItem.getStockNumber());
+                pstmt.executeUpdate();
+                System.out.println("ok");
+            }catch(SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }*/
 
         //insert create_menu_item OK
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
-            String insertBooking = "call create_menu_item(?, ?, ?::FOOD_CATEGORY, ?, ?)";
-            pstmt = conn.prepareStatement(insertBooking);
+            String insertMenuItem = "call create_menu_item(?, ?, ?::FOOD_CATEGORY, ?, ?)";
+            pstmt = conn.prepareStatement(insertMenuItem);
             try {
                 pstmt.setString(1, "the super dish");
                 pstmt.setString(2, "the most amazing dish");

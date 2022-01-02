@@ -127,7 +127,9 @@ public class MenuItem {
         }
     }
 
-    //
+    //θα την υλοποιήσουμε με άλλο function που έφτιαξε ο Στεφ
+    //και μόλις το ετοιμάσω θα σβήσω αυτόν τον κώδικα που έχω ούτως η άλλως με comments
+
     /*public static float totalPrice(int id) throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();

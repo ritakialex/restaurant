@@ -1,4 +1,4 @@
-package com.dbses.restaurant.model;
+package com.dbses.restaurant;
 import com.dbses.restaurant.database.DatabaseConfig;
 
 import java.sql.*;
@@ -644,8 +644,9 @@ public class ex_con_postgres {
 
 
 
-        //total_price_order - expects order_id -- OK
-        /*int a = 1;
+
+        //total_price_order - expects order_id
+        int a = 1;
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt;
             ResultSet rs;
@@ -663,7 +664,7 @@ public class ex_con_postgres {
 
         }catch (Exception e){
             System.out.println(e);
-        }*/
+        }
 
    /* String str = "2022-01-03";
     Booking testBook = new Booking(10, str., "Πάλι εγώ", 4,21);

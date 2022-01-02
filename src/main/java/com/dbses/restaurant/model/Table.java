@@ -55,7 +55,7 @@ public class Table {
     }
 
     //εμφανίζει τραπέζια που είναι διαθέσιμα και έχουν χωρητικότητα πάνω από ?
-    public static ArrayList<Table> getTables() throws Exception {
+    public static ArrayList<Table> getTables(int capacity) throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             ResultSet rs = null;
@@ -64,7 +64,7 @@ public class Table {
             try {
                 //θα πρέπει να παίρνει τιμές από το χρήστη. η τιμή που θα πάρει θα
                 //πρέπει να είναι int και να μπαίνει στη θέση του 6
-                pstmt.setInt(1, 6);
+                pstmt.setInt(1, capacity);
                 //pstmt.setBoolean(2, true);
                 rs = pstmt.executeQuery();
                 final ArrayList<Table> tables = new ArrayList();
@@ -87,14 +87,14 @@ public class Table {
 
 
     //αλλάζει τη διαθεσιμότητα στο τραπέζι με id = ?
-    public static void toggleAvailability() throws Exception {
+    public static void toggleAvailability(int tableId) throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             String toggle = "call toggle_availability(?)";
             pstmt = conn.prepareStatement(toggle);
             try {
                 //θα παίρνει από τον χρήστη το id και θα το βάζει στη θέση του 10
-                pstmt.setInt(1, 10);
+                pstmt.setInt(1, tableId);
                 pstmt.executeUpdate();
             }catch(SQLException ex) {
                 System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());

@@ -1,4 +1,4 @@
-package com.dbses.restaurant;
+package com.dbses.restaurant.model;
 import com.dbses.restaurant.database.DatabaseConfig;
 
 import java.sql.*;
@@ -14,13 +14,6 @@ import com.dbses.restaurant.model.MenuItem;
 import com.dbses.restaurant.model.Table;
 
 public class ex_con_postgres {
-    static String     driverClassName = "org.postgresql.Driver" ;
-    static String     url = "jdbc:postgresql://localhost:5432/restaurantdb" ;
-    static Connection conn = null;
-    static String     username = "postgres";
-    static String     password = "zxcvasdf!";
-
-
 
     public static void main(String[] args) {
 

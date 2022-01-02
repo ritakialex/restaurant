@@ -124,35 +124,15 @@ public class Booking {
     }
 
 
-    //βγάζει τα αποτελέσματα ανά γραμμή - ΔΕ θα το χρησιμοποιήσουμε
-    public static void getBookingsToString() throws Exception{
-        try (Connection conn = DatabaseConfig.getConnection()) {
-            Statement stmt = conn.createStatement();
-            String getBookings = "select get_bookings(null, null, null, null)";
-            ResultSet rs = stmt.executeQuery(getBookings);
-            ResultSetMetaData rsmd = rs.getMetaData();
-            int numberOfColumns = rsmd.getColumnCount();
-            while (rs.next()) {
-                for(int i=1; i <=numberOfColumns; i++) {
-                    String data = rs.getString(i);
-                    System.out.println(data);
-                }
-            }
-        }catch (Exception e){
-            System.out.println(e);
-        }
-    }
-
-
     //delete booking with id =?
-    public static void deleteBooking() throws Exception {
+    public static void deleteBooking(int id) throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             String deleteBooking = "call delete_booking(?)";
             pstmt = conn.prepareStatement(deleteBooking);
             try {
                 //θα παίρνει το id από το χρήστη
-                pstmt.setInt(1, 5);
+                pstmt.setInt(1, id);
                 int changes = pstmt.executeUpdate();
             } catch (SQLException ex) {
                 System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());

@@ -320,13 +320,13 @@ public class ex_con_postgres {
         }*/
 
 
-        //call create_order - 2 params
-        try (Connection conn = DatabaseConfig.getConnection()) {
+        //call create_order - 2 params -- OK
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             String newOrder = "call create_order(?, ?)";
             pstmt = conn.prepareStatement(newOrder);
             try {
-                pstmt.setInt(1, 6);
+                pstmt.setInt(1, 5);
                 int[] items = {6,7};
                 pstmt.setObject(2, items);
                 pstmt.executeUpdate();
@@ -335,7 +335,7 @@ public class ex_con_postgres {
             }
         }catch (Exception e){
             System.out.println(e);
-        }
+        }*/
 
 
         //call create_order - 3 params with bookingid  ---output exception 'Customers havent arrived yet'
@@ -646,7 +646,7 @@ public class ex_con_postgres {
 
 
         //total_price_order - expects order_id
-        int a = 1;
+       /* int a = 1;
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt;
             ResultSet rs;
@@ -664,7 +664,7 @@ public class ex_con_postgres {
 
         }catch (Exception e){
             System.out.println(e);
-        }
+        }*/
 
    /* String str = "2022-01-03";
     Booking testBook = new Booking(10, str., "Πάλι εγώ", 4,21);

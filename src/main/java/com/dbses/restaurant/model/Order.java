@@ -146,6 +146,45 @@ public class Order {
         //την τιμή μέσα στο try
     }
 
+    //call create_order with booking id - 3 params
+    //αν δεν γίνεται την ώρα της κράτησης εμφανίζει error
+    public static void createOrder(int tableId, int[] items, int bookId) throws Exception {
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            PreparedStatement pstmt = null;
+            String newOrder = "call create_order(?, ?)";
+            pstmt = conn.prepareStatement(newOrder);
+            try {
+                pstmt.setInt(1, tableId);
+                //int[] items = {6, 7};
+                pstmt.setObject(2, items);
+                pstmt.setInt(3, bookId);
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    //call create_order - 2 params
+    public static void createOrderWithBooking(int tableId, int[] items) throws Exception {
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            PreparedStatement pstmt = null;
+            String newOrder = "call create_order(?, ?)";
+            pstmt = conn.prepareStatement(newOrder);
+            try {
+                pstmt.setInt(1, tableId);
+                //int[] items = {6, 7};
+                pstmt.setObject(2, items);
+                pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
 
 }

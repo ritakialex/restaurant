@@ -321,13 +321,13 @@ public class ex_con_postgres {
 
 
         //call create_order - 2 params
-       /* try (Connection conn = DatabaseConfig.getConnection()) {
+        try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             String newOrder = "call create_order(?, ?)";
             pstmt = conn.prepareStatement(newOrder);
             try {
-                pstmt.setInt(1, 10);
-                int[] items = {2, 7, 10};
+                pstmt.setInt(1, 6);
+                int[] items = {6,7};
                 pstmt.setObject(2, items);
                 pstmt.executeUpdate();
             }catch(SQLException ex) {
@@ -335,7 +335,7 @@ public class ex_con_postgres {
             }
         }catch (Exception e){
             System.out.println(e);
-        }*/
+        }
 
 
         //call create_order - 3 params with bookingid  ---output exception 'Customers havent arrived yet'

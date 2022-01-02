@@ -247,10 +247,11 @@ public class ex_con_postgres {
                 *//*String str="2015-03-31";
                 Date date=Date.valueOf(str);*//*
                 pstmt.setDate(2, (Date) book.getBookingDate());
-                pstmt.setInt(3, book.getCustomerCount());
+                pstmt.setInt(3, book.getHour());
                 pstmt.setString(4, book.getCustomerName());
-                pstmt.setInt(5, book.getHour());
+                pstmt.setInt(5, book.getCustomerCount());
                 pstmt.executeUpdate();
+                System.out.println("ok");
             }catch(SQLException ex) {
                 System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
             }
@@ -506,7 +507,7 @@ public class ex_con_postgres {
 
 
 
-        //get order with items -- OK
+        //get order with items -- OK (NOT USED)
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
             String getBookings = "select get_order_with_items(null)";
@@ -589,6 +590,7 @@ public class ex_con_postgres {
 
 
         //total_price περιμένει array με αριθμούς κρατήσεων
+        //δε θα υλοποιήσουμε αυτή τελικά
 
        /* try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
@@ -622,7 +624,7 @@ public class ex_con_postgres {
 
 
 
-        //total_price_order - expects order_id
+        //total_price_order - expects order_id -- OK
         /*int a = 1;
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt;
@@ -642,6 +644,11 @@ public class ex_con_postgres {
         }catch (Exception e){
             System.out.println(e);
         }*/
+
+   /* String str = "2022-01-03";
+    Booking testBook = new Booking(10, str., "Πάλι εγώ", 4,21);
+    */
+
 
 
 

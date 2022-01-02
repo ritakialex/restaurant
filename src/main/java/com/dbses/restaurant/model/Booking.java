@@ -36,7 +36,7 @@ public class Booking {
     public Booking(int tableId, Date bookingDate, String customerName,
                    int customerCount, int hour) {
         this.tableId = tableId;
-        this.bookingDate = bookingDate;
+        this.bookingDate = (Date) bookingDate;
         this.customerName = customerName;
         this.customerCount = customerCount;
         this.hour = hour;
@@ -102,7 +102,7 @@ public class Booking {
                 '}';
     }
 
-    //Δημιουργεί αντικείμενα τύπου Booking
+    //εμφανίζει αντικείμενα τύπου Booking
     public static ArrayList<Booking> getBookings() throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
@@ -124,7 +124,7 @@ public class Booking {
     }
 
 
-    //βγάζει τα αποτελέσματα ανά γραμμή - δε θα το χρησιμοποιήσουμε
+    //βγάζει τα αποτελέσματα ανά γραμμή - ΔΕ θα το χρησιμοποιήσουμε
     public static void getBookingsToString() throws Exception{
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
@@ -162,6 +162,33 @@ public class Booking {
         }
     }
 
+
+    //call stored procedure create_booking - Δημιουργεί νέο booking
+    //θα πρέπει να πάρει από τον χρήστη int(boooking id) - Strind (που θα μετατρέψει σε αντικείμενο Date)
+    //String (ονομα πελάτη), int (πόσοι πελάτες) και int (ώρα, πχ 12 ή 18, ή 20)
+    public static void createNewBooking(int bookId, String date, String custName, int count, int hour) throws Exception {
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            //String str = date;
+            Booking book = new Booking(bookId, java.sql.Date.valueOf(date),
+                    custName, count, hour);
+            PreparedStatement pstmt = null;
+            String insertBooking = "call create_booking(?, ?, ?, ?, ?)";
+            pstmt = conn.prepareStatement(insertBooking);
+            try {
+                pstmt.setInt(1, book.getTableId());
+                pstmt.setDate(2, (java.sql.Date) book.getBookingDate());
+                pstmt.setInt(3, book.getHour());
+                pstmt.setString(4, book.getCustomerName());
+                pstmt.setInt(5, book.getCustomerCount());
+                pstmt.executeUpdate();
+                //System.out.println("ok");
+            } catch (SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
 
 }

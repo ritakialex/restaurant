@@ -15,16 +15,29 @@ public class MenuItem {
     private String menuItemName;
     private String menuItemDescription;
     private String category;
-    private double price;
+    //('Appetizers', 'Salads', 'Main Dishes', 'Drinks', 'Alcoholic Drinks')
+    private float price;
     private int stockNumber;
 
     public MenuItem(int menuItemId,
                     String menuItemName,
                     String menuItemDescription,
                     String category,
-                    double price,
+                    float price,
                     int stockNumber) {
         this.menuItemId = menuItemId;
+        this.menuItemName = menuItemName;
+        this.menuItemDescription = menuItemDescription;
+        this.category = category;
+        this.price = price;
+        this.stockNumber = stockNumber;
+    }
+
+    public MenuItem(String menuItemName,
+                    String menuItemDescription,
+                    String category,
+                    float price,
+                    int stockNumber) {
         this.menuItemName = menuItemName;
         this.menuItemDescription = menuItemDescription;
         this.category = category;
@@ -56,11 +69,19 @@ public class MenuItem {
         this.menuItemDescription = menuItemDescription;
     }
 
-    public double getPrice() {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public float getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
@@ -191,6 +212,31 @@ public class MenuItem {
 
 
 
+    //call stored procedure create_menu_item - Δημιουργεί νέο booking
+    //θα πρέπει να πάρει από τον χρήστη String - String - String (αυτό μόνο 'Appetizers', 'Salads', 'Main Dishes', 'Drinks', 'Alcoholic Drinks')
+    // float και int
+    public static void createNewMenuItem(String itemName, String theDesc, String cat, float thePrice, int theStock) {
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            //create object
+            MenuItem newItem = new MenuItem(itemName, theDesc, cat, thePrice, theStock);
+            PreparedStatement pstmt = null;
+            String insertMenuItem = "call create_menu_item(?, ?, ?::FOOD_CATEGORY, ?, ?)";
+            pstmt = conn.prepareStatement(insertMenuItem);
+            try {
+                pstmt.setString(1, newItem.getMenuItemName());
+                pstmt.setString(2, newItem.getMenuItemDescription());
+                pstmt.setString(3, newItem.getCategory());
+                pstmt.setFloat(4, newItem.getPrice());
+                pstmt.setInt(5, newItem.getStockNumber());
+                pstmt.executeUpdate();
+                //System.out.println("ok");
+            } catch (SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
 
 

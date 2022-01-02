@@ -247,10 +247,11 @@ public class ex_con_postgres {
                 *//*String str="2015-03-31";
                 Date date=Date.valueOf(str);*//*
                 pstmt.setDate(2, (Date) book.getBookingDate());
-                pstmt.setInt(3, book.getCustomerCount());
+                pstmt.setInt(3, book.getHour());
                 pstmt.setString(4, book.getCustomerName());
-                pstmt.setInt(5, book.getHour());
+                pstmt.setInt(5, book.getCustomerCount());
                 pstmt.executeUpdate();
+                System.out.println("ok");
             }catch(SQLException ex) {
                 System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
             }
@@ -258,13 +259,33 @@ public class ex_con_postgres {
             System.out.println(e);
         }*/
 
-
+        //call stored procedure create_booking --  READY
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
+            //create object
+            MenuItem newItem = new MenuItem("Brand new", "you have to try that", "Alcoholic Drinks", 9.50f, 66);
+            PreparedStatement pstmt = null;
+            String insertMenuItem = "call create_menu_item(?, ?, ?::FOOD_CATEGORY, ?, ?)";
+            pstmt = conn.prepareStatement(insertMenuItem);
+            try {
+                pstmt.setString(1, newItem.getMenuItemName());
+                pstmt.setString(2, newItem.getMenuItemDescription());
+                pstmt.setString(3, newItem.getCategory());
+                pstmt.setFloat(4, newItem.getPrice());
+                pstmt.setInt(5, newItem.getStockNumber());
+                pstmt.executeUpdate();
+                System.out.println("ok");
+            }catch(SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }*/
 
         //insert create_menu_item OK
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
-            String insertBooking = "call create_menu_item(?, ?, ?::FOOD_CATEGORY, ?, ?)";
-            pstmt = conn.prepareStatement(insertBooking);
+            String insertMenuItem = "call create_menu_item(?, ?, ?::FOOD_CATEGORY, ?, ?)";
+            pstmt = conn.prepareStatement(insertMenuItem);
             try {
                 pstmt.setString(1, "the super dish");
                 pstmt.setString(2, "the most amazing dish");
@@ -506,7 +527,7 @@ public class ex_con_postgres {
 
 
 
-        //get order with items -- OK
+        //get order with items -- OK (NOT USED)
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
             String getBookings = "select get_order_with_items(null)";
@@ -589,6 +610,7 @@ public class ex_con_postgres {
 
 
         //total_price περιμένει array με αριθμούς κρατήσεων
+        //δε θα υλοποιήσουμε αυτή τελικά
 
        /* try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
@@ -622,7 +644,7 @@ public class ex_con_postgres {
 
 
 
-        //total_price_order - expects order_id
+        //total_price_order - expects order_id -- OK
         /*int a = 1;
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt;
@@ -642,6 +664,11 @@ public class ex_con_postgres {
         }catch (Exception e){
             System.out.println(e);
         }*/
+
+   /* String str = "2022-01-03";
+    Booking testBook = new Booking(10, str., "Πάλι εγώ", 4,21);
+    */
+
 
 
 

@@ -30,7 +30,7 @@ END;
 $$
     LANGUAGE plpgsql;
 
-CREATE TRIGGER set_unavailable_trigger
+CREATE TRIGGER decrement_stock_menu_items_trigger
     AFTER INSERT
     ON Order_menu_item
     FOR EACH ROW

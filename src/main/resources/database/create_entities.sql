@@ -1,23 +1,24 @@
 CREATE TABLE Tables
 (
     id           INT     GENERATED ALWAYS AS IDENTITY,
-    capacity     INT     NOT NULL,
-    is_available BOOLEAN NOT NULL,
+    capacity     INT     NOT NULL, -- Filter -> Rita
+    is_available BOOLEAN NOT NULL, -- Filter -> Rita -- Update (Toggle)
     PRIMARY KEY(id)
 );
 
-CREATE TABLE Bookings
+CREATE TABLE Bookings -- Insert/Delete
 (
     id             INT     GENERATED ALWAYS AS IDENTITY,
-    table_id       INT     NOT NULL,
-    date           DATE    NOT NULL,
-    customer_name  VARCHAR NOT NULL,
-    customer_count INT     NOT NULL,
+    table_id       INT     NOT NULL, -- Filter
+    date           DATE    NOT NULL, -- Filter
+    customer_name  VARCHAR NOT NULL, -- Filter
+    customer_count INT     NOT NULL, -- Filter
     hour           INT     NOT NULL
         CHECK (hour >= 8 AND hour <= 22),
     PRIMARY KEY(id),
     FOREIGN KEY(table_id)
-      REFERENCES Tables(id),
+      REFERENCES Tables(id)
+        ON DELETE CASCADE,
     UNIQUE (date, hour, table_id)
 );
 
@@ -37,14 +38,14 @@ CREATE TABLE Orders
 CREATE TYPE FOOD_CATEGORY
     AS ENUM ('Appetizers', 'Salads', 'Main Dishes', 'Drinks', 'Alcoholic Drinks');
 
-CREATE TABLE Menu_items 
+CREATE TABLE Menu_items -- Insert
 (
     id           INT           GENERATED ALWAYS AS IDENTITY,
     name         VARCHAR       NOT NULL UNIQUE,
     description  VARCHAR       NOT NULL,
-    category     FOOD_CATEGORY NOT NULL,
-    price        REAL          NOT NULL,
-    stock_number INT           NOT NULL,
+    category     FOOD_CATEGORY NOT NULL, -- Filter
+    price        REAL          NOT NULL, -- Update (reduce / increase)
+    stock_number INT           NOT NULL, -- Filter -- Update (reduce / increase)
     PRIMARY KEY(id)
 );
 

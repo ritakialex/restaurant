@@ -1,5 +1,3 @@
-
-
 CREATE OR REPLACE PROCEDURE toggle_availability(table_id INT)
     LANGUAGE plpgsql
 AS
@@ -25,25 +23,6 @@ BEGIN
 END
 $$;
 
-
-CREATE OR REPLACE FUNCTION total_price(t_menu_item_ids INT[]) RETURNS REAL
-    LANGUAGE plpgsql
-AS
-$$
-DECLARE
-    p_sum REAL := 0;
-    m_id  INT;
-BEGIN
-    FOREACH m_id IN ARRAY t_menu_item_ids
-        LOOP
-            SELECT m.price + p_sum FROM Menu_items m WHERE id = m_id INTO p_sum;
-        END LOOP;
-    RETURN p_sum;
-END
-$$;
-
-
-
 CREATE OR REPLACE PROCEDURE create_order(t_table_id INT,
                                          t_menu_item_ids INT[])
     LANGUAGE plpgsql
@@ -56,7 +35,7 @@ DECLARE
     m_id           INT;
     t_current_time TIMESTAMP;
 BEGIN
-    SET TIMEZONE='Europe/Athens';
+    SET TIMEZONE = 'Europe/Athens';
     SELECT NOW() INTO t_current_time;
 
     SELECT is_available FROM Tables WHERE id = t_table_id INTO t_is_available;
@@ -97,8 +76,9 @@ DECLARE
     t_hour           INT;
     t_date           DATE;
     t_current_time   TIMESTAMP;
+    t_is_available   BOOLEAN;
 BEGIN
-    SET TIMEZONE='Europe/Athens';
+    SET TIMEZONE = 'Europe/Athens';
     SELECT NOW() INTO t_current_time;
 
     SELECT table_id, hour, date
@@ -106,10 +86,14 @@ BEGIN
     WHERE id = t_booking_id
     INTO booking_table_id, t_hour, t_date;
 
+    SELECT is_available FROM Tables WHERE id = t_table_id INTO t_is_available;
+
     IF NOT DATE(t_current_time) = t_date OR NOT extract(hour from t_current_time) = t_hour THEN
         RAISE EXCEPTION 'Customers havent arrived yet';
     ELSIF NOT t_table_id = booking_table_id THEN
         RAISE EXCEPTION 'Order table id and booking table id dont match';
+    ELSIF NOT t_is_available THEN
+        RAISE EXCEPTION 'Table is not available';
     ELSE
         INSERT INTO Orders(table_id, booking_id, time)
         VALUES (t_table_id, t_booking_id, t_current_time)
@@ -156,5 +140,38 @@ BEGIN
         INSERT INTO Bookings(table_id, date, customer_name, customer_count, hour)
         VALUES (t_table_id, t_date, t_customer_name, t_customer_count, t_hour);
     END IF;
+END
+$$;
+
+CREATE OR REPLACE PROCEDURE delete_booking(t_booking_id INT)
+    LANGUAGE plpgsql
+AS
+$$
+BEGIN
+    DELETE
+    FROM BOOKINGS
+    WHERE id = t_booking_id;
+END
+$$;
+
+CREATE OR REPLACE PROCEDURE update_menu_item_price(m_id INT, diff REAL)
+    LANGUAGE plpgsql
+AS
+$$
+BEGIN
+    UPDATE MENU_ITEMS
+    SET price = ROUND((price + diff)::numeric, 2)
+    WHERE id = m_id;
+END
+$$;
+
+CREATE OR REPLACE PROCEDURE update_menu_item_stock(m_id INT, diff INT)
+    LANGUAGE plpgsql
+AS
+$$
+BEGIN
+    UPDATE MENU_ITEMS
+    SET stock_number = stock_number + diff
+    WHERE id = m_id;
 END
 $$;

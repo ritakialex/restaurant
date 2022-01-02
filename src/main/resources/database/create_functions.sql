@@ -10,11 +10,26 @@ BEGIN
         LOOP
             SELECT m.price + p_sum FROM Menu_items m WHERE id = m_id INTO p_sum;
         END LOOP;
-    RETURN p_sum;
+    RETURN ROUND(p_sum::NUMERIC,2);
 END
 $$;
 
-CREATE TABLE ORDER_WITH_ITEMS
+CREATE OR REPLACE FUNCTION total_price_order(t_order_id INT) RETURNS REAL
+    LANGUAGE plpgsql
+AS
+$$
+DECLARE
+    p_sum REAL;
+BEGIN
+    SELECT sum(price) FROM order_menu_item o
+        INNER JOIN menu_items m on o.menu_item_id = m.id
+    WHERE o.order_id = t_order_id INTO p_sum;
+
+    RETURN ROUND(p_sum::NUMERIC,2);
+END
+$$;
+
+CREATE TYPE ORDER_WITH_ITEMS AS
 (
     id         INT,
     table_id   INT,
@@ -123,10 +138,10 @@ CREATE OR REPLACE FUNCTION get_tables(t_capacity INT,
 AS
 $$
 DECLARE
-    where_q            VARCHAR := 'WHERE';
-    and_q              VARCHAR := '';
-    capacity_condition VARCHAR := '';
-    available_condition    VARCHAR := '';
+    where_q             VARCHAR := 'WHERE';
+    and_q               VARCHAR := '';
+    capacity_condition  VARCHAR := '';
+    available_condition VARCHAR := '';
 BEGIN
     IF t_capacity IS NOT NULL THEN
         capacity_condition := format('%s %s capacity > %s', where_q, and_q, t_capacity);
@@ -134,7 +149,8 @@ BEGIN
         where_q := '';
     END IF;
     IF t_is_available IS NOT NULL THEN
-        available_condition := format('%s %s is_available = ''%s''', where_q, and_q, t_is_available);
+        available_condition :=
+                format('%s %s is_available = ''%s''', where_q, and_q, t_is_available);
         and_q := 'AND';
         where_q := '';
     END IF;

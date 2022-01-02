@@ -32,6 +32,16 @@ public class Booking {
         this.hour = hour;
     }
 
+    //without bookingId
+    public Booking(int tableId, Date bookingDate, String customerName,
+                   int customerCount, int hour) {
+        this.tableId = tableId;
+        this.bookingDate = bookingDate;
+        this.customerName = customerName;
+        this.customerCount = customerCount;
+        this.hour = hour;
+    }
+
     public int getId() {
         return bookingId;
     }
@@ -70,6 +80,14 @@ public class Booking {
 
     public void setCustomerCount(int customerCount) {
         this.customerCount = customerCount;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
     }
 
     @Override
@@ -114,7 +132,6 @@ public class Booking {
             ResultSet rs = stmt.executeQuery(getBookings);
             ResultSetMetaData rsmd = rs.getMetaData();
             int numberOfColumns = rsmd.getColumnCount();
-            //System.out.println("αριθμός στηλών:" + numberOfColumns);
             while (rs.next()) {
                 for(int i=1; i <=numberOfColumns; i++) {
                     String data = rs.getString(i);
@@ -125,6 +142,26 @@ public class Booking {
             System.out.println(e);
         }
     }
+
+
+    //delete booking with id =?
+    public static void deleteBooking() throws Exception {
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            PreparedStatement pstmt = null;
+            String deleteBooking = "call delete_booking(?)";
+            pstmt = conn.prepareStatement(deleteBooking);
+            try {
+                //θα παίρνει το id από το χρήστη
+                pstmt.setInt(1, 5);
+                int changes = pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 
 
 }

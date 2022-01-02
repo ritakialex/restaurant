@@ -4,7 +4,9 @@ import com.dbses.restaurant.database.DatabaseConfig;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.stream.IntStream;
 
 import com.dbses.restaurant.database.DatabaseConfig;
 import com.dbses.restaurant.model.Booking;
@@ -63,6 +65,25 @@ public class ex_con_postgres {
         }catch (Exception e){
             System.out.println(e);
         }*/
+
+
+
+        //delete booking with id =?
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
+            PreparedStatement pstmt = null;
+            String deleteBooking = "call delete_booking(?)";
+            pstmt = conn.prepareStatement(deleteBooking);
+            try {
+                pstmt.setInt(1, 5);
+                int changes = pstmt.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }*/
+
+
 
 
 
@@ -214,18 +235,21 @@ public class ex_con_postgres {
 
         //call stored procedure create_booking --  READY
         /*try (Connection conn = DatabaseConfig.getConnection()) {
+            String str="2022-01-31";
+            Booking book = new Booking(10, Date.valueOf(str),
+                    "You know who",5, 21 );
+
             PreparedStatement pstmt = null;
-            //ResultSet rs = null;
             String insertBooking = "call create_booking(?, ?, ?, ?, ?)";
             pstmt = conn.prepareStatement(insertBooking);
             try {
-                pstmt.setInt(1, 6);
-                String str="2015-03-31";
-                Date date=Date.valueOf(str);
-                pstmt.setDate(2, date);
-                pstmt.setInt(3, 20);
-                pstmt.setString(4, "Alexiou");
-                pstmt.setInt(5, 2);
+                pstmt.setInt(1, book.getTableId());
+                *//*String str="2015-03-31";
+                Date date=Date.valueOf(str);*//*
+                pstmt.setDate(2, (Date) book.getBookingDate());
+                pstmt.setInt(3, book.getCustomerCount());
+                pstmt.setString(4, book.getCustomerName());
+                pstmt.setInt(5, book.getHour());
                 pstmt.executeUpdate();
             }catch(SQLException ex) {
                 System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
@@ -507,11 +531,27 @@ public class ex_con_postgres {
 
 
         //total_price περιμένει array με αριθμούς κρατήσεων
-        /*try (Connection conn = DatabaseConfig.getConnection()) {
-            Statement stmt = conn.createStatement();
-            int[] items = {1,2,3};
-            //String getBookings = "select total_price(array[1,2,3])";
-            String getBookings = "select total_price()";
+
+
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            PreparedStatement pstmt = null;
+            Integer[] items = {1,2,3};
+            //Integer[] ever = IntStream.of( items ).boxed().toArray( Integer[]::new );
+            //Integer[] what = Arrays.stream(items).boxed().toArray( Integer[]::new );
+
+            /*Integer[] newArray = new Integer[oldArray.length];
+            int i = 0;
+            for (...) {
+                newArray[i++] = Integer.valueOf(value);
+            }*/
+
+            conn.createArrayOf("int", items);
+            String updatePrice = "select total_price(?)";
+            pstmt = conn.prepareStatement(updatePrice);
+            /*try{
+
+            }*/
+            //String getBookings = "select total_price()";
             ResultSet rs = stmt.executeQuery(getBookings);
             ResultSetMetaData rsmd = rs.getMetaData();
             rs.next();
@@ -520,7 +560,11 @@ public class ex_con_postgres {
 
         }catch (Exception e){
             System.out.println(e);
-        }*/
+        }
+
+
+
+
 
 
 

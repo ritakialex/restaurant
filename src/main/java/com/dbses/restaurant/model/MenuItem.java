@@ -128,10 +128,10 @@ public class MenuItem {
     }
 
     //
-    public static float totalPrice() throws Exception {
+    /*public static float totalPrice(int id) throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
-            int[] items;
+
             //το array[1,2,3] είναι σαν παράδειγμα, θα πρέπει να το παίρνει από τον χρήστη
             //δηλαδή για items θέλει σύνολο τιμής
             String totalPrice = "select total_price(array[1,2,3])";
@@ -144,7 +144,7 @@ public class MenuItem {
             System.out.println(e);
             throw new Exception();
         }
-    }
+    }*/
 
     //menu item with id = ? -- update price +/- ?
     public static void updatePrice() throws Exception {

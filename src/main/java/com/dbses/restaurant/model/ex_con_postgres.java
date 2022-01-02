@@ -1,4 +1,4 @@
-package com.dbses.restaurant;
+package com.dbses.restaurant.model;
 import com.dbses.restaurant.database.DatabaseConfig;
 
 import java.sql.*;
@@ -302,8 +302,8 @@ public class ex_con_postgres {
         //call create_order - 2 params
        /* try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
-            String insertBooking = "call create_order(?, ?)";
-            pstmt = conn.prepareStatement(insertBooking);
+            String newOrder = "call create_order(?, ?)";
+            pstmt = conn.prepareStatement(newOrder);
             try {
                 pstmt.setInt(1, 10);
                 int[] items = {2, 7, 10};
@@ -323,8 +323,8 @@ public class ex_con_postgres {
             String insertBooking = "call create_order(?, ?, ?)";
             pstmt = conn.prepareStatement(insertBooking);
             try {
-                pstmt.setInt(1, 10);
-                int[] items = {2, 7, 10};
+                pstmt.setInt(1, 2);
+                int[] items = {1, 2, 8};
                 pstmt.setObject(2, items);
                 pstmt.setInt(3, 6);
                 pstmt.executeUpdate();
@@ -336,7 +336,42 @@ public class ex_con_postgres {
         }*/
 
 
-        //make table with id=?  (un)available --toggle_availability
+        //call create_order - 2 params table id + items[]
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
+            PreparedStatement pstmt = null;
+            String newOrder = "call create_order(?, ?)";
+            pstmt = conn.prepareStatement(newOrder);
+            try {
+                pstmt.setInt(1, 3);
+                int[] items = {1, 2, 5};
+                pstmt.setObject(2, items);
+                pstmt.executeUpdate();
+            }catch(SQLException ex) {
+                System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
+            }
+        }catch (Exception e){
+            System.out.println(e);
+        }*/
+
+        /*  -- SQL Exception --- (αλλά έκανε καταχώρηση)
+                ERROR: null value in column "booking_id" of relation "orders_logs" violates not-null constraint
+        Detail: Failing row contains (1, 2022-01-02 17:58:37.750929, INSERT, postgres, 2, 7, null, 2022-01-02 17:58:37.750929).
+        Where: SQL statement "INSERT INTO orders_logs(operation,
+        userid,
+                order_id,
+                table_id,
+                booking_id,
+                time)
+        SELECT TG_OP, user, NEW.*"
+        PL/pgSQL function orders_log_event() line 13 at SQL statement
+        SQL statement "INSERT INTO Orders(table_id, time)
+        VALUES (t_table_id, t_current_time)
+        RETURNING id"
+        PL/pgSQL function create_order(integer,integer[]) line 16 at SQL statement  */
+
+
+
+        //make table with id=?  (un)available --toggle_availability -- OK
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             String insertBooking = "call toggle_availability(?)";
@@ -354,7 +389,7 @@ public class ex_con_postgres {
 
 
 
-
+        // NOT USED -- OK
         //κάλεσμα αποθηκευμένη select get bookings - sql function ---- getBookingsToString()
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
@@ -375,7 +410,7 @@ public class ex_con_postgres {
 
 
 
-        //κάλεσμα αποθηκευμένη select get bookings - sql function ---- getBookings()
+        //κάλεσμα αποθηκευμένη select get bookings - sql function ---- getBookings() -- OK
         /*ArrayList<Booking> bookings = new ArrayList<>();
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
@@ -396,6 +431,8 @@ public class ex_con_postgres {
         }catch (Exception e){
             System.out.println(e);
         }*/
+
+
 
         /*public ArrayList<Booking> get_bookings() throws Exception {
             try (Connection conn = DatabaseConfig.getConnection()) {
@@ -422,7 +459,7 @@ public class ex_con_postgres {
 
 
 
-        //Get menu items  ---- getMenuItemsToString()
+        //Get menu items  ---- getMenuItemsToString() - NOT USED  -- OK
        /* try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
             String getBookings = "select get_menu_items(null, null)";
@@ -441,7 +478,7 @@ public class ex_con_postgres {
         }*/
 
 
-        // Get menu items ArrayList  ---- getMenuItems()
+        // Get menu items ArrayList  ---- getMenuItems() --- OK
         //ERROR - org.postgresql.util.PSQLException: The column name id was not found in this ResultSet.
         /*ArrayList<MenuItem> menuItems = new ArrayList<>();
         try (Connection conn = DatabaseConfig.getConnection()) {
@@ -469,7 +506,7 @@ public class ex_con_postgres {
 
 
 
-        //get order with items
+        //get order with items -- OK
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
             String getBookings = "select get_order_with_items(null)";
@@ -490,7 +527,7 @@ public class ex_con_postgres {
 
 
 
-        //get_tables πάνω από χ αριθμό
+        //get_tables πάνω από χ αριθμό -- OK
         /*try (Connection conn = DatabaseConfig.getConnection()) {
             //Statement stmt = conn.createStatement();
             PreparedStatement pstmt = null;
@@ -529,28 +566,48 @@ public class ex_con_postgres {
 
 
 
+        //public static float totalPrice(int id) throws Exception {
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
+            Statement stmt = conn.createStatement();
+
+            //το array[1,2,3] είναι σαν παράδειγμα, θα πρέπει να το παίρνει από τον χρήστη
+            //δηλαδή για items θέλει σύνολο τιμής
+            String totalPrice = "select total_price(array[1,2,3])";
+            ResultSet rs = stmt.executeQuery(totalPrice);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            rs.next();
+            float price = rs.getFloat(1);
+            System.out.println(price);
+            //return price;
+        } catch (Exception e) {
+            System.out.println(e);
+            //throw new Exception();
+        }*/
+    //}
+
+
+
 
         //total_price περιμένει array με αριθμούς κρατήσεων
 
-
-        try (Connection conn = DatabaseConfig.getConnection()) {
+       /* try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             Integer[] items = {1,2,3};
             //Integer[] ever = IntStream.of( items ).boxed().toArray( Integer[]::new );
             //Integer[] what = Arrays.stream(items).boxed().toArray( Integer[]::new );
 
-            /*Integer[] newArray = new Integer[oldArray.length];
+            *//*Integer[] newArray = new Integer[oldArray.length];
             int i = 0;
             for (...) {
                 newArray[i++] = Integer.valueOf(value);
-            }*/
+            }*//*
 
             conn.createArrayOf("int", items);
             String updatePrice = "select total_price(?)";
             pstmt = conn.prepareStatement(updatePrice);
-            /*try{
+            *//*try{
 
-            }*/
+            }*//*
             //String getBookings = "select total_price()";
             ResultSet rs = stmt.executeQuery(getBookings);
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -560,9 +617,31 @@ public class ex_con_postgres {
 
         }catch (Exception e){
             System.out.println(e);
-        }
+        }*/
 
 
+
+
+        //total_price_order - expects order_id
+        /*int a = 1;
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            PreparedStatement pstmt;
+            ResultSet rs;
+            String totalPriceOr = "select total_price_order(?)";
+            pstmt = conn.prepareStatement(totalPriceOr);
+            try {
+                pstmt.setInt(1, a);
+                rs = pstmt.executeQuery();
+                rs.next();
+                float total = rs.getFloat(1);
+                System.out.println(total);
+            }catch (Exception e){
+                System.out.println("\n -- SQL Exception --- \n"+ e.getMessage());
+            }
+
+        }catch (Exception e){
+            System.out.println(e);
+        }*/
 
 
 

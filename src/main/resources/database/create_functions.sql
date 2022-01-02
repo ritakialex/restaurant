@@ -10,11 +10,26 @@ BEGIN
         LOOP
             SELECT m.price + p_sum FROM Menu_items m WHERE id = m_id INTO p_sum;
         END LOOP;
-    RETURN p_sum;
+    RETURN ROUND(p_sum::NUMERIC,2);
 END
 $$;
 
-CREATE TABLE ORDER_WITH_ITEMS
+CREATE OR REPLACE FUNCTION total_price_order(t_order_id INT) RETURNS REAL
+    LANGUAGE plpgsql
+AS
+$$
+DECLARE
+    p_sum REAL;
+BEGIN
+    SELECT sum(price) FROM order_menu_item o
+        INNER JOIN menu_items m on o.menu_item_id = m.id
+    WHERE o.order_id = t_order_id INTO p_sum;
+
+    RETURN ROUND(p_sum::NUMERIC,2);
+END
+$$;
+
+CREATE TYPE ORDER_WITH_ITEMS AS
 (
     id         INT,
     table_id   INT,
@@ -23,22 +38,19 @@ CREATE TABLE ORDER_WITH_ITEMS
     items      INT[]
 );
 
-CREATE OR REPLACE FUNCTION get_order_with_items(t_order_id INT) RETURNS ORDER_WITH_ITEMS
+CREATE OR REPLACE FUNCTION get_order_with_items(t_order_id INT) RETURNS SETOF ORDER_WITH_ITEMS
     LANGUAGE plpgsql
 AS
 $$
 DECLARE
     item_ids INT[];
-    r_order  ORDER_WITH_ITEMS;
 BEGIN
     SELECT array_agg(id)
     FROM Order_menu_item o
     WHERE o.order_id = t_order_id
     INTO item_ids;
 
-    SELECT *, item_ids FROM Orders o WHERE o.id = t_order_id INTO r_order;
-
-    RETURN r_order;
+    RETURN QUERY SELECT *, item_ids FROM Orders o WHERE o.id = t_order_id;
 END
 $$;
 
@@ -116,5 +128,35 @@ BEGIN
     RETURN QUERY EXECUTE format('SELECT * FROM MENU_ITEMS %s %s',
                                 category_condition,
                                 stock_condition);
+END
+$$;
+
+CREATE OR REPLACE FUNCTION get_tables(t_capacity INT,
+                                      t_is_available BOOLEAN)
+    RETURNS SETOF TABLES
+    LANGUAGE plpgsql
+AS
+$$
+DECLARE
+    where_q             VARCHAR := 'WHERE';
+    and_q               VARCHAR := '';
+    capacity_condition  VARCHAR := '';
+    available_condition VARCHAR := '';
+BEGIN
+    IF t_capacity IS NOT NULL THEN
+        capacity_condition := format('%s %s capacity > %s', where_q, and_q, t_capacity);
+        and_q := 'AND';
+        where_q := '';
+    END IF;
+    IF t_is_available IS NOT NULL THEN
+        available_condition :=
+                format('%s %s is_available = ''%s''', where_q, and_q, t_is_available);
+        and_q := 'AND';
+        where_q := '';
+    END IF;
+
+    RETURN QUERY EXECUTE format('SELECT * FROM TABLES %s %s',
+                                capacity_condition,
+                                available_condition);
 END
 $$;

@@ -33,6 +33,15 @@ CREATE TRIGGER log_event_tables
     FOR EACH ROW
 EXECUTE PROCEDURE tables_log_event();
 
+CREATE OR REPLACE FUNCTION get_tables_logs()
+    RETURNS SETOF tables_logs AS
+$$
+BEGIN
+    RETURN QUERY SELECT * FROM tables_logs;
+END;
+$$
+    LANGUAGE plpgsql;
+
 CREATE TABLE bookings_logs
 (
     id             INT GENERATED ALWAYS AS IDENTITY,
@@ -85,6 +94,15 @@ CREATE TRIGGER log_event_tables
     FOR EACH ROW
 EXECUTE PROCEDURE bookings_log_event();
 
+CREATE OR REPLACE FUNCTION get_bookings_logs()
+    RETURNS SETOF bookings_logs AS
+$$
+BEGIN
+    RETURN QUERY SELECT * FROM bookings_logs;
+END;
+$$
+    LANGUAGE plpgsql;
+
 CREATE TABLE orders_logs
 (
     id         INT GENERATED ALWAYS AS IDENTITY,
@@ -93,7 +111,7 @@ CREATE TABLE orders_logs
     userid     varchar(20) NOT NULL,
     order_id   INT         NOT NULL,
     table_id   INT         NOT NULL,
-    booking_id INT         NOT NULL,
+    booking_id INT,
     time       TIMESTAMP   NOT NULL
 
 );
@@ -131,6 +149,14 @@ CREATE TRIGGER log_event_tables
     FOR EACH ROW
 EXECUTE PROCEDURE orders_log_event();
 
+CREATE OR REPLACE FUNCTION get_orders_logs()
+    RETURNS SETOF orders_logs AS
+$$
+BEGIN
+    RETURN QUERY SELECT * FROM orders_logs;
+END;
+$$
+    LANGUAGE plpgsql;
 
 CREATE TABLE menu_items_logs
 (
@@ -183,4 +209,15 @@ CREATE TRIGGER log_event_tables
     ON Menu_items
     FOR EACH ROW
 EXECUTE PROCEDURE menu_items_log_event();
+
+CREATE OR REPLACE FUNCTION get_menu_items_logs()
+    RETURNS SETOF menu_items_logs AS
+$$
+BEGIN
+    RETURN QUERY SELECT * FROM menu_items_logs;
+END;
+$$
+    LANGUAGE plpgsql;
+
+
 

@@ -1,5 +1,3 @@
-
-
 CREATE OR REPLACE PROCEDURE toggle_availability(table_id INT)
     LANGUAGE plpgsql
 AS
@@ -37,7 +35,7 @@ DECLARE
     m_id           INT;
     t_current_time TIMESTAMP;
 BEGIN
-    SET TIMEZONE='Europe/Athens';
+    SET TIMEZONE = 'Europe/Athens';
     SELECT NOW() INTO t_current_time;
 
     SELECT is_available FROM Tables WHERE id = t_table_id INTO t_is_available;
@@ -78,8 +76,9 @@ DECLARE
     t_hour           INT;
     t_date           DATE;
     t_current_time   TIMESTAMP;
+    t_is_available   BOOLEAN;
 BEGIN
-    SET TIMEZONE='Europe/Athens';
+    SET TIMEZONE = 'Europe/Athens';
     SELECT NOW() INTO t_current_time;
 
     SELECT table_id, hour, date
@@ -87,10 +86,14 @@ BEGIN
     WHERE id = t_booking_id
     INTO booking_table_id, t_hour, t_date;
 
+    SELECT is_available FROM Tables WHERE id = t_table_id INTO t_is_available;
+
     IF NOT DATE(t_current_time) = t_date OR NOT extract(hour from t_current_time) = t_hour THEN
         RAISE EXCEPTION 'Customers havent arrived yet';
     ELSIF NOT t_table_id = booking_table_id THEN
         RAISE EXCEPTION 'Order table id and booking table id dont match';
+    ELSIF NOT t_is_available THEN
+        RAISE EXCEPTION 'Table is not available';
     ELSE
         INSERT INTO Orders(table_id, booking_id, time)
         VALUES (t_table_id, t_booking_id, t_current_time)
@@ -145,7 +148,8 @@ CREATE OR REPLACE PROCEDURE delete_booking(t_booking_id INT)
 AS
 $$
 BEGIN
-    DELETE FROM BOOKINGS
+    DELETE
+    FROM BOOKINGS
     WHERE id = t_booking_id;
 END
 $$;
@@ -161,7 +165,7 @@ BEGIN
 END
 $$;
 
-CREATE OR REPLACE PROCEDURE update_menu_item_stock(m_id INT,diff INT)
+CREATE OR REPLACE PROCEDURE update_menu_item_stock(m_id INT, diff INT)
     LANGUAGE plpgsql
 AS
 $$

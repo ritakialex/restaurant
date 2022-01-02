@@ -2,7 +2,7 @@ package com.dbses.restaurant.model;
 
 import com.dbses.restaurant.database.DatabaseConfig;
 import com.dbses.restaurant.database.DatabaseConnectionException;
-import javax.xml.crypto.Data;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;

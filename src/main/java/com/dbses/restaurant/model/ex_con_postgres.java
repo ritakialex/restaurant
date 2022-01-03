@@ -14,13 +14,6 @@ import com.dbses.restaurant.model.MenuItem;
 import com.dbses.restaurant.model.Table;
 
 public class ex_con_postgres {
-    static String     driverClassName = "org.postgresql.Driver" ;
-    static String     url = "jdbc:postgresql://localhost:5432/restaurantdb" ;
-    static Connection conn = null;
-    static String     username = "postgres";
-    static String     password = "zxcvasdf!";
-
-
 
     public static void main(String[] args) {
 
@@ -320,14 +313,14 @@ public class ex_con_postgres {
         }*/
 
 
-        //call create_order - 2 params
-       /* try (Connection conn = DatabaseConfig.getConnection()) {
+        //call create_order - 2 params -- OK
+        /*try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             String newOrder = "call create_order(?, ?)";
             pstmt = conn.prepareStatement(newOrder);
             try {
-                pstmt.setInt(1, 10);
-                int[] items = {2, 7, 10};
+                pstmt.setInt(1, 5);
+                int[] items = {6,7};
                 pstmt.setObject(2, items);
                 pstmt.executeUpdate();
             }catch(SQLException ex) {
@@ -644,8 +637,9 @@ public class ex_con_postgres {
 
 
 
-        //total_price_order - expects order_id -- OK
-        /*int a = 1;
+
+        //total_price_order - expects order_id
+       /* int a = 1;
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt;
             ResultSet rs;

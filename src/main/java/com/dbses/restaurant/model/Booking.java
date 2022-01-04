@@ -8,8 +8,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.sql.*;
+import javax.swing.JTextField;
 
 public class Booking {
+
+    public static void deleteBooking(JTextField txtKrat_id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void createNewBooking(JTextField txtKrat_id, JTextField txtKrat_date, JTextField txtKrat_onoma, JTextField txtKrat_atoma, JTextField txtKrat_hour) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     private int bookingId;
     private int tableId;

@@ -5,6 +5,7 @@ import com.dbses.restaurant.database.DatabaseConfig;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JTextField;
 
 //Για δοκιμή κώδικα
 /*class Main {
@@ -25,6 +26,21 @@ import java.util.Iterator;
 
 public class Order {
 
+    public static ArrayList<Order> getOrder() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void createOrder(JTextField txtParagg_Trapezi, JTextField txtParagg_Item, JTextField txtParagg_Krat) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void createOrderWithBooking(JTextField txtParagg_Trapezi, JTextField txtParagg_Item) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void getTotalPriceOrder(JTextField txtParagg_Ttimi) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 
         private int orderId;
@@ -184,6 +200,10 @@ public class Order {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public Order next() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

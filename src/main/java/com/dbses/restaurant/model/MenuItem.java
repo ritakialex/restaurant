@@ -8,8 +8,25 @@ import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.sql.*;
 import java.util.ArrayList;
+import javax.swing.JTextField;
 
 public class MenuItem {
+
+    public static void createNewMenuItem(JTextField txtId, JTextField txtName, JTextField txtKatigoria, JTextField txtTimi, JTextField txtStock) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void updateStock(JTextField txtId, JTextField txtStock) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void createNewMenuItem(JTextField txtMenu_Id, JTextField txtMenu_Name, JTextField txtMenu_Katigoria, JTextField txtMenu_Timi, JTextField txtMenu_Stock, JTextField txtMenu_Perigrafh) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void updatePrice(JTextField txtMenu_Id, JTextField txtMenu_Timi) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     private int menuItemId;
     private String menuItemName;
@@ -198,6 +215,10 @@ public class MenuItem {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public Object getId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

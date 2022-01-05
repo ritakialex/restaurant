@@ -38,9 +38,11 @@ public class Order {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static void getTotalPriceOrder(JTextField txtParagg_Ttimi) {
+    public static void getTotalPriceOrder(JTextField txtParagg_ID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
 
 
         private int orderId;

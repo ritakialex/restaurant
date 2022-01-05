@@ -456,10 +456,6 @@ public class Main extends javax.swing.JFrame {
             }
         ));
         jScrollPane5.setViewportView(Table_SP);
-        if (Table_SP.getColumnModel().getColumnCount() > 0) {
-            Table_SP.getColumnModel().getColumn(1).setHeaderValue("ΚΡΑΤΗΣΗ");
-            Table_SP.getColumnModel().getColumn(2).setHeaderValue("ΤΡΑΠΕΖΙ");
-        }
 
         addButtonSP.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addButtonSP.setText("ΠΡΟΣΘΕΣΗ");
@@ -755,7 +751,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButton3ActionPerformed
  
     //PARAGGELIES
-    private void getOrder(){
+    private void getOrder(){  //ΕΔΩ TOTAL PRICE
         DefaultTableModel tblModel = (DefaultTableModel)Table_Paragg.getModel();
         try{
             ArrayList<Order> getOrderWithItems = Order.getOrder();
@@ -767,8 +763,7 @@ public class Main extends javax.swing.JFrame {
                                  String.valueOf(Order.getBookingId()),
                                  String.valueOf(Order.getTableId()),
                                  String.valueOf(Order.getTime()),
-                                 
-                
+ 
                 };         
                     tblModel.addRow(data); }      
             JOptionPane.showMessageDialog(this, "Ολα πηγαν ΟΚ");       
@@ -787,9 +782,9 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα! ");}
 
         else{
-              Order.createOrder(txtParagg_Trapezi,txtParagg_ParagId, txtKrat_id);
-              Order.createOrderWithBooking(txtParagg_Trapezi, txtParagg_ParagId);              
-              Order.getTotalPriceOrder(txtParagg_ID); //Notsure..
+              Order.createOrder(txtParagg_Trapezi,txtParagg_ParagId, txtKrat_id); //
+              Order.createOrderWithBooking(txtParagg_Trapezi, txtParagg_ParagId); //         
+              
               
             /*  String data[] = {txtParagg_ID.getText(),txtParagg_Krat.getText(),txtParagg_Trapezi.getText(),
                                txtParagg_Wra.getText(),txtParagg_Ttimi.getText(),};

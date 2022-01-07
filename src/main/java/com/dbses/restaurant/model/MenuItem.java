@@ -124,7 +124,6 @@ public class MenuItem {
             }
             return menuItems;
         }catch (Exception e){
-            System.out.println(e);
             throw new Exception();
         }
     }
@@ -197,10 +196,6 @@ public class MenuItem {
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
-
-    public Object getId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

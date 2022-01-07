@@ -802,7 +802,7 @@ public class Main extends javax.swing.JFrame {
         try {
             ArrayList<MenuItem> MenuItems = MenuItem.getMenuItems();
             for (MenuItem MenuItem : MenuItems) {
-                String[] data = {String.valueOf(MenuItem.getId()),
+                String[] data = {String.valueOf(MenuItem.getMenuItemId()),
                     MenuItem.getMenuItemName(),
                     MenuItem.getCategory(),
                     String.valueOf(MenuItem.getPrice()),
@@ -812,7 +812,7 @@ public class Main extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(this, "Ολα πηγαν ΟΚ");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ολα Λαθος Menu Item");
+            JOptionPane.showMessageDialog(this, "Ολα Λαθος Menu Item" + e);
         }
     }
 

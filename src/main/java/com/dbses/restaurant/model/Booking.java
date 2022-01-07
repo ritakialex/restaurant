@@ -12,14 +12,6 @@ import javax.swing.JTextField;
 
 public class Booking {
 
-    public static void deleteBooking(JTextField txtKrat_id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static void createNewBooking(JTextField txtKrat_id, JTextField txtKrat_date, JTextField txtKrat_onoma, JTextField txtKrat_atoma, JTextField txtKrat_hour) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     private int bookingId;
     private int tableId;
     private Date bookingDate;
@@ -155,10 +147,11 @@ public class Booking {
     //call stored procedure create_booking - Δημιουργεί νέο booking
     //θα πρέπει να πάρει από τον χρήστη int(boooking id) - Strind (που θα μετατρέψει σε αντικείμενο Date)
     //String (ονομα πελάτη), int (πόσοι πελάτες) και int (ώρα, πχ 12 ή 18, ή 20)
-    public static void createNewBooking(int bookId, String date, String custName, int count, int hour) throws Exception {
+    public static void createNewBooking(int tableId, String date, String custName, int count,
+                                        int hour) throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             //String str = date;
-            Booking book = new Booking(bookId, java.sql.Date.valueOf(date),
+            Booking book = new Booking(tableId, java.sql.Date.valueOf(date),
                     custName, count, hour);
             PreparedStatement pstmt = null;
             String insertBooking = "call create_booking(?, ?, ?, ?, ?)";

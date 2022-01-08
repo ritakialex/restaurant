@@ -10,7 +10,7 @@ BEGIN
         LOOP
             SELECT m.price + p_sum FROM Menu_items m WHERE id = m_id INTO p_sum;
         END LOOP;
-    RETURN ROUND(p_sum::NUMERIC,2);
+    RETURN ROUND(p_sum::NUMERIC, 2);
 END
 $$;
 
@@ -21,11 +21,13 @@ $$
 DECLARE
     p_sum REAL;
 BEGIN
-    SELECT sum(price) FROM order_menu_item o
-        INNER JOIN menu_items m on o.menu_item_id = m.id
-    WHERE o.order_id = t_order_id INTO p_sum;
+    SELECT sum(price)
+    FROM order_menu_item o
+             INNER JOIN menu_items m on o.menu_item_id = m.id
+    WHERE o.order_id = t_order_id
+    INTO p_sum;
 
-    RETURN ROUND(p_sum::NUMERIC,2);
+    RETURN ROUND(p_sum::NUMERIC, 2);
 END
 $$;
 
@@ -43,14 +45,14 @@ CREATE OR REPLACE FUNCTION get_order_with_items(t_order_id INT) RETURNS SETOF OR
 AS
 $$
 DECLARE
-    item_ids INT[];
 BEGIN
-    SELECT array_agg(id)
-    FROM Order_menu_item o
-    WHERE o.order_id = t_order_id
-    INTO item_ids;
-
-    RETURN QUERY SELECT *, item_ids FROM Orders o WHERE o.id = t_order_id;
+    IF t_order_id IS NULL THEN
+        RETURN QUERY SELECT *, ARRAY(SELECT menu_item_id FROM order_menu_item WHERE order_id = o.id)
+                     FROM orders o;
+    ELSE
+        RETURN QUERY SELECT *, ARRAY(SELECT menu_item_id FROM order_menu_item WHERE order_id = o.id)
+                     FROM orders o WHERE o.id = t_order_id;
+    END IF;
 END
 $$;
 

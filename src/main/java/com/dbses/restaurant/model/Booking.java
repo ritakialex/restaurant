@@ -1,5 +1,6 @@
 package com.dbses.restaurant.model;
 
+import com.dbses.restaurant.database.DatabaseCallException;
 import com.dbses.restaurant.database.DatabaseConfig;
 
 import java.sql.Connection;
@@ -104,7 +105,7 @@ public class Booking {
     }
 
     //εμφανίζει αντικείμενα τύπου Booking
-    public static ArrayList<Booking> getBookings() throws Exception {
+    public static ArrayList<Booking> getBookings() throws DatabaseCallException {
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
             String getBookings = "select * from get_bookings(null, null, null, null)";
@@ -119,8 +120,8 @@ public class Booking {
             }
             return bookings;
         } catch (Exception e) {
-            System.out.println(e);
-            throw new Exception();
+            throw new DatabaseCallException("Exception while calling getBookings. Original " +
+                "exception: " + e);
         }
     }
 
@@ -139,7 +140,8 @@ public class Booking {
                 System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
             }
         } catch (Exception e) {
-            System.out.println(e);
+            throw new DatabaseCallException("Exception while calling deleteBooking. Original " +
+                "exception: " + e);
         }
     }
 
@@ -148,7 +150,7 @@ public class Booking {
     //θα πρέπει να πάρει από τον χρήστη int(boooking id) - Strind (που θα μετατρέψει σε αντικείμενο Date)
     //String (ονομα πελάτη), int (πόσοι πελάτες) και int (ώρα, πχ 12 ή 18, ή 20)
     public static void createNewBooking(int tableId, String date, String custName, int count,
-                                        int hour) throws Exception {
+                                        int hour) throws DatabaseCallException {
         try (Connection conn = DatabaseConfig.getConnection()) {
             //String str = date;
             Booking book = new Booking(tableId, java.sql.Date.valueOf(date),
@@ -163,12 +165,12 @@ public class Booking {
                 pstmt.setString(4, book.getCustomerName());
                 pstmt.setInt(5, book.getCustomerCount());
                 pstmt.executeUpdate();
-                //System.out.println("ok");
             } catch (SQLException ex) {
                 System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
             }
         } catch (Exception e) {
-            System.out.println(e);
+            throw new DatabaseCallException("Exception while calling deleteBooking. Original " +
+                "exception: " + e);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.dbses.restaurant.model;
 
+import com.dbses.restaurant.database.DatabaseCallException;
 import com.dbses.restaurant.database.DatabaseConfig;
 
 import java.sql.Connection;
@@ -55,7 +56,7 @@ public class Table {
     }
 
     //εμφανίζει τραπέζια που είναι διαθέσιμα και έχουν χωρητικότητα πάνω από ?
-    public static ArrayList<Table> getTables(int capacity) throws Exception {
+    public static ArrayList<Table> getTables(int capacity) throws DatabaseCallException {
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             ResultSet rs = null;
@@ -80,7 +81,8 @@ public class Table {
         } catch (Exception e) {
             //connection catch + return
             System.out.println(e);
-            throw new Exception();
+            throw new DatabaseCallException("Exception while calling getTables. Original " +
+                "exception: " + e);
         }
         return null;
     }
@@ -100,7 +102,8 @@ public class Table {
                 System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
             }
         }catch (Exception e){
-            System.out.println(e);
+            throw new DatabaseCallException("Exception while calling toggleAvailability. Original " +
+                "exception: " + e);
         }
     }
 

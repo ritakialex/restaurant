@@ -1,5 +1,6 @@
 package com.dbses.restaurant.model;
 
+import com.dbses.restaurant.database.DatabaseCallException;
 import com.dbses.restaurant.database.DatabaseConfig;
 
 import java.sql.*;
@@ -31,7 +32,7 @@ public class Order {
         private Timestamp time;
         private ArrayList<Integer> item;
 
-    public Order( int orderId, int tableId, int bookingId, Timestamp time, ArrayList < Integer > item){
+    public Order( int orderId, int tableId, int bookingId, Timestamp time, ArrayList <Integer> item){
             this.orderId = orderId;
             this.tableId = tableId;
             this.bookingId = bookingId;
@@ -78,6 +79,10 @@ public class Order {
         this.time = time;
     }
 
+    public ArrayList<Integer> getItem() {
+        return item;
+    }
+
     @Override
     public String toString () {
         return "Order{" +
@@ -95,11 +100,12 @@ public class Order {
             Statement stmt = conn.createStatement();
             String getOrders = "select * from get_order_with_items(null)";
             ResultSet rs = stmt.executeQuery(getOrders);
-            final ArrayList<Order> orders = new ArrayList();
+            final ArrayList<Order> orders = new ArrayList<Order>();
             while (rs.next()) {
                 ResultSet intrs = rs.getArray(5).getResultSet();
-                ArrayList<Integer> arint = new ArrayList();
+                ArrayList<Integer> arint = new ArrayList<Integer>();
                 while (intrs.next()) {
+                    System.out.println(intrs.getInt(1));
                     arint.add(intrs.getInt(1));
                 }
                 orders.add(new Order(
@@ -110,6 +116,7 @@ public class Order {
                         arint)
                 );
             }
+
             return orders;
         } catch (Exception e) {
             System.out.println(e);
@@ -119,7 +126,7 @@ public class Order {
 
 
     //περιμένει το orderId από τον χρήστη και επιστρέφει float το σύνολο της παραγγελίας
-    public static float getTotalPriceOrder(int orderId) throws Exception {
+    public static float getTotalPriceOrder(int orderId) throws DatabaseCallException {
         float totalPrice = 0;
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt;
@@ -137,8 +144,8 @@ public class Order {
             }
 
         } catch (Exception e) {
-            System.out.println(e);
-            throw new Exception();
+            throw new DatabaseCallException("Exception while calling getTotalPriceOrder. Original " +
+                "exception: " + e);
         }
         return totalPrice; //αν επιστρέψει 0 σημαίνει ότι κάτι δεν πήγε καλά και δεν επέστρεψε
         //την τιμή μέσα στο try
@@ -149,7 +156,7 @@ public class Order {
     public static void createOrder(int tableId, int[] items, int bookId) throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
-            String newOrder = "call create_order(?, ?)";
+            String newOrder = "call create_order(?, ?, ?)";
             pstmt = conn.prepareStatement(newOrder);
             try {
                 pstmt.setInt(1, tableId);
@@ -161,12 +168,13 @@ public class Order {
                 System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
             }
         } catch (Exception e) {
-            System.out.println(e);
+            throw new DatabaseCallException("Exception while calling createOrder. Original " +
+                "exception: " + e);
         }
     }
 
     //call create_order - 2 params
-    public static void createOrderWithBooking(int tableId, int[] items) throws Exception {
+    public static void createOrderWithoutBooking(int tableId, int[] items) throws Exception {
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             String newOrder = "call create_order(?, ?)";
@@ -180,13 +188,8 @@ public class Order {
                 System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
             }
         } catch (Exception e) {
-            System.out.println(e);
+            throw new DatabaseCallException("Exception while calling createOrderWithBooking. Original " +
+                "exception: " + e);
         }
     }
-
-    public Order next() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
 }

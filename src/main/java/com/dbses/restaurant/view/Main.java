@@ -13,8 +13,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * @author georg
@@ -134,10 +137,10 @@ public class Main extends javax.swing.JFrame {
         AddKratish.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Table_AddKrat.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object[][]{
 
             },
-            new String [] {
+            new String[]{
                 "ID", "ΟΝΟΜΑ", "ΗΜΕΡΟΜΗΝΙΑ", "ΩΡΑ", "ΑΤΟΜΑ", "ΤΡΑΠΕΖΙ"
             }
         ));
@@ -255,10 +258,10 @@ public class Main extends javax.swing.JFrame {
         ParaggeliesManagement.add(exitButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 30));
 
         Table_Paragg.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object[][]{
 
             },
-            new String [] {
+            new String[]{
                 "ID", "ΤΡΑΠΕΖΙ", "ΩΡΑ", "ΠΑΡΑΓΓΕΛΙΑ", "ΠΙΑΤΑ", "ΤΕΛΙΚΗ ΤΙΜΗ "
             }
         ));
@@ -372,10 +375,10 @@ public class Main extends javax.swing.JFrame {
         menouButton.add(addButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 110, -1));
 
         Table_Menu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object[][]{
 
             },
-            new String [] {
+            new String[]{
                 "ID", "ΟΝΟΜΑ ΠΙΑΤΟΥ", "ΚΑΤΗΓΟΡΙΑ", "ΤΙΜΉ", "STOCK", "ΠΕΡΙΓΡΑΦΗ"
             }
         ));
@@ -484,10 +487,10 @@ public class Main extends javax.swing.JFrame {
         StockPrice.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 180, 30));
 
         Table_P.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object[][]{
 
             },
-            new String [] {
+            new String[]{
                 "ID", "PRICE"
             }
         ));
@@ -526,10 +529,10 @@ public class Main extends javax.swing.JFrame {
         StockPrice.add(labS_ID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, -1));
 
         Table_S.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object[][]{
 
             },
-            new String [] {
+            new String[]{
                 "ID", "STOCK"
             }
         ));
@@ -667,35 +670,28 @@ public class Main extends javax.swing.JFrame {
                 .mapToInt(Integer::intValue)
                 .toArray();
 
-        final Runnable clearFields = () -> {
-            txtKrat_id.setText("");
-            txtParagg_ID.setText("");
-            txtParagg_Trapezi.setText("");
-            txtParagg_Wra.setText("");
-            txtParagg_ParagId.setText("");
-            txtParagg_piat.setText("");
-        };
-
         if (txtParagg_Trapezi.getText().equals("") || txtParagg_Wra.getText().equals("") ||
             txtParagg_ParagId.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα! ");
         } else {
             try {
-                if (txtKrat_id.getText().equals(" ")) {
-                    Order.createOrder(Integer.parseInt(txtParagg_Trapezi.getText()),
-                        stringToIntAr.apply(txtParagg_piat.getText()),
-                        Integer.parseInt(txtKrat_id.getText()));
-
-                    getOrder();
-                    clearFields.run();
-                } else
-                    Order.createOrderWithBooking(Integer.parseInt(txtParagg_Trapezi.getText()),
-                        stringToIntAr.apply(txtParagg_piat.getText()));
+                if (txtKrat_id.getText().equals("")) {
+                    Order.createOrderWithoutBooking(Integer.parseInt(txtParagg_Trapezi.getText()),
+                        stringToIntAr.apply(txtParagg_ParagId.getText()));
+                } else {
+                    // Order.createOrder(Integer.parseInt(txtParagg_Trapezi.getText()),
+                    // stringToIntAr.apply(txtParagg_piat.getText()));
+                }
                 getOrder();
-                clearFields.run();
+                txtKrat_id.setText("");
+                txtParagg_ID.setText("");
+                txtParagg_Trapezi.setText("");
+                txtParagg_Wra.setText("");
+                txtParagg_ParagId.setText("");
+                txtParagg_piat.setText("");
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Ολα ok");
+                JOptionPane.showMessageDialog(this, "Ολα Λαθος: " + e);
             }
         }
     }//GEN-LAST:event_addButtonPARAGActionPerformed
@@ -746,12 +742,15 @@ public class Main extends javax.swing.JFrame {
     private void deleteButtonKRATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonKRATActionPerformed
 
         DefaultTableModel tblModel = (DefaultTableModel) Table_AddKrat.getModel();
+
         if (Table_AddKrat.getSelectedRowCount() == 1) {
             try {
-                Booking.deleteBooking(Integer.parseInt(txtKrat_id.getText()));
+                Booking.deleteBooking(
+                    Integer.parseInt((String) tblModel.getValueAt(Table_AddKrat.getSelectedRow(), 0)));
+
                 getBooking();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Ολα Ok");
+                JOptionPane.showMessageDialog(this, "Ολα λαθος " + e);
             }
         } else {
             if (Table_AddKrat.getRowCount() == 0) {
@@ -789,15 +788,21 @@ public class Main extends javax.swing.JFrame {
     //PARAGGELIES
     private void getOrder() {
         DefaultTableModel tblModel = (DefaultTableModel) Table_Paragg.getModel();
+
         try {
             ArrayList<Order> getOrderWithItems = Order.getOrderWithItems();
+
             tblModel.setRowCount(0);
             for (Order order : getOrderWithItems) {
                 String[] data = {
                     String.valueOf(order.getOrderId()),
-                    String.valueOf(order.getBookingId()),
                     String.valueOf(order.getTableId()),
                     String.valueOf(order.getTime()),
+                    String.valueOf(order.getBookingId()),
+                    order.getItem().stream()
+                        .map(String::valueOf)
+                        .collect(Collectors.joining(","))
+                    ,
                     String.valueOf(Order.getTotalPriceOrder(order.getOrderId()))
                 };
                 tblModel.addRow(data);
@@ -805,7 +810,7 @@ public class Main extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ολα Λαθος Order");
         }
-    } 
+    }
 
     //MENOΥ
     private void getMenuItem() {
@@ -844,7 +849,7 @@ public class Main extends javax.swing.JFrame {
                     String.valueOf(booking.getCustomerCount()),
                     String.valueOf(booking.getTableId())};
                 tblModel.addRow(data);
-            }     
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ολα πηγαν Λαθος Bookings");
         }
@@ -960,6 +965,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrice_ID;
     private javax.swing.JTextField txtStock;
     private javax.swing.JTextField txtStock_ID;
+
     // End of variables declaration//GEN-END:variables
     private void close() {
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);

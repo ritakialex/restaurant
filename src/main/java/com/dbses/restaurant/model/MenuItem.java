@@ -1,5 +1,6 @@
 package com.dbses.restaurant.model;
 
+import com.dbses.restaurant.database.DatabaseCallException;
 import com.dbses.restaurant.database.DatabaseConfig;
 
 import java.sql.Connection;
@@ -106,7 +107,7 @@ public class MenuItem {
 
 
     //Δημιουργεί αντικείμενα τύπου MenuItem
-    public static ArrayList<MenuItem> getMenuItems() throws Exception {
+    public static ArrayList<MenuItem> getMenuItems() throws DatabaseCallException {
         try (Connection conn = DatabaseConfig.getConnection()) {
             Statement stmt = conn.createStatement();
             String getMenuItems = "select * from get_menu_items(null, null)";
@@ -124,13 +125,14 @@ public class MenuItem {
             }
             return menuItems;
         }catch (Exception e){
-            throw new Exception();
+            throw new DatabaseCallException("Exception while calling getMenuItems. Original " +
+                "exception: " + e);
         }
     }
 
 
     //menu item with id = ? -- update price +/- ?
-    public static void updatePrice(int id, float amount) throws Exception {
+    public static void updatePrice(int id, float amount) throws DatabaseCallException {
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             String updatePrice = "call update_menu_item_price(?, ?)";
@@ -147,13 +149,14 @@ public class MenuItem {
                 System.out.println("\n -- SQL Exception --- \n"+ ex.getMessage());
             }
         }catch (Exception e){
-            System.out.println(e);
+            throw new DatabaseCallException("Exception while calling updatePrice. Original " +
+                "exception: " + e);
         }
     }
 
 
     //menu item with id = ? - update stock number +/- ?
-    public static void updateStock(int id, int stock) throws Exception {
+    public static void updateStock(int id, int stock) throws DatabaseCallException {
         try (Connection conn = DatabaseConfig.getConnection()) {
             PreparedStatement pstmt = null;
             String updateStock = "call update_menu_item_stock(?, ?)";
@@ -166,7 +169,8 @@ public class MenuItem {
                 System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
             }
         } catch (Exception e) {
-            System.out.println(e);
+            throw new DatabaseCallException("Exception while calling updateStock. Original " +
+                "exception: " + e);
         }
     }
 
@@ -175,7 +179,8 @@ public class MenuItem {
     //call stored procedure create_menu_item - Δημιουργεί νέο booking
     //θα πρέπει να πάρει από τον χρήστη String - String - String (αυτό μόνο 'Appetizers', 'Salads', 'Main Dishes', 'Drinks', 'Alcoholic Drinks')
     // float και int
-    public static void createNewMenuItem(String itemName, String theDesc, String cat, float thePrice, int theStock) {
+    public static void createNewMenuItem(String itemName, String theDesc, String cat,
+                                         float thePrice, int theStock) throws DatabaseCallException {
         try (Connection conn = DatabaseConfig.getConnection()) {
             //create object
             MenuItem newItem = new MenuItem(itemName, theDesc, cat, thePrice, theStock);
@@ -194,7 +199,8 @@ public class MenuItem {
                 System.out.println("\n -- SQL Exception --- \n" + ex.getMessage());
             }
         } catch (Exception e) {
-            System.out.println(e);
+            throw new DatabaseCallException("Exception while calling createNewMenuItem. Original " +
+                "exception: " + e);
         }
     }
 

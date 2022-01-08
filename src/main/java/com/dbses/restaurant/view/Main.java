@@ -11,7 +11,10 @@ import com.dbses.restaurant.model.Order;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * @author georg
@@ -133,10 +136,10 @@ public class Main extends javax.swing.JFrame {
         AddKratish.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Table_AddKrat.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object[][]{
 
             },
-            new String [] {
+            new String[]{
                 "ID", "ΟΝΟΜΑ", "ΗΜΕΡΟΜΗΝΙΑ", "ΩΡΑ", "ΑΤΟΜΑ", "ΤΡΑΠΕΖΙ"
             }
         ));
@@ -254,10 +257,10 @@ public class Main extends javax.swing.JFrame {
         ParaggeliesManagement.add(exitButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 30));
 
         Table_Paragg.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object[][]{
 
             },
-            new String [] {
+            new String[]{
                 "ID", "ΤΡΑΠΕΖΙ", "ΩΡΑ", "ΠΑΡΑΓΓΕΛΙΑ", "ΠΙΑΤΑ"
             }
         ));
@@ -389,10 +392,10 @@ public class Main extends javax.swing.JFrame {
         menouButton.add(deleteButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 113, -1));
 
         Table_Menu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object[][]{
 
             },
-            new String [] {
+            new String[]{
                 "ID", "ΟΝΟΜΑ ΠΙΑΤΟΥ", "ΚΑΤΗΓΟΡΙΑ", "ΤΙΜΉ", "STOCK", "ΠΕΡΙΓΡΑΦΗ"
             }
         ));
@@ -501,10 +504,10 @@ public class Main extends javax.swing.JFrame {
         StockPrice.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 180, 30));
 
         Table_P.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object[][]{
 
             },
-            new String [] {
+            new String[]{
                 "ID", "PRICE"
             }
         ));
@@ -543,10 +546,10 @@ public class Main extends javax.swing.JFrame {
         StockPrice.add(labS_ID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, -1));
 
         Table_S.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object[][]{
 
             },
-            new String [] {
+            new String[]{
                 "ID", "STOCK"
             }
         ));
@@ -561,6 +564,7 @@ public class Main extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
     private void txtPrice_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrice_IDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPrice_IDActionPerformed
@@ -569,16 +573,12 @@ public class Main extends javax.swing.JFrame {
 
     private void addButtonPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonPriceActionPerformed
 
-        if (txtPrice_ID.getText().equals("")||txtPrice.getText().equals("")) {
+        if (txtPrice_ID.getText().equals("") || txtPrice.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα!");
-        } else {          
-             String data[] = {txtPrice_ID.getText(),txtPrice.getText()};
-             DefaultTableModel tblModel = (DefaultTableModel)Table_P.getModel();
-             tblModel.addRow(data);
-
+        } else {
             try {
-                MenuItem.updatePrice(Integer.parseInt(txtPrice_ID.getText()),Float.parseFloat(txtPrice.getText()));
-                
+                MenuItem.updatePrice(Integer.parseInt(txtPrice_ID.getText()), Float.parseFloat(txtPrice.getText()));
+                getMenuItem();
                 txtPrice_ID.setText("");
                 txtPrice.setText("");
             } catch (Exception e) {
@@ -591,19 +591,15 @@ public class Main extends javax.swing.JFrame {
 
     private void addButtonStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonStockActionPerformed
 
-        if (txtStock_ID.getText().equals("")||txtStock.getText().equals(""))
-             {JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα!"); } 
-        else{
-             String data[] = {txtStock_ID.getText(),txtStock.getText()};
-             DefaultTableModel tblModel = (DefaultTableModel)Table_S.getModel();
-             tblModel.addRow(data);
-             
+        if (txtStock_ID.getText().equals("") || txtStock.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα!");
+        } else {
             try {
-                MenuItem.updateStock(Integer.parseInt(txtStock_ID.getText()),Integer.parseInt(txtStock.getText()));
-               
+                MenuItem.updateStock(Integer.parseInt(txtStock_ID.getText()), Integer.parseInt(txtStock.getText()));
+                getMenuItem();
                 txtStock_ID.setText("");
                 txtStock.setText("");
-            }catch (Exception e) {
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Ολα Ok");
             }
         }
@@ -612,222 +608,215 @@ public class Main extends javax.swing.JFrame {
     private void txtStock_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStock_IDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStock_IDActionPerformed
+
     private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStockActionPerformed
+
     private void exitButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_exitButton5ActionPerformed
+
     private void txtMenu_PerigrafhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_PerigrafhActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMenu_PerigrafhActionPerformed
+
     private void txtMenu_StockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_StockActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMenu_StockActionPerformed
+
     private void exitButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton4ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButton4ActionPerformed
 
-    //DIAGRAFH MENU
-    
-    private void deleteButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonMenuActionPerformed
-
-        DefaultTableModel tblModel = (DefaultTableModel) Table_Menu.getModel();
-        if (Table_Menu.getSelectedRowCount() == 1) {
-            tblModel.removeRow(Table_Menu.getSelectedRow());    } 
-        else {
-            if (Table_Menu.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "Ο Πίνακας είναι κενός");   }
-             else {
-                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!"); }    
-            }
-    }//GEN-LAST:event_deleteButtonMenuActionPerformed
-
     //PROS8ESH MENU
-    
+
     private void addButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonMenuActionPerformed
 
         //ΣΤΟΙΧΕΙΑ ΠΟΥ ΘΑ ΓΡΑΨΕΙ Ο ΧΡΗΣΤΗΣ ΣΤΑ ΚΕΝΑ ΠΕΔΙΑ.
-        if (txtMenu_Name.getText().equals("")||txtMenu_Katigoria.getText().equals("")|| 
-            txtMenu_Timi.getText().equals("")||txtMenu_Stock.getText().equals("")||
+        if (txtMenu_Name.getText().equals("") || txtMenu_Katigoria.getText().equals("") ||
+            txtMenu_Timi.getText().equals("") || txtMenu_Stock.getText().equals("") ||
             txtMenu_Perigrafh.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα!");
-            } 
-        else{
+        } else {
+            //ΠΙΝΑΚΑΣ ΚΑΙ ΤΒΜΟΝΤΕΛ ΓΙΑ ΝΑ ΓΡΑΦΤΟΥΝ-ΕΜΦΑΝ. ΣΤΟΝ ΠΙΝΑΚΑ
+            try {  //ΚΑΛΩ ΤΗΝ MENYITEM.CREATNEWMENUITEM ΚΑΙ ΒΑΖΩ ΤΑ ΣΤΟΙΧΕΙΑ ΠΟΥ ΘΕΛΕΙ.
+                MenuItem.createNewMenuItem(txtMenu_Name.getText(), txtMenu_Perigrafh.getText(),
+                    txtMenu_Katigoria.getText(), Float.parseFloat(txtMenu_Timi.getText()),
+                    Integer.parseInt(txtMenu_Stock.getText()));
 
-        //ΠΙΝΑΚΑΣ ΚΑΙ ΤΒΜΟΝΤΕΛ ΓΙΑ ΝΑ ΓΡΑΦΤΟΥΝ-ΕΜΦΑΝ. ΣΤΟΝ ΠΙΝΑΚΑ 
-             String data[] = {txtMenu_Id.getText(),txtMenu_Name.getText(),txtMenu_Katigoria.getText(),
-                              txtMenu_Timi.getText(),txtMenu_Stock.getText(),txtMenu_Perigrafh.getText()};
-             DefaultTableModel tblModel = (DefaultTableModel)Table_Menu.getModel();
-             tblModel.addRow(data);
+                getMenuItem();
+                //TΑ ΣΤΟΙΧΕΙΑ ΤΟΥ ΠΙΝΑΚΑ ΤΑ ΚΑΝΩ ΣΕΤ.
+                txtMenu_Id.setText("");
+                txtMenu_Name.setText("");
+                txtMenu_Katigoria.setText("");
+                txtMenu_Timi.setText("");
+                txtMenu_Stock.setText("");
+                txtMenu_Perigrafh.setText("");
 
-        try {  //ΚΑΛΩ ΤΗΝ MENYITEM.CREATNEWMENUITEM ΚΑΙ ΒΑΖΩ ΤΑ ΣΤΟΙΧΕΙΑ ΠΟΥ ΘΕΛΕΙ.     
-               MenuItem.createNewMenuItem(txtMenu_Name.getText(), txtMenu_Perigrafh.getText(),
-                                         txtMenu_Katigoria.getText(),Float.parseFloat(txtMenu_Timi.getText()),
-                                         Integer.parseInt(txtMenu_Stock.getText()));
-
-               
-             //TΑ ΣΤΟΙΧΕΙΑ ΤΟΥ ΠΙΝΑΚΑ ΤΑ ΚΑΝΩ ΣΕΤ.  
-             txtMenu_Id.setText("");
-             txtMenu_Name.setText("");
-             txtMenu_Katigoria.setText("");
-             txtMenu_Timi.setText("");
-             txtMenu_Stock.setText("");
-             txtMenu_Perigrafh.setText("");
-    
-            } 
-        catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Ολα ok");  } 
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Ολα ok");
             }
+        }
     }//GEN-LAST:event_addButtonMenuActionPerformed
 
-    
     private void txtMenu_KatigoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_KatigoriaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMenu_KatigoriaActionPerformed
+
     private void txtMenu_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_NameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMenu_NameActionPerformed
+
     private void txtMenu_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_IdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMenu_IdActionPerformed
+
     private void txtParagg_TrapeziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtParagg_TrapeziActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtParagg_TrapeziActionPerformed
 
-    //DIAGARFH PARAGGELIAS
-    
-    private void deleteButtonPARAGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonPARAGActionPerformed
+//    //DIAGARFH PARAGGELIAS
+//
+//    private void deleteButtonPARAGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonPARAGActionPerformed
+//
+//        DefaultTableModel tblModel = (DefaultTableModel) Table_Paragg.getModel();
+//
+//        if (Table_Paragg.getSelectedRowCount() == 1) {
+//            Order.(Integer.parseInt(Table_Paragg.getSelectedRow()));
+//            getOrder();
+//        } else {
+//            if (Table_Paragg.getRowCount() == 0) {
+//                JOptionPane.showMessageDialog(this, "Ο πινακας ειναι κενός");
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!");
+//            }
+//        }
+//    }//GEN-LAST:event_deleteButtonPARAGActionPerformed
 
-        DefaultTableModel tblModel = (DefaultTableModel) Table_Paragg.getModel();
+    //PROS8ESH PARAGGELIAS
+    //PIATA & TOTAL PRICE ORDER.
 
-        if (Table_Paragg.getSelectedRowCount() == 1) {
-            tblModel.removeRow(Table_Paragg.getSelectedRow());  } 
-        else {
-            if (Table_Paragg.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "Ο πινακας ειναι κενός");   } 
-            else {
-                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!");    }
-            }
-    }//GEN-LAST:event_deleteButtonPARAGActionPerformed
-
-    //PROS8ESH PARAGGELIAS 
-    //PIATA & TOTAL PRICE ORDER. 
-    
     private void addButtonPARAGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonPARAGActionPerformed
 
+        final Function<String, int[]> stringToIntAr =
+            str -> Arrays.stream(str.split(","))
+                .map(Integer::parseInt)
+                .mapToInt(Integer::intValue)
+                .toArray();
 
-        if (txtParagg_Trapezi.getText().equals("")||txtParagg_Wra.getText().equals("")||
-                                                    txtParagg_ParagId.getText().equals(""))   
-                { JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα! ");    }
-       
-              //PIATAAA(;) & TOTAL PRICE(-)
-        else{ 
+        final Supplier<Boolean> clearFields = () -> {
+            txtKrat_id.setText("");
+            txtParagg_ID.setText("");
+            txtParagg_Trapezi.setText("");
+            txtParagg_Wra.setText("");
+            txtParagg_ParagId.setText("");
+            txtParagg_piat.setText("");
+            return true;
+        };
 
-            String data[] = {txtParagg_ID.getText(),txtParagg_Trapezi.getText(),txtParagg_Wra.getText(),
-                              txtParagg_ParagId.getText(),txtParagg_piat.getText()};
-            DefaultTableModel tblModel = (DefaultTableModel)Table_Paragg.getModel();
-            tblModel.addRow(data);   
-             
-            try{
-                  
-                if (txtKrat_id.getText().equals(" ") ) {     
-                        Order.createOrder(txtParagg_Trapezi,txtParagg_piat,txtKrat_id);}
-                else 
-                        Order.createOrderWithBooking(txtParagg_Trapezi,txtParagg_piat);
-                     
-                txtKrat_id.setText("");
-                txtParagg_ID.setText("");         
-                txtParagg_Trapezi.setText("");
-                txtParagg_Wra.setText("");
-                txtParagg_ParagId.setText("");
-                txtParagg_piat.setText("");
-                 
-             }catch(Exception e) {
-                 JOptionPane.showMessageDialog(this, "Ολα ok");  }
+        if (txtParagg_Trapezi.getText().equals("") || txtParagg_Wra.getText().equals("") ||
+            txtParagg_ParagId.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα! ");
+        } else {
+            try {
+                if (txtKrat_id.getText().equals(" ")) {
+                    Order.createOrder(Integer.parseInt(txtParagg_Trapezi.getText()),
+                        stringToIntAr.apply(txtParagg_piat.getText()),
+                        Integer.parseInt(txtKrat_id.getText()));
+
+                    getOrder();
+                    clearFields.get();
+                } else
+                    Order.createOrderWithBooking(Integer.parseInt(txtParagg_Trapezi.getText()),
+                        stringToIntAr.apply(txtParagg_piat.getText()));
+                getOrder();
+                clearFields.get();
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Ολα ok");
             }
+        }
     }//GEN-LAST:event_addButtonPARAGActionPerformed
 
-    
     private void exitButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton3ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButton3ActionPerformed
+
     private void txtKrat_hourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_hourActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtKrat_hourActionPerformed
+
     private void exitButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton2ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButton2ActionPerformed
 
     //PROS8ESH KRATHSH
-    
+
     private void addButtonKRATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonKRATActionPerformed
 
-        if (txtKrat_onoma.getText().equals("")||txtKrat_date.getText().equals("")||txtKrat_hour.getText().equals("")|| 
-            txtKrat_atoma.getText().equals("")||txtKrat_Trapezi.getText().equals("")) {
+        if (txtKrat_onoma.getText().equals("") || txtKrat_date.getText().equals("") || txtKrat_hour.getText().equals("") ||
+            txtKrat_atoma.getText().equals("") || txtKrat_Trapezi.getText().equals("")) {
 
-                JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα! "); }
-        else {
-            
-            String data[] = {txtKrat_id.getText(),txtKrat_onoma.getText(),txtKrat_date.getText(),
-                             txtKrat_hour.getText(),txtKrat_atoma.getText(),txtKrat_Trapezi.getText(),};                            
-            DefaultTableModel tblModel = (DefaultTableModel)Table_AddKrat.getModel();
-            tblModel.addRow(data);
-
+            JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα! ");
+        } else {
             try {
                 Booking.createNewBooking(Integer.parseInt(txtKrat_Trapezi.getText()),
-                                         txtKrat_date.getText(),
-                                         txtKrat_onoma.getText(),
-                                         Integer.parseInt(txtKrat_atoma.getText()),
-                                         Integer.parseInt(txtKrat_hour.getText()));
+                    txtKrat_date.getText(),
+                    txtKrat_onoma.getText(),
+                    Integer.parseInt(txtKrat_atoma.getText()),
+                    Integer.parseInt(txtKrat_hour.getText()));
 
-                        txtKrat_id.setText("");
-                        txtKrat_onoma.setText("");
-                        txtKrat_date.setText("");
-                        txtKrat_hour.setText("");
-                        txtKrat_atoma.setText("");
-                    
+                txtKrat_id.setText("");
+                txtKrat_onoma.setText("");
+                txtKrat_date.setText("");
+                txtKrat_hour.setText("");
+                txtKrat_atoma.setText("");
+                getBooking();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Ολα ok");  }
-            
+                JOptionPane.showMessageDialog(this, "Ολα ok");
             }
+
+        }
     }//GEN-LAST:event_addButtonKRATActionPerformed
 
     //DIAGRAFH KRATHSH
-    
+
     private void deleteButtonKRATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonKRATActionPerformed
 
         DefaultTableModel tblModel = (DefaultTableModel) Table_AddKrat.getModel();
         if (Table_AddKrat.getSelectedRowCount() == 1) {
             try {
-                tblModel.removeRow(Table_AddKrat.getSelectedRow());
                 Booking.deleteBooking(Integer.parseInt(txtKrat_id.getText()));
-                 //ISWS PANW
-                } 
-            catch (Exception e) {
-                  JOptionPane.showMessageDialog(this, "Ολα Ok");
-                }
-        } 
-        else {
+                Booking.getBookings();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Ολα Ok");
+            }
+        } else {
             if (Table_AddKrat.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "Ο πινακας ειναι κενός"); } 
-            else {
-                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!"); }
-        }      
+                JOptionPane.showMessageDialog(this, "Ο πινακας ειναι κενός");
+            } else {
+                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!");
+            }
+        }
     }//GEN-LAST:event_deleteButtonKRATActionPerformed
 
     private void txtKrat_onomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_onomaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtKrat_onomaActionPerformed
+
     private void txtKrat_TrapeziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_TrapeziActionPerformed
 
     }//GEN-LAST:event_txtKrat_TrapeziActionPerformed
+
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
+
     private void txtParagg_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtParagg_IDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtParagg_IDActionPerformed
+
     private void txtKrat_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_idActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtKrat_idActionPerformed
@@ -837,17 +826,18 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_txtParagg_piatActionPerformed
 
     //PARAGGELIES
-    private void getOrder() {  //ΕΔΩ TOTAL PRICE
+    private void getOrder() {
         DefaultTableModel tblModel = (DefaultTableModel) Table_Paragg.getModel();
         try {
             ArrayList<Order> getOrderWithItems = Order.getOrderWithItems();
-            for (Order Order : getOrderWithItems) {
+            tblModel.setRowCount(0);
+            for (Order order : getOrderWithItems) {
                 String[] data = {
-                    String.valueOf(Order.getOrderId()),
-                    String.valueOf(Order.getBookingId()),
-                    String.valueOf(Order.getTableId()),
-                    String.valueOf(Order.getTime()),
-
+                    String.valueOf(order.getOrderId()),
+                    String.valueOf(order.getBookingId()),
+                    String.valueOf(order.getTableId()),
+                    String.valueOf(order.getTime()),
+                    String.valueOf(Order.getTotalPriceOrder(order.getOrderId()))
                 };
                 tblModel.addRow(data);
             }
@@ -862,6 +852,7 @@ public class Main extends javax.swing.JFrame {
         DefaultTableModel tblModel = (DefaultTableModel) Table_Menu.getModel();
         try {
             ArrayList<MenuItem> MenuItems = MenuItem.getMenuItems();
+            tblModel.setRowCount(0);
             for (MenuItem MenuItem : MenuItems) {
                 String[] data = {String.valueOf(MenuItem.getMenuItemId()),
                     MenuItem.getMenuItemName(),
@@ -877,14 +868,17 @@ public class Main extends javax.swing.JFrame {
         }
     }
 
-    //ΚΡΑΤΉΣΕΙΣ 
+    //ΚΡΑΤΉΣΕΙΣ
     private void getBooking() {
 
         DefaultTableModel tblModel = (DefaultTableModel) Table_AddKrat.getModel();
         try {
             ArrayList<Booking> bookings = Booking.getBookings();
+            tblModel.setRowCount(0);
             for (Booking booking : bookings) {
-                String[] data = {String.valueOf(booking.getId()),
+                System.out.println(booking);
+                String[] data = {
+                    String.valueOf(booking.getId()),
                     booking.getCustomerName(),
                     new SimpleDateFormat("dd-mm-yyyy").format(booking.getBookingDate()),
                     String.valueOf(booking.getHour()),
@@ -1010,6 +1004,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrice_ID;
     private javax.swing.JTextField txtStock;
     private javax.swing.JTextField txtStock_ID;
+
     // End of variables declaration//GEN-END:variables
     private void close() {
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);

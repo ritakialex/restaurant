@@ -64,7 +64,6 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Table_Paragg = new javax.swing.JTable();
         addButtonPARAG = new javax.swing.JButton();
-        deleteButtonPARAG = new javax.swing.JButton();
         txtParagg_Trapezi = new javax.swing.JTextField();
         txtParagg_Wra = new javax.swing.JTextField();
         labParagg_Wra = new javax.swing.JLabel();
@@ -81,7 +80,6 @@ public class Main extends javax.swing.JFrame {
         txtMenu_Name = new javax.swing.JTextField();
         txtMenu_Katigoria = new javax.swing.JTextField();
         addButtonMenu = new javax.swing.JButton();
-        deleteButtonMenu = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         Table_Menu = new javax.swing.JTable();
         exitButton4 = new javax.swing.JButton();
@@ -136,10 +134,10 @@ public class Main extends javax.swing.JFrame {
         AddKratish.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Table_AddKrat.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
+            new Object [][] {
 
             },
-            new String[]{
+            new String [] {
                 "ID", "ΟΝΟΜΑ", "ΗΜΕΡΟΜΗΝΙΑ", "ΩΡΑ", "ΑΤΟΜΑ", "ΤΡΑΠΕΖΙ"
             }
         ));
@@ -257,11 +255,11 @@ public class Main extends javax.swing.JFrame {
         ParaggeliesManagement.add(exitButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 30));
 
         Table_Paragg.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
+            new Object [][] {
 
             },
-            new String[]{
-                "ID", "ΤΡΑΠΕΖΙ", "ΩΡΑ", "ΠΑΡΑΓΓΕΛΙΑ", "ΠΙΑΤΑ"
+            new String [] {
+                "ID", "ΤΡΑΠΕΖΙ", "ΩΡΑ", "ΠΑΡΑΓΓΕΛΙΑ", "ΠΙΑΤΑ", "ΤΕΛΙΚΗ ΤΙΜΗ "
             }
         ));
         jScrollPane1.setViewportView(Table_Paragg);
@@ -280,15 +278,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
         ParaggeliesManagement.add(addButtonPARAG, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 110, -1));
-
-        deleteButtonPARAG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        deleteButtonPARAG.setText("ΔΙΑΓΡΑΦΗ");
-        deleteButtonPARAG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonPARAGActionPerformed(evt);
-            }
-        });
-        ParaggeliesManagement.add(deleteButtonPARAG, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, 110, -1));
 
         txtParagg_Trapezi.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         txtParagg_Trapezi.addActionListener(new java.awt.event.ActionListener() {
@@ -382,20 +371,11 @@ public class Main extends javax.swing.JFrame {
         });
         menouButton.add(addButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 110, -1));
 
-        deleteButtonMenu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        deleteButtonMenu.setText("ΔΙΑΓΡΑΦΗ");
-        deleteButtonMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonMenuActionPerformed(evt);
-            }
-        });
-        menouButton.add(deleteButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 113, -1));
-
         Table_Menu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
+            new Object [][] {
 
             },
-            new String[]{
+            new String [] {
                 "ID", "ΟΝΟΜΑ ΠΙΑΤΟΥ", "ΚΑΤΗΓΟΡΙΑ", "ΤΙΜΉ", "STOCK", "ΠΕΡΙΓΡΑΦΗ"
             }
         ));
@@ -504,10 +484,10 @@ public class Main extends javax.swing.JFrame {
         StockPrice.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 180, 30));
 
         Table_P.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
+            new Object [][] {
 
             },
-            new String[]{
+            new String [] {
                 "ID", "PRICE"
             }
         ));
@@ -546,10 +526,10 @@ public class Main extends javax.swing.JFrame {
         StockPrice.add(labS_ID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, -1));
 
         Table_S.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
+            new Object [][] {
 
             },
-            new String[]{
+            new String [] {
                 "ID", "STOCK"
             }
         ));
@@ -676,24 +656,6 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtParagg_TrapeziActionPerformed
 
-//    //DIAGARFH PARAGGELIAS
-//
-//    private void deleteButtonPARAGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonPARAGActionPerformed
-//
-//        DefaultTableModel tblModel = (DefaultTableModel) Table_Paragg.getModel();
-//
-//        if (Table_Paragg.getSelectedRowCount() == 1) {
-//            Order.(Integer.parseInt(Table_Paragg.getSelectedRow()));
-//            getOrder();
-//        } else {
-//            if (Table_Paragg.getRowCount() == 0) {
-//                JOptionPane.showMessageDialog(this, "Ο πινακας ειναι κενός");
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!");
-//            }
-//        }
-//    }//GEN-LAST:event_deleteButtonPARAGActionPerformed
-
     //PROS8ESH PARAGGELIAS
     //PIATA & TOTAL PRICE ORDER.
 
@@ -705,14 +667,13 @@ public class Main extends javax.swing.JFrame {
                 .mapToInt(Integer::intValue)
                 .toArray();
 
-        final Supplier<Boolean> clearFields = () -> {
+        final Runnable clearFields = () -> {
             txtKrat_id.setText("");
             txtParagg_ID.setText("");
             txtParagg_Trapezi.setText("");
             txtParagg_Wra.setText("");
             txtParagg_ParagId.setText("");
             txtParagg_piat.setText("");
-            return true;
         };
 
         if (txtParagg_Trapezi.getText().equals("") || txtParagg_Wra.getText().equals("") ||
@@ -726,12 +687,12 @@ public class Main extends javax.swing.JFrame {
                         Integer.parseInt(txtKrat_id.getText()));
 
                     getOrder();
-                    clearFields.get();
+                    clearFields.run();
                 } else
                     Order.createOrderWithBooking(Integer.parseInt(txtParagg_Trapezi.getText()),
                         stringToIntAr.apply(txtParagg_piat.getText()));
                 getOrder();
-                clearFields.get();
+                clearFields.run();
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Ολα ok");
@@ -788,7 +749,7 @@ public class Main extends javax.swing.JFrame {
         if (Table_AddKrat.getSelectedRowCount() == 1) {
             try {
                 Booking.deleteBooking(Integer.parseInt(txtKrat_id.getText()));
-                Booking.getBookings();
+                getBooking();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Ολα Ok");
             }
@@ -841,13 +802,12 @@ public class Main extends javax.swing.JFrame {
                 };
                 tblModel.addRow(data);
             }
-            JOptionPane.showMessageDialog(this, "Ολα πηγαν ΟΚ");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ολα Λαθος Order");
         }
-    }   //EXW KAI LISTA PIATAS & TOTAL PRICE EDW LGK
+    } 
 
-    //MENOΥ +-
+    //MENOΥ
     private void getMenuItem() {
         DefaultTableModel tblModel = (DefaultTableModel) Table_Menu.getModel();
         try {
@@ -862,7 +822,6 @@ public class Main extends javax.swing.JFrame {
                     MenuItem.getMenuItemDescription()};
                 tblModel.addRow(data);
             }
-            JOptionPane.showMessageDialog(this, "Ολα πηγαν ΟΚ");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ολα Λαθος Menu Item" + e);
         }
@@ -885,8 +844,7 @@ public class Main extends javax.swing.JFrame {
                     String.valueOf(booking.getCustomerCount()),
                     String.valueOf(booking.getTableId())};
                 tblModel.addRow(data);
-            }
-            JOptionPane.showMessageDialog(this, "Ολα πηγαν ΟΚ");
+            }     
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Ολα πηγαν Λαθος Bookings");
         }
@@ -949,8 +907,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton addButtonPrice;
     private javax.swing.JButton addButtonStock;
     private javax.swing.JButton deleteButtonKRAT;
-    private javax.swing.JButton deleteButtonMenu;
-    private javax.swing.JButton deleteButtonPARAG;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton exitButton2;
     private javax.swing.JButton exitButton3;
@@ -1004,7 +960,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtPrice_ID;
     private javax.swing.JTextField txtStock;
     private javax.swing.JTextField txtStock_ID;
-
     // End of variables declaration//GEN-END:variables
     private void close() {
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);

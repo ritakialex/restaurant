@@ -799,10 +799,9 @@ public class Main extends javax.swing.JFrame {
                     String.valueOf(order.getTableId()),
                     String.valueOf(order.getTime()),
                     String.valueOf(order.getBookingId()),
-                    order.getItem().stream()
+                    Arrays.stream(order.getItem())
                         .map(String::valueOf)
-                        .collect(Collectors.joining(","))
-                    ,
+                        .collect(Collectors.joining(",")),
                     String.valueOf(Order.getTotalPriceOrder(order.getOrderId()))
                 };
                 tblModel.addRow(data);

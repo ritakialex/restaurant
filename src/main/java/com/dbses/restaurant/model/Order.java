@@ -30,9 +30,9 @@ public class Order {
         private int tableId;
         private int bookingId;
         private Timestamp time;
-        private ArrayList<Integer> item;
+        private Integer[] item;
 
-    public Order( int orderId, int tableId, int bookingId, Timestamp time, ArrayList <Integer> item){
+    public Order( int orderId, int tableId, int bookingId, Timestamp time, Integer[] item){
             this.orderId = orderId;
             this.tableId = tableId;
             this.bookingId = bookingId;
@@ -79,7 +79,7 @@ public class Order {
         this.time = time;
     }
 
-    public ArrayList<Integer> getItem() {
+    public Integer[] getItem() {
         return item;
     }
 
@@ -102,25 +102,21 @@ public class Order {
             ResultSet rs = stmt.executeQuery(getOrders);
             final ArrayList<Order> orders = new ArrayList<Order>();
             while (rs.next()) {
-                ResultSet intrs = rs.getArray(5).getResultSet();
-                ArrayList<Integer> arint = new ArrayList<Integer>();
-                while (intrs.next()) {
-                    System.out.println(intrs.getInt(1));
-                    arint.add(intrs.getInt(1));
-                }
+                final Integer[] intrs = (Integer[])rs.getArray(5).getArray();
+
                 orders.add(new Order(
                         rs.getInt(1),
                         rs.getInt(2),
                         rs.getInt(3),
                         rs.getTimestamp(4),
-                        arint)
+                    intrs)
                 );
             }
 
             return orders;
         } catch (Exception e) {
-            System.out.println(e);
-            throw new Exception();
+            throw new DatabaseCallException("Exception while calling getOrderWithItems. Original " +
+                "exception: " + e);
         }
     }
 

@@ -61,21 +61,6 @@ public class Main extends javax.swing.JFrame {
         labDate = new javax.swing.JLabel();
         txtKrat_id = new javax.swing.JTextField();
         txtKrat_hour = new javax.swing.JTextField();
-        ParaggeliesManagement = new javax.swing.JPanel();
-        NameMagaziou_Paragg = new javax.swing.JLabel();
-        exitButton3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Table_Paragg = new javax.swing.JTable();
-        addButtonPARAG = new javax.swing.JButton();
-        txtParagg_Trapezi = new javax.swing.JTextField();
-        txtParagg_Wra = new javax.swing.JTextField();
-        labParagg_Wra = new javax.swing.JLabel();
-        txtParagg_ParagId = new javax.swing.JTextField();
-        labParagg_ParaggId = new javax.swing.JLabel();
-        labParaggelies = new javax.swing.JLabel();
-        labParagg_Trapezi = new javax.swing.JLabel();
-        txtParagg_ID = new javax.swing.JTextField();
-        txtParagg_piat = new javax.swing.JTextField();
         menouButton = new javax.swing.JPanel();
         labName = new javax.swing.JLabel();
         labKatigoria = new javax.swing.JLabel();
@@ -94,6 +79,19 @@ public class Main extends javax.swing.JFrame {
         labStock = new javax.swing.JLabel();
         txtMenu_Perigrafh = new javax.swing.JTextField();
         labPerigrafh = new javax.swing.JLabel();
+        ParaggeliesManagement = new javax.swing.JPanel();
+        NameMagaziou_Paragg = new javax.swing.JLabel();
+        exitButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Table_Paragg = new javax.swing.JTable();
+        addButtonPARAG = new javax.swing.JButton();
+        txtParagg_Trapezi = new javax.swing.JTextField();
+        txtParagg_ParagId = new javax.swing.JTextField();
+        labParagg_ParaggId = new javax.swing.JLabel();
+        labParaggelies = new javax.swing.JLabel();
+        labParagg_Trapezi = new javax.swing.JLabel();
+        txtParagg_ID = new javax.swing.JTextField();
+        txtParagg_piat = new javax.swing.JTextField();
         StockPrice = new javax.swing.JPanel();
         NameMagaziou_SP = new javax.swing.JLabel();
         labSP = new javax.swing.JLabel();
@@ -104,14 +102,10 @@ public class Main extends javax.swing.JFrame {
         txtStock = new javax.swing.JTextField();
         txtStock_ID = new javax.swing.JTextField();
         txtPrice = new javax.swing.JTextField();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        Table_P = new javax.swing.JTable();
         addButtonStock = new javax.swing.JButton();
         addButtonPrice = new javax.swing.JButton();
         txtPrice_ID = new javax.swing.JTextField();
         labS_ID1 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        Table_S = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurant");
@@ -137,10 +131,10 @@ public class Main extends javax.swing.JFrame {
         AddKratish.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Table_AddKrat.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
+            new Object [][] {
 
             },
-            new String[]{
+            new String [] {
                 "ID", "ΟΝΟΜΑ", "ΗΜΕΡΟΜΗΝΙΑ", "ΩΡΑ", "ΑΤΟΜΑ", "ΤΡΑΠΕΖΙ"
             }
         ));
@@ -243,94 +237,6 @@ public class Main extends javax.swing.JFrame {
 
         Arxikh.addTab("Πρόσθεση Κράτησης", AddKratish);
 
-        ParaggeliesManagement.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        NameMagaziou_Paragg.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        NameMagaziou_Paragg.setText("ΟΝΟΜΑ ΜΑΓΑΖΙΟΥ ");
-        ParaggeliesManagement.add(NameMagaziou_Paragg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        exitButton3.setText("Exit");
-        exitButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButton3ActionPerformed(evt);
-            }
-        });
-        ParaggeliesManagement.add(exitButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 30));
-
-        Table_Paragg.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
-
-            },
-            new String[]{
-                "ID", "ΤΡΑΠΕΖΙ", "ΩΡΑ", "ΠΑΡΑΓΓΕΛΙΑ", "ΠΙΑΤΑ", "ΤΕΛΙΚΗ ΤΙΜΗ "
-            }
-        ));
-        jScrollPane1.setViewportView(Table_Paragg);
-        if (Table_Paragg.getColumnModel().getColumnCount() > 0) {
-            Table_Paragg.getColumnModel().getColumn(1).setResizable(false);
-            Table_Paragg.getColumnModel().getColumn(3).setResizable(false);
-        }
-
-        ParaggeliesManagement.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 580, 150));
-
-        addButtonPARAG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        addButtonPARAG.setText("ΠΡΟΣΘΕΣΗ");
-        addButtonPARAG.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonPARAGActionPerformed(evt);
-            }
-        });
-        ParaggeliesManagement.add(addButtonPARAG, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 110, -1));
-
-        txtParagg_Trapezi.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        txtParagg_Trapezi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtParagg_TrapeziActionPerformed(evt);
-            }
-        });
-        ParaggeliesManagement.add(txtParagg_Trapezi, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 180, 30));
-
-        txtParagg_Wra.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        ParaggeliesManagement.add(txtParagg_Wra, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 180, 30));
-
-        labParagg_Wra.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        labParagg_Wra.setText("ΩΡΑ");
-        ParaggeliesManagement.add(labParagg_Wra, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
-
-        txtParagg_ParagId.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        ParaggeliesManagement.add(txtParagg_ParagId, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 180, 30));
-
-        labParagg_ParaggId.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        labParagg_ParaggId.setText("ΠΑΡΑΓΓΕΛΊΑ");
-        ParaggeliesManagement.add(labParagg_ParaggId, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
-
-        labParaggelies.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labParaggelies.setForeground(new java.awt.Color(153, 0, 0));
-        labParaggelies.setText("ΠΑΡΑΓΓΕΛΙΕΣ");
-        ParaggeliesManagement.add(labParaggelies, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-
-        labParagg_Trapezi.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        labParagg_Trapezi.setText("ΤΡΑΠΕΖΙ");
-        ParaggeliesManagement.add(labParagg_Trapezi, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
-
-        txtParagg_ID.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        txtParagg_ID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtParagg_IDActionPerformed(evt);
-            }
-        });
-        ParaggeliesManagement.add(txtParagg_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
-
-        txtParagg_piat.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        txtParagg_piat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtParagg_piatActionPerformed(evt);
-            }
-        });
-        ParaggeliesManagement.add(txtParagg_piat, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 30, 0, -1));
-
-        Arxikh.addTab("Παραγγελίες", ParaggeliesManagement);
-
         menouButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -375,10 +281,10 @@ public class Main extends javax.swing.JFrame {
         menouButton.add(addButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 110, -1));
 
         Table_Menu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
+            new Object [][] {
 
             },
-            new String[]{
+            new String [] {
                 "ID", "ΟΝΟΜΑ ΠΙΑΤΟΥ", "ΚΑΤΗΓΟΡΙΑ", "ΤΙΜΉ", "STOCK", "ΠΕΡΙΓΡΑΦΗ"
             }
         ));
@@ -436,6 +342,87 @@ public class Main extends javax.swing.JFrame {
 
         Arxikh.addTab("Μενού", menouButton);
 
+        ParaggeliesManagement.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        NameMagaziou_Paragg.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        NameMagaziou_Paragg.setText("ΟΝΟΜΑ ΜΑΓΑΖΙΟΥ ");
+        ParaggeliesManagement.add(NameMagaziou_Paragg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        exitButton3.setText("Exit");
+        exitButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButton3ActionPerformed(evt);
+            }
+        });
+        ParaggeliesManagement.add(exitButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 30));
+
+        Table_Paragg.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "ΤΡΑΠΕΖΙ", "ΩΡΑ", "ΠΑΡΑΓΓΕΛΙΑ", "ΠΙΑΤΑ", "ΤΕΛΙΚΗ ΤΙΜΗ "
+            }
+        ));
+        jScrollPane1.setViewportView(Table_Paragg);
+        if (Table_Paragg.getColumnModel().getColumnCount() > 0) {
+            Table_Paragg.getColumnModel().getColumn(1).setResizable(false);
+            Table_Paragg.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        ParaggeliesManagement.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 580, 150));
+
+        addButtonPARAG.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        addButtonPARAG.setText("ΠΡΟΣΘΕΣΗ");
+        addButtonPARAG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonPARAGActionPerformed(evt);
+            }
+        });
+        ParaggeliesManagement.add(addButtonPARAG, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 110, -1));
+
+        txtParagg_Trapezi.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtParagg_Trapezi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtParagg_TrapeziActionPerformed(evt);
+            }
+        });
+        ParaggeliesManagement.add(txtParagg_Trapezi, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 180, 30));
+
+        txtParagg_ParagId.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        ParaggeliesManagement.add(txtParagg_ParagId, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, 180, 30));
+
+        labParagg_ParaggId.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        labParagg_ParaggId.setText("ΠΙΑΤΑ");
+        ParaggeliesManagement.add(labParagg_ParaggId, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, -1, -1));
+
+        labParaggelies.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labParaggelies.setForeground(new java.awt.Color(153, 0, 0));
+        labParaggelies.setText("ΠΑΡΑΓΓΕΛΙΕΣ");
+        ParaggeliesManagement.add(labParaggelies, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        labParagg_Trapezi.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        labParagg_Trapezi.setText("ΤΡΑΠΕΖΙ");
+        ParaggeliesManagement.add(labParagg_Trapezi, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
+
+        txtParagg_ID.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtParagg_ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtParagg_IDActionPerformed(evt);
+            }
+        });
+        ParaggeliesManagement.add(txtParagg_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
+
+        txtParagg_piat.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtParagg_piat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtParagg_piatActionPerformed(evt);
+            }
+        });
+        ParaggeliesManagement.add(txtParagg_piat, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 30, 0, -1));
+
+        Arxikh.addTab("Παραγγελίες", ParaggeliesManagement);
+
         StockPrice.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         NameMagaziou_SP.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -486,18 +473,6 @@ public class Main extends javax.swing.JFrame {
         txtPrice.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         StockPrice.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 180, 30));
 
-        Table_P.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
-
-            },
-            new String[]{
-                "ID", "PRICE"
-            }
-        ));
-        jScrollPane5.setViewportView(Table_P);
-
-        StockPrice.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 280, 150));
-
         addButtonStock.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addButtonStock.setText("ΠΡΟΣΘΕΣΗ STOCK");
         addButtonStock.addActionListener(new java.awt.event.ActionListener() {
@@ -528,21 +503,9 @@ public class Main extends javax.swing.JFrame {
         labS_ID1.setText("ID");
         StockPrice.add(labS_ID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, -1));
 
-        Table_S.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
-
-            },
-            new String[]{
-                "ID", "STOCK"
-            }
-        ));
-        jScrollPane6.setViewportView(Table_S);
-
-        StockPrice.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 271, 280, 150));
-
         Arxikh.addTab("Stock", StockPrice);
 
-        getContentPane().add(Arxikh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 520));
+        getContentPane().add(Arxikh, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 690, 520));
 
         pack();
         setLocationRelativeTo(null);
@@ -670,23 +633,17 @@ public class Main extends javax.swing.JFrame {
                 .mapToInt(Integer::intValue)
                 .toArray();
 
-        if (txtParagg_Trapezi.getText().equals("") || txtParagg_Wra.getText().equals("") ||
-            txtParagg_ParagId.getText().equals("")) {
+        if (txtParagg_Trapezi.getText().equals("") || txtParagg_ParagId.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα! ");
         } else {
             try {
-                if (txtKrat_id.getText().equals("")) {
-                    Order.createOrderWithoutBooking(Integer.parseInt(txtParagg_Trapezi.getText()),
-                        stringToIntAr.apply(txtParagg_ParagId.getText()));
-                } else {
-                    // Order.createOrder(Integer.parseInt(txtParagg_Trapezi.getText()),
-                    // stringToIntAr.apply(txtParagg_piat.getText()));
-                }
+                Order.createOrderWithoutBooking(Integer.parseInt(txtParagg_Trapezi.getText()),
+                    stringToIntAr.apply(txtParagg_ParagId.getText()));
+
                 getOrder();
                 txtKrat_id.setText("");
                 txtParagg_ID.setText("");
                 txtParagg_Trapezi.setText("");
-                txtParagg_Wra.setText("");
                 txtParagg_ParagId.setText("");
                 txtParagg_piat.setText("");
 
@@ -902,9 +859,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel StockPrice;
     private javax.swing.JTable Table_AddKrat;
     private javax.swing.JTable Table_Menu;
-    private javax.swing.JTable Table_P;
     private javax.swing.JTable Table_Paragg;
-    private javax.swing.JTable Table_S;
     private javax.swing.JButton addButtonKRAT;
     private javax.swing.JButton addButtonMenu;
     private javax.swing.JButton addButtonPARAG;
@@ -919,8 +874,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel labAddKrat;
     private javax.swing.JLabel labAddKratTrapezi;
     private javax.swing.JLabel labAtoma;
@@ -931,7 +884,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel labOnoma;
     private javax.swing.JLabel labParagg_ParaggId;
     private javax.swing.JLabel labParagg_Trapezi;
-    private javax.swing.JLabel labParagg_Wra;
     private javax.swing.JLabel labParaggelies;
     private javax.swing.JLabel labPerigrafh;
     private javax.swing.JLabel labSP;
@@ -958,13 +910,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtParagg_ID;
     private javax.swing.JTextField txtParagg_ParagId;
     private javax.swing.JTextField txtParagg_Trapezi;
-    private javax.swing.JTextField txtParagg_Wra;
     private javax.swing.JTextField txtParagg_piat;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtPrice_ID;
     private javax.swing.JTextField txtStock;
     private javax.swing.JTextField txtStock_ID;
-
     // End of variables declaration//GEN-END:variables
     private void close() {
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);

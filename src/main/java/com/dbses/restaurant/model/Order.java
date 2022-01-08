@@ -109,7 +109,7 @@ public class Order {
                         rs.getInt(2),
                         rs.getInt(3),
                         rs.getTimestamp(4),
-                    intrs)
+                        intrs)
                 );
             }
 

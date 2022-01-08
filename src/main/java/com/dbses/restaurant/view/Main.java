@@ -32,16 +32,10 @@ public class Main extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Stock = new javax.swing.JTabbedPane();
+        Arxikh = new javax.swing.JTabbedPane();
         Main = new javax.swing.JPanel();
         NameMagaziou = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
-        KratiseisManagement = new javax.swing.JPanel();
-        labKrat = new javax.swing.JLabel();
-        exitButton1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        Table_ShowKrat = new javax.swing.JTable();
-        NameMagaziou_Kratiseis = new javax.swing.JLabel();
         AddKratish = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         Table_AddKrat = new javax.swing.JTable();
@@ -60,7 +54,6 @@ public class Main extends javax.swing.JFrame {
         txtKrat_date = new javax.swing.JTextField();
         labDate = new javax.swing.JLabel();
         txtKrat_id = new javax.swing.JTextField();
-        labAddKrat_ID = new javax.swing.JLabel();
         txtKrat_hour = new javax.swing.JTextField();
         ParaggeliesManagement = new javax.swing.JPanel();
         NameMagaziou_Paragg = new javax.swing.JLabel();
@@ -77,12 +70,10 @@ public class Main extends javax.swing.JFrame {
         labParaggelies = new javax.swing.JLabel();
         labParagg_Trapezi = new javax.swing.JLabel();
         txtParagg_ID = new javax.swing.JTextField();
-        labParagg_ID = new javax.swing.JLabel();
-        txtParagg_Trapezi1 = new javax.swing.JTextField();
+        txtParagg_piat = new javax.swing.JTextField();
         menouButton = new javax.swing.JPanel();
         labName = new javax.swing.JLabel();
         labKatigoria = new javax.swing.JLabel();
-        labMenu_ID = new javax.swing.JLabel();
         txtMenu_Id = new javax.swing.JTextField();
         txtMenu_Name = new javax.swing.JTextField();
         txtMenu_Katigoria = new javax.swing.JTextField();
@@ -110,11 +101,13 @@ public class Main extends javax.swing.JFrame {
         txtStock_ID = new javax.swing.JTextField();
         txtPrice = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
-        Table_SP = new javax.swing.JTable();
+        Table_P = new javax.swing.JTable();
         addButtonStock = new javax.swing.JButton();
         addButtonPrice = new javax.swing.JButton();
         txtPrice_ID = new javax.swing.JTextField();
         labS_ID1 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        Table_S = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Restaurant");
@@ -135,77 +128,16 @@ public class Main extends javax.swing.JFrame {
         });
         Main.add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 30));
 
-        Stock.addTab("Αρχική", Main);
-
-        labKrat.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labKrat.setForeground(new java.awt.Color(153, 0, 0));
-        labKrat.setText("ΚΡΑΤΗΣΕΙΣ");
-
-        exitButton1.setText("Exit");
-        exitButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButton1ActionPerformed(evt);
-            }
-        });
-
-        Table_ShowKrat.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
-
-            },
-            new String[]{
-                "ΟΝΟΜΑ/ΕΠΙΘΕΤΟ", "ΗΜΕΡΟΜΗΝΙΑ", "ΩΡΑ", "ΑΤΟΜΑ ", "ΤΡΑΠΕΖΙ"
-            }
-        ));
-        jScrollPane2.setViewportView(Table_ShowKrat);
-
-        NameMagaziou_Kratiseis.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        NameMagaziou_Kratiseis.setText("ΟΝΟΜΑ ΜΑΓΑΖΙΟΥ ");
-
-        javax.swing.GroupLayout KratiseisManagementLayout = new javax.swing.GroupLayout(KratiseisManagement);
-        KratiseisManagement.setLayout(KratiseisManagementLayout);
-        KratiseisManagementLayout.setHorizontalGroup(
-            KratiseisManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(KratiseisManagementLayout.createSequentialGroup()
-                    .addGap(21, 21, 21)
-                    .addGroup(KratiseisManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(KratiseisManagementLayout.createSequentialGroup()
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(KratiseisManagementLayout.createSequentialGroup()
-                            .addGroup(KratiseisManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labKrat, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(NameMagaziou_Kratiseis))
-                            .addGap(417, 417, 417)
-                            .addComponent(exitButton1)
-                            .addContainerGap())))
-        );
-        KratiseisManagementLayout.setVerticalGroup(
-            KratiseisManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(KratiseisManagementLayout.createSequentialGroup()
-                    .addGroup(KratiseisManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(KratiseisManagementLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(KratiseisManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(exitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(NameMagaziou_Kratiseis)))
-                        .addGroup(KratiseisManagementLayout.createSequentialGroup()
-                            .addGap(33, 33, 33)
-                            .addComponent(labKrat, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(153, 153, 153)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 140, Short.MAX_VALUE))
-        );
-
-        Stock.addTab("Κρατήσεις", KratiseisManagement);
+        Arxikh.addTab("Αρχική", Main);
 
         AddKratish.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Table_AddKrat.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
+            new Object [][] {
 
             },
-            new String[]{
-                "ID", "ΗΜΕΡΟΜΗΝΙΑ", "ΟΝΟΜΑ", "ΑΤΟΜΑ", "ΩΡΑ", "ΤΡΑΠΕΖΙ"
+            new String [] {
+                "ID", "ΟΝΟΜΑ", "ΗΜΕΡΟΜΗΝΙΑ", "ΩΡΑ", "ΑΤΟΜΑ", "ΤΡΑΠΕΖΙ"
             }
         ));
         jScrollPane4.setViewportView(Table_AddKrat);
@@ -213,7 +145,7 @@ public class Main extends javax.swing.JFrame {
         AddKratish.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 610, 150));
 
         txtKrat_atoma.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        AddKratish.add(txtKrat_atoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 100, 30));
+        AddKratish.add(txtKrat_atoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 100, 30));
 
         txtKrat_Trapezi.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         txtKrat_Trapezi.addActionListener(new java.awt.event.ActionListener() {
@@ -229,19 +161,19 @@ public class Main extends javax.swing.JFrame {
                 txtKrat_onomaActionPerformed(evt);
             }
         });
-        AddKratish.add(txtKrat_onoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 180, 30));
+        AddKratish.add(txtKrat_onoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 180, 30));
 
         labOnoma.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         labOnoma.setText("ΟΝΟΜΑ");
-        AddKratish.add(labOnoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, -1));
+        AddKratish.add(labOnoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, -1, -1));
 
         labWra.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         labWra.setText("ΩΡΑ");
-        AddKratish.add(labWra, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
+        AddKratish.add(labWra, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, -1, -1));
 
         labAtoma.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         labAtoma.setText("ΑΤΟΜΑ");
-        AddKratish.add(labAtoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, -1, -1));
+        AddKratish.add(labAtoma, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 
         labAddKratTrapezi.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         labAddKratTrapezi.setText("ΤΡΑΠΈΖΙ");
@@ -283,11 +215,11 @@ public class Main extends javax.swing.JFrame {
         AddKratish.add(NameMagaziou_AddKrat, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         txtKrat_date.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        AddKratish.add(txtKrat_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, 180, 30));
+        AddKratish.add(txtKrat_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, 180, 30));
 
         labDate.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         labDate.setText("ΗΜΕΡΟΜΗΝΙΑ");
-        AddKratish.add(labDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
+        AddKratish.add(labDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
 
         txtKrat_id.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         txtKrat_id.addActionListener(new java.awt.event.ActionListener() {
@@ -295,11 +227,7 @@ public class Main extends javax.swing.JFrame {
                 txtKrat_idActionPerformed(evt);
             }
         });
-        AddKratish.add(txtKrat_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 180, 30));
-
-        labAddKrat_ID.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        labAddKrat_ID.setText("Id");
-        AddKratish.add(labAddKrat_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
+        AddKratish.add(txtKrat_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 30, 0, -1));
 
         txtKrat_hour.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         txtKrat_hour.addActionListener(new java.awt.event.ActionListener() {
@@ -307,9 +235,9 @@ public class Main extends javax.swing.JFrame {
                 txtKrat_hourActionPerformed(evt);
             }
         });
-        AddKratish.add(txtKrat_hour, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 101, 30));
+        AddKratish.add(txtKrat_hour, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 101, 30));
 
-        Stock.addTab("Πρόσθεση Κράτησης", AddKratish);
+        Arxikh.addTab("Πρόσθεση Κράτησης", AddKratish);
 
         ParaggeliesManagement.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -326,11 +254,11 @@ public class Main extends javax.swing.JFrame {
         ParaggeliesManagement.add(exitButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 30));
 
         Table_Paragg.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
+            new Object [][] {
 
             },
-            new String[]{
-                "ID", "ΤΡΑΠΕΖΙ", "ΩΡΑ", "ΠΑΡΑΓΓΕΛΙΑ"
+            new String [] {
+                "ID", "ΤΡΑΠΕΖΙ", "ΩΡΑ", "ΠΑΡΑΓΓΕΛΙΑ", "ΠΙΑΤΑ"
             }
         ));
         jScrollPane1.setViewportView(Table_Paragg);
@@ -396,30 +324,27 @@ public class Main extends javax.swing.JFrame {
                 txtParagg_IDActionPerformed(evt);
             }
         });
-        ParaggeliesManagement.add(txtParagg_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 180, 30));
+        ParaggeliesManagement.add(txtParagg_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, -1, -1));
 
-        labParagg_ID.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        labParagg_ID.setText("ID");
-        ParaggeliesManagement.add(labParagg_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
-
-        txtParagg_Trapezi1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        txtParagg_Trapezi1.addActionListener(new java.awt.event.ActionListener() {
+        txtParagg_piat.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        txtParagg_piat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtParagg_Trapezi1ActionPerformed(evt);
+                txtParagg_piatActionPerformed(evt);
             }
         });
-        ParaggeliesManagement.add(txtParagg_Trapezi1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 180, 30));
+        ParaggeliesManagement.add(txtParagg_piat, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 30, 0, -1));
 
-        Stock.addTab("Παραγγελίες", ParaggeliesManagement);
+        Arxikh.addTab("Παραγγελίες", ParaggeliesManagement);
+
+        menouButton.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labName.setText("Όνομα Πιάτου");
+        menouButton.add(labName, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 68, -1, -1));
 
         labKatigoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labKatigoria.setText("Κατηγορία");
-
-        labMenu_ID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        labMenu_ID.setText("Id");
+        menouButton.add(labKatigoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 104, -1, -1));
 
         txtMenu_Id.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMenu_Id.addActionListener(new java.awt.event.ActionListener() {
@@ -427,6 +352,7 @@ public class Main extends javax.swing.JFrame {
                 txtMenu_IdActionPerformed(evt);
             }
         });
+        menouButton.add(txtMenu_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 30, 0, -1));
 
         txtMenu_Name.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMenu_Name.addActionListener(new java.awt.event.ActionListener() {
@@ -434,6 +360,7 @@ public class Main extends javax.swing.JFrame {
                 txtMenu_NameActionPerformed(evt);
             }
         });
+        menouButton.add(txtMenu_Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 63, 180, 27));
 
         txtMenu_Katigoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMenu_Katigoria.addActionListener(new java.awt.event.ActionListener() {
@@ -441,6 +368,7 @@ public class Main extends javax.swing.JFrame {
                 txtMenu_KatigoriaActionPerformed(evt);
             }
         });
+        menouButton.add(txtMenu_Katigoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 98, 180, 30));
 
         addButtonMenu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addButtonMenu.setText("ΠΡΟΣΘΕΣΗ");
@@ -449,6 +377,7 @@ public class Main extends javax.swing.JFrame {
                 addButtonMenuActionPerformed(evt);
             }
         });
+        menouButton.add(addButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 110, -1));
 
         deleteButtonMenu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         deleteButtonMenu.setText("ΔΙΑΓΡΑΦΗ");
@@ -457,16 +386,19 @@ public class Main extends javax.swing.JFrame {
                 deleteButtonMenuActionPerformed(evt);
             }
         });
+        menouButton.add(deleteButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 113, -1));
 
         Table_Menu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
+            new Object [][] {
 
             },
-            new String[]{
+            new String [] {
                 "ID", "ΟΝΟΜΑ ΠΙΑΤΟΥ", "ΚΑΤΗΓΟΡΙΑ", "ΤΙΜΉ", "STOCK", "ΠΕΡΙΓΡΑΦΗ"
             }
         ));
         jScrollPane3.setViewportView(Table_Menu);
+
+        menouButton.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 260, 622, 120));
 
         exitButton4.setText("Exit");
         exitButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -474,18 +406,23 @@ public class Main extends javax.swing.JFrame {
                 exitButton4ActionPerformed(evt);
             }
         });
+        menouButton.add(exitButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, -1, 34));
 
         NameMagaziou_Menu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         NameMagaziou_Menu.setText("ΟΝΟΜΑ ΜΑΓΑΖΙΟΥ ");
+        menouButton.add(NameMagaziou_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         labMenou.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labMenou.setForeground(new java.awt.Color(153, 0, 0));
         labMenou.setText("ΜΕΝΟΥ");
+        menouButton.add(labMenou, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         txtMenu_Timi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        menouButton.add(txtMenu_Timi, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 134, 180, 30));
 
         labTimi.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labTimi.setText("Τιμή");
+        menouButton.add(labTimi, new org.netbeans.lib.awtextra.AbsoluteConstraints(196, 140, -1, -1));
 
         txtMenu_Stock.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMenu_Stock.addActionListener(new java.awt.event.ActionListener() {
@@ -493,9 +430,11 @@ public class Main extends javax.swing.JFrame {
                 txtMenu_StockActionPerformed(evt);
             }
         });
+        menouButton.add(txtMenu_Stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 180, 30));
 
         labStock.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labStock.setText("Stock");
+        menouButton.add(labStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(187, 176, -1, -1));
 
         txtMenu_Perigrafh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtMenu_Perigrafh.addActionListener(new java.awt.event.ActionListener() {
@@ -503,122 +442,24 @@ public class Main extends javax.swing.JFrame {
                 txtMenu_PerigrafhActionPerformed(evt);
             }
         });
+        menouButton.add(txtMenu_Perigrafh, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 206, 180, 30));
 
         labPerigrafh.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labPerigrafh.setText("Περιγραφή");
+        menouButton.add(labPerigrafh, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 212, -1, -1));
 
-        javax.swing.GroupLayout menouButtonLayout = new javax.swing.GroupLayout(menouButton);
-        menouButton.setLayout(menouButtonLayout);
-        menouButtonLayout.setHorizontalGroup(
-            menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(menouButtonLayout.createSequentialGroup()
-                    .addGap(20, 20, 20)
-                    .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(menouButtonLayout.createSequentialGroup()
-                            .addComponent(NameMagaziou_Menu)
-                            .addGap(45, 45, 45))
-                        .addGroup(menouButtonLayout.createSequentialGroup()
-                            .addComponent(labMenou)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labMenu_ID)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                    .addComponent(txtMenu_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(189, 189, 189)
-                    .addComponent(exitButton4))
-                .addGroup(menouButtonLayout.createSequentialGroup()
-                    .addGap(147, 147, 147)
-                    .addComponent(labName)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(txtMenu_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(menouButtonLayout.createSequentialGroup()
-                    .addGap(29, 29, 29)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(menouButtonLayout.createSequentialGroup()
-                    .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(menouButtonLayout.createSequentialGroup()
-                            .addComponent(labPerigrafh)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtMenu_Perigrafh, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(menouButtonLayout.createSequentialGroup()
-                            .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(menouButtonLayout.createSequentialGroup()
-                                    .addGap(165, 165, 165)
-                                    .addComponent(labKatigoria)
-                                    .addGap(10, 10, 10))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menouButtonLayout.createSequentialGroup()
-                                    .addGap(9, 9, 9)
-                                    .addComponent(labTimi)
-                                    .addGap(18, 18, 18)))
-                            .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtMenu_Katigoria, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtMenu_Timi, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(menouButtonLayout.createSequentialGroup()
-                            .addComponent(labStock)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtMenu_Stock, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(50, 50, 50)
-                    .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(addButtonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(deleteButtonMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        menouButtonLayout.setVerticalGroup(
-            menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(menouButtonLayout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(menouButtonLayout.createSequentialGroup()
-                            .addComponent(NameMagaziou_Menu)
-                            .addGap(8, 8, 8)
-                            .addComponent(labMenou))
-                        .addGroup(menouButtonLayout.createSequentialGroup()
-                            .addGap(28, 28, 28)
-                            .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtMenu_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labMenu_ID)))
-                        .addComponent(exitButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(5, 5, 5)
-                    .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtMenu_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labName))
-                    .addGap(8, 8, 8)
-                    .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(menouButtonLayout.createSequentialGroup()
-                            .addGap(22, 22, 22)
-                            .addComponent(addButtonMenu)
-                            .addGap(15, 15, 15)
-                            .addComponent(deleteButtonMenu))
-                        .addGroup(menouButtonLayout.createSequentialGroup()
-                            .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtMenu_Katigoria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labKatigoria))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtMenu_Timi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labTimi))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtMenu_Stock, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labStock))))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addGroup(menouButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtMenu_Perigrafh, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labPerigrafh))
-                    .addGap(24, 24, 24)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        Stock.addTab("Μενού", menouButton);
+        Arxikh.addTab("Μενού", menouButton);
 
         StockPrice.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         NameMagaziou_SP.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         NameMagaziou_SP.setText("ΟΝΟΜΑ ΜΑΓΑΖΙΟΥ ");
-        StockPrice.add(NameMagaziou_SP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        StockPrice.add(NameMagaziou_SP, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         labSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labSP.setForeground(new java.awt.Color(153, 0, 0));
         labSP.setText("STOCK & PRICE");
-        StockPrice.add(labSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 41, -1, -1));
+        StockPrice.add(labSP, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         exitButton5.setText("Exit");
         exitButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -659,17 +500,17 @@ public class Main extends javax.swing.JFrame {
         txtPrice.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         StockPrice.add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 140, 180, 30));
 
-        Table_SP.setModel(new javax.swing.table.DefaultTableModel(
-            new Object[][]{
+        Table_P.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
             },
-            new String[]{
-                "ID", "STOCK", "PRICE"
+            new String [] {
+                "ID", "PRICE"
             }
         ));
-        jScrollPane5.setViewportView(Table_SP);
+        jScrollPane5.setViewportView(Table_P);
 
-        StockPrice.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 271, 580, 150));
+        StockPrice.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 280, 150));
 
         addButtonStock.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addButtonStock.setText("ΠΡΟΣΘΕΣΗ STOCK");
@@ -701,25 +542,299 @@ public class Main extends javax.swing.JFrame {
         labS_ID1.setText("ID");
         StockPrice.add(labS_ID1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, -1, -1));
 
-        Stock.addTab("Stock", StockPrice);
+        Table_S.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        getContentPane().add(Stock, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 520));
+            },
+            new String [] {
+                "ID", "STOCK"
+            }
+        ));
+        jScrollPane6.setViewportView(Table_S);
+
+        StockPrice.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(47, 271, 280, 150));
+
+        Arxikh.addTab("Stock", StockPrice);
+
+        getContentPane().add(Arxikh, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 520));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    private void txtPrice_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrice_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrice_IDActionPerformed
 
-    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+    //PROS8ESH PRICE
+
+    private void addButtonPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonPriceActionPerformed
+
+        if (txtPrice_ID.getText().equals("")||txtPrice.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα!");
+        } else {          
+             String data[] = {txtPrice_ID.getText(),txtPrice.getText()};
+             DefaultTableModel tblModel = (DefaultTableModel)Table_P.getModel();
+             tblModel.addRow(data);
+
+            try {
+                MenuItem.updatePrice(Integer.parseInt(txtPrice_ID.getText()),Float.parseFloat(txtPrice.getText()));
+                
+                txtPrice_ID.setText("");
+                txtPrice.setText("");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Ολα πήγαν ΟΚ! ");
+            }
+        }
+    }//GEN-LAST:event_addButtonPriceActionPerformed
+
+    //PROS8ESH STOCK
+
+    private void addButtonStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonStockActionPerformed
+
+        if (txtStock_ID.getText().equals("")||txtStock.getText().equals(""))
+             {JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα!"); } 
+        else{
+             String data[] = {txtStock_ID.getText(),txtStock.getText()};
+             DefaultTableModel tblModel = (DefaultTableModel)Table_S.getModel();
+             tblModel.addRow(data);
+             
+            try {
+                MenuItem.updateStock(Integer.parseInt(txtStock_ID.getText()),Integer.parseInt(txtStock.getText()));
+               
+                txtStock_ID.setText("");
+                txtStock.setText("");
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Ολα Ok");
+            }
+        }
+    }//GEN-LAST:event_addButtonStockActionPerformed
+
+    private void txtStock_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStock_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStock_IDActionPerformed
+    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStockActionPerformed
+    private void exitButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitButton5ActionPerformed
+    private void txtMenu_PerigrafhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_PerigrafhActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMenu_PerigrafhActionPerformed
+    private void txtMenu_StockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_StockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMenu_StockActionPerformed
+    private void exitButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton4ActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_exitButtonActionPerformed
+    }//GEN-LAST:event_exitButton4ActionPerformed
 
-    private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitButton1ActionPerformed
+    //DIAGRAFH MENU
+    
+    private void deleteButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonMenuActionPerformed
 
+        DefaultTableModel tblModel = (DefaultTableModel) Table_Menu.getModel();
+        if (Table_Menu.getSelectedRowCount() == 1) {
+            tblModel.removeRow(Table_Menu.getSelectedRow());    } 
+        else {
+            if (Table_Menu.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Ο Πίνακας είναι κενός");   }
+             else {
+                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!"); }    
+            }
+    }//GEN-LAST:event_deleteButtonMenuActionPerformed
+
+    //PROS8ESH MENU
+    
+    private void addButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonMenuActionPerformed
+
+        //ΣΤΟΙΧΕΙΑ ΠΟΥ ΘΑ ΓΡΑΨΕΙ Ο ΧΡΗΣΤΗΣ ΣΤΑ ΚΕΝΑ ΠΕΔΙΑ.
+        if (txtMenu_Name.getText().equals("")||txtMenu_Katigoria.getText().equals("")|| 
+            txtMenu_Timi.getText().equals("")||txtMenu_Stock.getText().equals("")||
+            txtMenu_Perigrafh.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα!");
+            } 
+        else{
+
+        //ΠΙΝΑΚΑΣ ΚΑΙ ΤΒΜΟΝΤΕΛ ΓΙΑ ΝΑ ΓΡΑΦΤΟΥΝ-ΕΜΦΑΝ. ΣΤΟΝ ΠΙΝΑΚΑ 
+             String data[] = {txtMenu_Id.getText(),txtMenu_Name.getText(),txtMenu_Katigoria.getText(),
+                              txtMenu_Timi.getText(),txtMenu_Stock.getText(),txtMenu_Perigrafh.getText()};
+             DefaultTableModel tblModel = (DefaultTableModel)Table_Menu.getModel();
+             tblModel.addRow(data);
+
+        try {  //ΚΑΛΩ ΤΗΝ MENYITEM.CREATNEWMENUITEM ΚΑΙ ΒΑΖΩ ΤΑ ΣΤΟΙΧΕΙΑ ΠΟΥ ΘΕΛΕΙ.     
+               MenuItem.createNewMenuItem(txtMenu_Name.getText(), txtMenu_Perigrafh.getText(),
+                                         txtMenu_Katigoria.getText(),Float.parseFloat(txtMenu_Timi.getText()),
+                                         Integer.parseInt(txtMenu_Stock.getText()));
+
+               
+             //TΑ ΣΤΟΙΧΕΙΑ ΤΟΥ ΠΙΝΑΚΑ ΤΑ ΚΑΝΩ ΣΕΤ.  
+             txtMenu_Id.setText("");
+             txtMenu_Name.setText("");
+             txtMenu_Katigoria.setText("");
+             txtMenu_Timi.setText("");
+             txtMenu_Stock.setText("");
+             txtMenu_Perigrafh.setText("");
+    
+            } 
+        catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Ολα ok");  } 
+            }
+    }//GEN-LAST:event_addButtonMenuActionPerformed
+
+    
+    private void txtMenu_KatigoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_KatigoriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMenu_KatigoriaActionPerformed
+    private void txtMenu_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_NameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMenu_NameActionPerformed
+    private void txtMenu_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_IdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMenu_IdActionPerformed
+    private void txtParagg_TrapeziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtParagg_TrapeziActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtParagg_TrapeziActionPerformed
+
+    //DIAGARFH PARAGGELIAS
+    
+    private void deleteButtonPARAGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonPARAGActionPerformed
+
+        DefaultTableModel tblModel = (DefaultTableModel) Table_Paragg.getModel();
+
+        if (Table_Paragg.getSelectedRowCount() == 1) {
+            tblModel.removeRow(Table_Paragg.getSelectedRow());  } 
+        else {
+            if (Table_Paragg.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Ο πινακας ειναι κενός");   } 
+            else {
+                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!");    }
+            }
+    }//GEN-LAST:event_deleteButtonPARAGActionPerformed
+
+    //PROS8ESH PARAGGELIAS 
+    //PIATA & TOTAL PRICE ORDER. 
+    
+    private void addButtonPARAGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonPARAGActionPerformed
+
+
+        if (txtParagg_Trapezi.getText().equals("")||txtParagg_Wra.getText().equals("")||
+                                                    txtParagg_ParagId.getText().equals(""))   
+                { JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα! ");    }
+       
+              //PIATAAA(;) & TOTAL PRICE(-)
+        else{ 
+
+            String data[] = {txtParagg_ID.getText(),txtParagg_Trapezi.getText(),txtParagg_Wra.getText(),
+                              txtParagg_ParagId.getText(),txtParagg_piat.getText()};
+            DefaultTableModel tblModel = (DefaultTableModel)Table_Paragg.getModel();
+            tblModel.addRow(data);   
+             
+            try{
+                  
+                if (txtKrat_id.getText().equals(" ") ) {     
+                        Order.createOrder(txtParagg_Trapezi,txtParagg_piat,txtKrat_id);}
+                else 
+                        Order.createOrderWithBooking(txtParagg_Trapezi,txtParagg_piat);
+                     
+                txtKrat_id.setText("");
+                txtParagg_ID.setText("");         
+                txtParagg_Trapezi.setText("");
+                txtParagg_Wra.setText("");
+                txtParagg_ParagId.setText("");
+                txtParagg_piat.setText("");
+                 
+             }catch(Exception e) {
+                 JOptionPane.showMessageDialog(this, "Ολα ok");  }
+            }
+    }//GEN-LAST:event_addButtonPARAGActionPerformed
+
+    
     private void exitButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton3ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButton3ActionPerformed
+    private void txtKrat_hourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_hourActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtKrat_hourActionPerformed
+    private void exitButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButton2ActionPerformed
+
+    //PROS8ESH KRATHSH
+    
+    private void addButtonKRATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonKRATActionPerformed
+
+        if (txtKrat_onoma.getText().equals("")||txtKrat_date.getText().equals("")||txtKrat_hour.getText().equals("")|| 
+            txtKrat_atoma.getText().equals("")||txtKrat_Trapezi.getText().equals("")) {
+
+                JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα! "); }
+        else {
+            
+            String data[] = {txtKrat_id.getText(),txtKrat_onoma.getText(),txtKrat_date.getText(),
+                             txtKrat_hour.getText(),txtKrat_atoma.getText(),txtKrat_Trapezi.getText(),};                            
+            DefaultTableModel tblModel = (DefaultTableModel)Table_AddKrat.getModel();
+            tblModel.addRow(data);
+
+            try {
+                Booking.createNewBooking(Integer.parseInt(txtKrat_Trapezi.getText()),
+                                         txtKrat_date.getText(),
+                                         txtKrat_onoma.getText(),
+                                         Integer.parseInt(txtKrat_atoma.getText()),
+                                         Integer.parseInt(txtKrat_hour.getText()));
+
+                        txtKrat_id.setText("");
+                        txtKrat_onoma.setText("");
+                        txtKrat_date.setText("");
+                        txtKrat_hour.setText("");
+                        txtKrat_atoma.setText("");
+                    
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Ολα ok");  }
+            
+            }
+    }//GEN-LAST:event_addButtonKRATActionPerformed
+
+    //DIAGRAFH KRATHSH
+    
+    private void deleteButtonKRATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonKRATActionPerformed
+
+        DefaultTableModel tblModel = (DefaultTableModel) Table_AddKrat.getModel();
+        if (Table_AddKrat.getSelectedRowCount() == 1) {
+            try {
+                tblModel.removeRow(Table_AddKrat.getSelectedRow());
+                Booking.deleteBooking(Integer.parseInt(txtKrat_id.getText()));
+                 //ISWS PANW
+                } 
+            catch (Exception e) {
+                  JOptionPane.showMessageDialog(this, "Ολα Ok");
+                }
+        } 
+        else {
+            if (Table_AddKrat.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Ο πινακας ειναι κενός"); } 
+            else {
+                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!"); }
+        }      
+    }//GEN-LAST:event_deleteButtonKRATActionPerformed
+
+    private void txtKrat_onomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_onomaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtKrat_onomaActionPerformed
+    private void txtKrat_TrapeziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_TrapeziActionPerformed
+
+    }//GEN-LAST:event_txtKrat_TrapeziActionPerformed
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
+    private void txtParagg_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtParagg_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtParagg_IDActionPerformed
+    private void txtKrat_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtKrat_idActionPerformed
+
+    private void txtParagg_piatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtParagg_piatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtParagg_piatActionPerformed
 
     //PARAGGELIES
     private void getOrder() {  //ΕΔΩ TOTAL PRICE
@@ -742,60 +857,6 @@ public class Main extends javax.swing.JFrame {
         }
     }   //EXW KAI LISTA PIATAS & TOTAL PRICE EDW LGK
 
-    //PROS8ESH PARAGGELIAS
-    private void addButtonPARAGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonPARAGActionPerformed
-
-        if (txtParagg_ID.getText().equals("") || txtKrat_id.getText().equals("") ||
-            txtParagg_Trapezi.getText().equals("") || txtParagg_Wra.getText().equals("") ||
-            txtParagg_ParagId.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα! ");
-        } else if (txtKrat_id.getText().equals("")) {
-//            Order.createOrder(Integer.parseInt(txtParagg_Trapezi.getText()),
-//                Integer.parseInt(txtParagg_ParagId.getText()),
-//                Integer.parseInt(txtKrat_id.getText()));
-        } else {
-//            Order.createOrderWithBooking(Integer.parseInt(txtParagg_Trapezi.getText()),
-//                Integer.parseInt(txtParagg_ParagId.getText()));
-
-            /*  String data[] = {txtParagg_ID.getText(),txtParagg_Krat.getText(),txtParagg_Trapezi.getText(),
-                               txtParagg_Wra.getText(),txtParagg_Ttimi.getText(),};
-                DefaultTableModel tblModel = (DefaultTableModel)Table_Paragg.getModel();
-                tblModel.addRow(data);    */
-
-            JOptionPane.showMessageDialog(this, "Ολα πηγαν ΟΚ");
-            txtParagg_ID.setText("");
-            txtKrat_id.setText("");
-            txtParagg_Trapezi.setText("");
-            txtParagg_Wra.setText("");
-            txtParagg_ParagId.setText("");
-
-        }
-    }//GEN-LAST:event_addButtonPARAGActionPerformed
-
-    //DIAGARFH PARAGGELIAS
-    private void deleteButtonPARAGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonPARAGActionPerformed
-
-        DefaultTableModel tblModel = (DefaultTableModel) Table_Paragg.getModel();
-
-        if (Table_Paragg.getSelectedRowCount() == 1) {
-            tblModel.removeRow(Table_Paragg.getSelectedRow());
-        } else {
-            if (Table_Paragg.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "Ο πινακας ειναι κενός");
-            } else {
-                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!");
-            }
-        }
-    }//GEN-LAST:event_deleteButtonPARAGActionPerformed
-
-    private void txtParagg_TrapeziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtParagg_TrapeziActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtParagg_TrapeziActionPerformed
-
-    private void txtMenu_IdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_IdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMenu_IdActionPerformed
-
     //MENOΥ +-
     private void getMenuItem() {
         DefaultTableModel tblModel = (DefaultTableModel) Table_Menu.getModel();
@@ -815,63 +876,6 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ολα Λαθος Menu Item" + e);
         }
     }
-
-    //PROS8ESH MENU
-    private void addButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonMenuActionPerformed
-
-        if (txtMenu_Id.getText().equals("") || txtMenu_Name.getText().equals("") ||
-            txtMenu_Katigoria.getText().equals("") || txtMenu_Timi.getText().equals("") ||
-            txtMenu_Stock.getText().equals("") || txtMenu_Perigrafh.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα!");
-        } else {
-            MenuItem.createNewMenuItem(txtMenu_Name.getText(),
-                txtMenu_Perigrafh.getText(),
-                txtMenu_Katigoria.getText(),
-                Float.parseFloat(txtMenu_Timi.getText()),
-                Integer.parseInt(txtMenu_Stock.getText()));
-//            MenuItem.updateStock(txtMenu_Id, txtMenu_Stock); //ΛΟΓΙΚΑ ΑΛΛΑΓΗ ΓΙΑΤΙ ΕΧΩ ΚΑΙ ΑΛΛΟΥ ΤΟ ΣΤΟΚ. (ΧΩΡΙΑ)
-//            MenuItem.updatePrice(txtMenu_Id, txtMenu_Timi);
-
-            // String data[] = {txtCode.getText(),txtKatigoria.getText(),txtName.getText()};
-            // DefaultTableModel tblModel = (DefaultTableModel)jTable4.getModel();
-            // tblModel.addRow(data);
-
-            JOptionPane.showMessageDialog(this, "Ολα πήγαν ΟΚ! ");
-            txtMenu_Id.setText("");
-            txtMenu_Name.setText("");
-            txtMenu_Katigoria.setText("");
-            txtMenu_Timi.setText("");
-            txtMenu_Stock.setText("");
-            txtMenu_Perigrafh.setText("");
-        }
-
-    }//GEN-LAST:event_addButtonMenuActionPerformed
-
-    //DIAGRAFH MENU
-    private void deleteButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonMenuActionPerformed
-
-        DefaultTableModel tblModel = (DefaultTableModel) Table_Menu.getModel();
-        if (Table_Menu.getSelectedRowCount() == 1) {
-            tblModel.removeRow(Table_Menu.getSelectedRow());
-        } else {
-            if (Table_Menu.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "Ο Πίνακας είναι κενός");
-            } else {
-                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!");
-            }
-        }
-    }//GEN-LAST:event_deleteButtonMenuActionPerformed
-
-    private void exitButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton4ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitButton4ActionPerformed
-
-    private void txtKrat_TrapeziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_TrapeziActionPerformed
-    }//GEN-LAST:event_txtKrat_TrapeziActionPerformed
-
-    private void txtKrat_onomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_onomaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtKrat_onomaActionPerformed
 
     //ΚΡΑΤΉΣΕΙΣ 
     private void getBooking() {
@@ -893,157 +897,6 @@ public class Main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ολα πηγαν Λαθος Bookings");
         }
     }
-
-    //PROS8ESH KRATHSH
-    private void deleteButtonKRATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonKRATActionPerformed
-
-        DefaultTableModel tblModel = (DefaultTableModel) Table_AddKrat.getModel();
-        if (Table_AddKrat.getSelectedRowCount() == 1) {
-            try {
-                Booking.deleteBooking(Integer.parseInt(txtKrat_id.getText()));
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Ολα Λαθος");
-            }
-        } else {
-            if (Table_AddKrat.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "Ο πινακας ειναι κενός");
-            } else {
-                JOptionPane.showMessageDialog(this, "Παρακαλώ διαλέξτε κάτι για διαγραφή!");
-            }
-        }
-    }//GEN-LAST:event_deleteButtonKRATActionPerformed
-
-    //DIAGRAFH KRATHSH
-    private void addButtonKRATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonKRATActionPerformed
-
-        if (txtKrat_id.getText().equals("") || txtKrat_date.getText().equals("") || txtKrat_onoma.getText().equals("") ||
-            txtKrat_atoma.getText().equals("") || txtKrat_Trapezi.getText().equals("")) {
-
-            JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα! ");
-        } else {
-            // String data[] = {txtOnoma.getText(),txtEpitheto.getText(),txtDate.getText(),
-            // txtTime.getText(),txtAtoma.getText(),txtPro.getText(),};
-            // DefaultTableModel tblModel = (DefaultTableModel)jTable2.getModel();
-            // tblModel.addRow(data);
-            try {
-                Booking.createNewBooking(Integer.parseInt(txtKrat_Trapezi.getText()),
-                    txtKrat_date.getText(),
-                    txtKrat_onoma.getText(),
-                    Integer.parseInt(txtKrat_atoma.getText()),
-                    Integer.parseInt(txtKrat_hour.getText()));
-
-                JOptionPane.showMessageDialog(this, "Ολα πηγαν ΟΚ");
-                txtKrat_id.setText("");
-                txtKrat_onoma.setText("");
-                txtKrat_date.setText("");
-                txtKrat_atoma.setText("");
-                txtKrat_Trapezi.setText("");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Ολα πηγαν Λαθος");
-            }
-        }
-    }//GEN-LAST:event_addButtonKRATActionPerformed
-
-    private void exitButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton2ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitButton2ActionPerformed
-
-    private void txtMenu_StockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_StockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMenu_StockActionPerformed
-
-    private void txtMenu_KatigoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_KatigoriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMenu_KatigoriaActionPerformed
-
-    private void txtMenu_NameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_NameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMenu_NameActionPerformed
-
-    private void txtKrat_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtKrat_idActionPerformed
-
-    private void txtMenu_PerigrafhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenu_PerigrafhActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMenu_PerigrafhActionPerformed
-
-    private void txtParagg_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtParagg_IDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtParagg_IDActionPerformed
-
-    private void txtKrat_hourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKrat_hourActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtKrat_hourActionPerformed
-
-    private void txtParagg_Trapezi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtParagg_Trapezi1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtParagg_Trapezi1ActionPerformed
-
-    private void exitButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_exitButton5ActionPerformed
-
-    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStockActionPerformed
-
-    private void txtStock_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStock_IDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtStock_IDActionPerformed
-
-    //PROS8ESH STOCK
-
-    private void addButtonStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonStockActionPerformed
-
-        if (txtStock_ID.getText().equals("") || txtStock.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα!");
-        } else {
-            try {
-                MenuItem.updateStock(Integer.parseInt(txtStock_ID.getText()),
-                    Integer.parseInt(txtStock.getText()));
-                JOptionPane.showMessageDialog(this, "Ολα πήγαν ΟΚ! ");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Ολα πηγαν Λαθος");
-            }
-
-            //MenuItem.updatePrice(txtStock_ID,txtS_price);
-
-            // String data[] = {txtCode.getText(),txtKatigoria.getText(),txtName.getText()};
-            // DefaultTableModel tblModel = (DefaultTableModel)jTable4.getModel();
-            // tblModel.addRow(data);
-
-        }
-
-    }//GEN-LAST:event_addButtonStockActionPerformed
-
-    //PROS8ESH STOCK
-
-    private void addButtonPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonPriceActionPerformed
-
-        if (txtPrice_ID.getText().equals("") || txtPrice.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Παρακαλώ βάλτε τα δεδομένα!");
-        } else {
-            try {
-                MenuItem.updatePrice(Integer.parseInt(txtStock_ID.getText()),
-                    Float.parseFloat(txtPrice.getText()));
-                JOptionPane.showMessageDialog(this, "Ολα πήγαν ΟΚ! ");
-                txtPrice_ID.setText("");
-                txtPrice.setText("");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, "Ολα πηγαν Λαθος");
-            }
-
-            // String data[] = {txtCode.getText(),txtKatigoria.getText(),txtName.getText()};
-            // DefaultTableModel tblModel = (DefaultTableModel)jTable4.getModel();
-            // tblModel.addRow(data);
-
-        }
-    }//GEN-LAST:event_addButtonPriceActionPerformed
-
-    private void txtPrice_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrice_IDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrice_IDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1082,22 +935,20 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddKratish;
-    private javax.swing.JPanel KratiseisManagement;
+    private javax.swing.JTabbedPane Arxikh;
     private javax.swing.JPanel Main;
     private javax.swing.JLabel NameMagaziou;
     private javax.swing.JLabel NameMagaziou_AddKrat;
-    private javax.swing.JLabel NameMagaziou_Kratiseis;
     private javax.swing.JLabel NameMagaziou_Menu;
     private javax.swing.JLabel NameMagaziou_Paragg;
     private javax.swing.JLabel NameMagaziou_SP;
     private javax.swing.JPanel ParaggeliesManagement;
-    private javax.swing.JTabbedPane Stock;
     private javax.swing.JPanel StockPrice;
     private javax.swing.JTable Table_AddKrat;
     private javax.swing.JTable Table_Menu;
+    private javax.swing.JTable Table_P;
     private javax.swing.JTable Table_Paragg;
-    private javax.swing.JTable Table_SP;
-    private javax.swing.JTable Table_ShowKrat;
+    private javax.swing.JTable Table_S;
     private javax.swing.JButton addButtonKRAT;
     private javax.swing.JButton addButtonMenu;
     private javax.swing.JButton addButtonPARAG;
@@ -1107,28 +958,23 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton deleteButtonMenu;
     private javax.swing.JButton deleteButtonPARAG;
     private javax.swing.JButton exitButton;
-    private javax.swing.JButton exitButton1;
     private javax.swing.JButton exitButton2;
     private javax.swing.JButton exitButton3;
     private javax.swing.JButton exitButton4;
     private javax.swing.JButton exitButton5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel labAddKrat;
     private javax.swing.JLabel labAddKratTrapezi;
-    private javax.swing.JLabel labAddKrat_ID;
     private javax.swing.JLabel labAtoma;
     private javax.swing.JLabel labDate;
     private javax.swing.JLabel labKatigoria;
-    private javax.swing.JLabel labKrat;
     private javax.swing.JLabel labMenou;
-    private javax.swing.JLabel labMenu_ID;
     private javax.swing.JLabel labName;
     private javax.swing.JLabel labOnoma;
-    private javax.swing.JLabel labParagg_ID;
     private javax.swing.JLabel labParagg_ParaggId;
     private javax.swing.JLabel labParagg_Trapezi;
     private javax.swing.JLabel labParagg_Wra;
@@ -1158,13 +1004,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField txtParagg_ID;
     private javax.swing.JTextField txtParagg_ParagId;
     private javax.swing.JTextField txtParagg_Trapezi;
-    private javax.swing.JTextField txtParagg_Trapezi1;
     private javax.swing.JTextField txtParagg_Wra;
+    private javax.swing.JTextField txtParagg_piat;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtPrice_ID;
     private javax.swing.JTextField txtStock;
     private javax.swing.JTextField txtStock_ID;
-
     // End of variables declaration//GEN-END:variables
     private void close() {
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);

@@ -25,6 +25,14 @@ import javax.swing.JTextField;
 }*/
 
 public class Order {
+
+    public static void createOrder(JTextField txtParagg_Trapezi, JTextField txtParagg_piat, JTextField txtKrat_id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void createOrderWithBooking(JTextField txtParagg_Trapezi, JTextField txtParagg_piat) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         private int orderId;
         private int tableId;
         private int bookingId;

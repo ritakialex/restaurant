@@ -1,13 +1,21 @@
 -- #Orders --
 SELECT total_price_order(1) --------------- total_price_order(order_id INT) 
-                                   -------- RETURNS REAL
+                            --------------- RETURNS REAL
 
 call create_order(7, array[1,3,4]) -------- create_order(table_id INT,
                                    --------              menu_item_ids INT[],
                                    --------              booking_id INT)
-                                   
+                                   --------
                                    -------- create_order(table_id INT,
                                    --------              menu_item_ids INT[])
+                                   --------
+                                   -------- triggers set_unavailable() ON Tables
+                                   -------- sets talbe of order to unavailable
+                                   --------
+                                   -------- triggers decrement_stock() ON Menu_items
+                                   -------- decrements the stock number of each
+                                   -------- associated menu item
+
 
 SELECT * FROM get_order_with_items(NULL) -- get_order_with_items(order_id INT) 
                                          -- RETURNS SETOF ORDER_WITH_ITEMS

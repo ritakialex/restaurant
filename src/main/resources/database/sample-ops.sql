@@ -13,7 +13,7 @@ SELECT * FROM get_menu_items(NULL, NULL)
 SELECT * FROM get_menu_items('Appetizers', NULL) 
 
 SELECT * FROM get_tables(NULL, NULL) 
-SELECT * FROM get_tables(NULL, 'true') 
+SELECT * FROM get_tables(5, 'true') 
 
 call toggle_availability(1)
 

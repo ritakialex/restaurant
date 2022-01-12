@@ -4,12 +4,13 @@
   - read the notes
 - Show all db processes
 - Interaction demo
-  - show menu items (stock over 10)
-  - update price and stock of one
-  - create new order
-  - get total price of order
-  - show that the table has been set unavailable
-  - show that the menu items decreased
-  - attempt to create second order same table
-  - toggle available
-  - reorder same table
+  - create order
+  - show total price of order
+  - try to create second
+  - show tables
+  - show toggle availability
+  - create booking
+  - assoc order with booking first incorrect time then correct
+    - incorrect orders (too many people for table, ordertable >< bookingtable, customers havent arrived, rest is closed)
+  - logging functions
+

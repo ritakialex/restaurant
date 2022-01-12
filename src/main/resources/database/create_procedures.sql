@@ -88,12 +88,10 @@ BEGIN
 
     SELECT is_available FROM Tables WHERE id = t_table_id INTO t_is_available;
 
-    IF NOT DATE(t_current_time) = t_date OR NOT extract(hour from t_current_time) = t_hour THEN
-        RAISE EXCEPTION 'Customers havent arrived yet';
-    ELSIF NOT t_table_id = booking_table_id THEN
+    IF NOT t_table_id = booking_table_id THEN
         RAISE EXCEPTION 'Order table id and booking table id dont match';
-    ELSIF NOT t_is_available THEN
-        RAISE EXCEPTION 'Table is not available';
+    ELSIF NOT DATE(t_current_time) = t_date OR NOT extract(hour from t_current_time) = t_hour THEN
+        RAISE EXCEPTION 'Customers havent arrived yet';
     ELSE
         INSERT INTO Orders(table_id, booking_id, time)
         VALUES (t_table_id, t_booking_id, t_current_time)

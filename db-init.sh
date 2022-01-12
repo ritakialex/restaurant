@@ -1,5 +1,3 @@
-#!/bin/sh
-
 BASE_DIR=./src/main/resources/database
 
 echo "Creating entities"

@@ -2,7 +2,7 @@
 SELECT total_price_order(1) --------------- total_price_order(order_id INT) 
                             --------------- RETURNS REAL
 
-call create_order(2, array[1,3,4]) -------- create_order(table_id INT,
+call create_order(2, array[1,3]) -------- create_order(table_id INT,
                                    --------              menu_item_ids INT[],
                                    --------              booking_id INT)
                                    --------
@@ -43,8 +43,8 @@ call delete_booking(1) ------------------------------ delete_booking(booking_id 
 
 
 -- #Menu_items --
-SELECT total_price(array[1,2,3,4,5,6])   -- total_price(menu_item_ids INT[]) 
-                                         -- RETURNS REAL
+SELECT total_price(array[1,2,3,4,5,6]) ---- total_price(menu_item_ids INT[]) 
+                                       ---- RETURNS REAL
 
 SELECT * FROM get_menu_items(NULL, NULL) -- get_menu_items(food_category FOOD_CATEGORY,
                                          --                min_stock_number INT) 
@@ -71,7 +71,7 @@ SELECT * FROM get_tables(NULL, NULL) -- get_tables(capacity INT,
                                      --            is_available BOOLEAN) 
                                      -- RETURNS SETOF TABLES
 
-call toggle_availability(1) ----------- toggle_availability(table_id INT)
+call toggle_availability(2) ----------- toggle_availability(table_id INT)
 
 SELECT * FROM get_tables_logs() ------- get_tables_logs()
                                 ------- RETURNS SETOF TABLES_LOGS

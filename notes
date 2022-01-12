@@ -1,0 +1,15 @@
+- Show ER, explain with plain words
+- Show the entity diagram 
+  - explain that the one in the submition is wrong
+  - read the notes
+- Show all db processes
+- Interaction demo
+  - show menu items (stock over 10)
+  - update price and stock of one
+  - create new order
+  - get total price of order
+  - show that the table has been set unavailable
+  - show that the menu items decreased
+  - attempt to create second order same table
+  - toggle available
+  - reorder same table

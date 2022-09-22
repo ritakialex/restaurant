@@ -1,7 +1,8 @@
 ## Notes
 
 ### Description
-A system that manages the running stats in a given work day (eg. the orders, the tables, the bookings, the menu).
+A project in Java, using a PostgreSQL database.
+A system that manages the running stats in a given work day (eg. the orders, the tables, the bookings, the menu), the end user is the restaurant's staff members.
 
 ### Domain Entities
 
